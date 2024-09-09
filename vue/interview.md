@@ -672,3 +672,104 @@ const router = new VueRouter({
 
 ## 13. vue3 中的ref 是如何实现的？
 在 Vue 3中，ref 是通过 createRef 函数来实现的。这个函数接受一个参数，这个参数可以是一个基本数据类型（如字符串、数字、布尔值等）或者是一个对象。如果参数是一个对象，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始对象。如果参数是一个基本数据类型，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始数据。
+
+## 14. vue2 中，数据双向绑定为什么使用的Object.defineProperty 而不是Object.defineProperties?
+主要原因在于以下几个方面：
+
+1. 递归劫持 vs 单次批量定义
+在 Vue 2 的响应式系统中，不仅仅是对对象的顶层属性进行劫持，还需要递归地劫持嵌套的对象属性。例如，对于一个深层嵌套的对象，Vue 2 需要递归遍历每一层属性，对每个属性都单独进行 Object.defineProperty 操作。这种递归操作要求灵活性，因为 Vue 不仅要处理简单对象，还要处理数组、嵌套对象等复杂结构。
+
+Object.defineProperty 允许逐个属性地进行递归劫持，这使得 Vue 可以处理每个属性、每一层级的递归操作。
+Object.defineProperties 则是一次性定义多个属性，缺少了递归的机制。如果使用 Object.defineProperties，当一个属性是嵌套对象时，无法方便地递归对嵌套属性进行响应式处理。
+2. 数组和对象的特殊处理
+Vue 2 对数组和对象的响应式处理方式不同。Vue 2 使用 Object.defineProperty 来对对象的属性进行拦截，但对数组的操作（比如 push、pop 等方法）则是通过函数重写的方式来进行劫持。如果使用 Object.defineProperties，在处理数组时并不适用。
+
+3. 灵活性
+Object.defineProperty 的逐个属性劫持方法非常灵活，可以在处理不同类型的数据结构（比如数组、对象、普通数据类型）时进行细粒度的控制。例如，如果一个属性是对象，Vue 会递归进行深层的劫持；而如果一个属性是原始类型（比如 number 或 string），Vue 就不会递归。这种灵活的处理方式在 Vue 的数据响应式设计中是非常关键的。
+
+4. 性能考虑
+虽然 Object.defineProperties 允许一次性定义多个属性，但 Vue 的数据响应式系统需要对每一个属性进行深度处理。如果使用 Object.defineProperties，在递归嵌套对象时，依然需要在每层都调用它，这会增加性能上的开销。相反，Object.defineProperty 可以让 Vue 更加精细化地控制每个属性的处理和递归。
+
+5. 每个属性的特殊拦截逻辑
+虽然大部分属性的 getter 和 setter 逻辑是一样的，但 Vue 在某些情况下需要对特定属性进行特殊处理。比如对于数组的某些变更方法（如 push、pop），Vue 需要重写这些方法，以确保数组变更能被检测到。这种情况下，Object.defineProperty 逐个属性地定义 getter 和 setter 更加灵活。
+
+总结
+Vue 2 使用 Object.defineProperty 而不是 Object.defineProperties，是因为 Vue 的响应式系统需要递归处理深层嵌套的对象，还要处理不同类型的数据结构（比如数组）。Object.defineProperty 可以逐个属性地进行递归、灵活地处理嵌套对象和数组变更。而 Object.defineProperties 虽然允许一次性定义多个属性，但在 Vue 这样的响应式系统中不具备足够的灵活性，也无法处理递归的复杂场景。
+
+所以，Vue 选择 Object.defineProperty 主要是出于灵活性、递归深层嵌套处理和性能上的考虑。
+
+## 15. proxy 相对于 Object.defineProperty 有哪些优势？
+Proxy 相对于 Object.defineProperty 确实有许多优势。让我们详细比较一下：
+
+1. 更全面的拦截能力：
+   - Proxy 可以拦截多达 13 种不同的基本操作，包括属性查找、赋值、删除、函数调用等。
+   - Object.defineProperty 主要用于拦截属性的读取（get）和设置（set）操作。
+
+2. 数组操作：
+   - Proxy 可以直接监听数组的变化，包括通过索引设置元素、修改数组长度等操作。
+   - Object.defineProperty 无法直接监听数组索引和长度的变化，需要额外的包装和处理。
+
+3. 动态属性：
+   - Proxy 可以监听整个对象，包括新添加的属性。
+   - Object.defineProperty 只能监听对象的已存在属性，新添加的属性需要额外处理。
+
+4. 性能：
+   - 对于大型对象，Proxy 可能会有更好的性能，因为它不需要递归遍历对象的所有属性。
+   - Object.defineProperty 需要遍历对象的每个属性并为其设置 getter 和 setter，这在大型对象上可能会有性能问题。
+
+5. 更简洁的代码：
+   - Proxy 的使用通常leads to更简洁、更易于理解的代码。
+   - Object.defineProperty 往往需要更多的样板代码，特别是在处理嵌套对象时。
+
+6. 原始对象不被修改：
+   - Proxy 创建一个原始对象的代理，不直接修改原始对象。
+   - Object.defineProperty 直接修改原始对象。
+
+7. 可撤销代理：
+   - Proxy 提供 `Proxy.revocable()`，允许创建可撤销的代理。
+   - Object.defineProperty 没有类似的功能。
+
+8. 更好的错误捕获：
+   - Proxy 可以捕获并抛出更多类型的错误，提供更好的调试体验。
+
+9. 支持更多数据类型：
+   - Proxy 可以代理各种类型的对象，包括数组、函数、甚至是 DOM 节点。
+   - Object.defineProperty 主要用于对象的属性。
+
+10. 元编程能力：
+    - Proxy 提供了强大的元编程能力，允许你自定义对象的基本行为。
+
+示例对比：
+
+```javascript
+// 使用 Object.defineProperty
+let obj = { a: 1 };
+Object.defineProperty(obj, 'a', {
+  get() {
+    console.log('Getting a');
+    return this._a;
+  },
+  set(newVal) {
+    console.log('Setting a');
+    this._a = newVal;
+  }
+});
+
+// 使用 Proxy
+let obj = { a: 1 };
+let proxy = new Proxy(obj, {
+  get(target, property) {
+    console.log(`Getting ${property}`);
+    return target[property];
+  },
+  set(target, property, value) {
+    console.log(`Setting ${property}`);
+    target[property] = value;
+    return true;
+  }
+});
+```
+
+在这个例子中，Proxy 版本可以拦截所有属性的访问和设置，而不仅仅是 'a'。
+
+总的来说，Proxy 提供了更强大、更灵活的对象操作拦截能力，这也是为什么 Vue 3 选择使用 Proxy 来重写其响应式系统的原因。然而，Proxy 的一个主要缺点是它不支持 IE 浏览器，这在某些需要兼容旧版浏览器的项目中可能是一个问题。
