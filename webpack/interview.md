@@ -882,3 +882,284 @@ exports.locals = {
 4. 使得 CSS 可以被其他 loader（如 style-loader）进一步处理。
 
 这就是为什么在处理 CSS 文件时，css-loader 通常是必需的，而且通常与 style-loader 配合使用，以将处理后的样式实际应用到页面上。
+
+## 13. SourceMap 的工作流程 是什么？
+
+1. 生成阶段：
+   - 在构建过程中（如使用 Webpack），源代码被转换、压缩或编译。
+   - 同时生成 SourceMap 文件，包含源代码和转换后代码的映射关系。
+   - 在生成的 JavaScript 文件末尾添加注释，指向 SourceMap 文件。
+
+2. 部署阶段：
+   - 转换后的 JavaScript 文件和 SourceMap 文件被部署到服务器。
+   - 注意：在生产环境中，可能选择不部署 SourceMap 文件。
+
+3. 初始加载：
+   - 当用户访问网页时，浏览器只加载转换后的 JavaScript 文件。
+   - 此时 SourceMap 不会被加载，普通用户不会感知到它的存在。
+
+4. 开发者工具激活：
+   - 当开发者打开浏览器的开发者工具时，浏览器检测到 JavaScript 文件中的 SourceMap 注释。
+
+5. SourceMap 请求：
+   - 浏览器根据注释中的 URL 请求 SourceMap 文件。
+
+6. SourceMap 解析：
+   - 浏览器接收到 SourceMap 文件后，解析其中的映射信息。
+
+7. 源代码重构：
+   - 基于 SourceMap 中的映射信息，浏览器在内存中"重构"原始源代码。
+   - 如果 SourceMap 包含内联的源代码（通过 `sourcesContent` 字段），浏览器直接使用这些内容。
+   - 如果没有内联源代码，浏览器可能需要额外请求原始源文件。
+
+8. 开发者工具展示：
+   - 开发者工具现在可以显示原始的、未转换的源代码。
+   - 当在转换后的代码中设置断点时，开发者工具会将其映射到源代码的相应位置。
+
+9. 调试过程：
+   - 在调试过程中，开发者可以在源代码视图中进行操作。
+   - 错误堆栈跟踪也会被映射回源代码的行号和列号。
+
+10. 按需加载：
+    - SourceMap 和源代码信息只在需要时才被加载和处理。
+    - 关闭开发者工具不会影响网页的正常运行。
+
+11. 性能考虑：
+    - SourceMap 的解析和源代码的重构可能会占用一些内存和处理时间。
+    - 这通常只影响开发环境或调试场景，不会影响最终用户的体验。
+
+12. 安全性：
+    - 在生产环境中，可以选择不部署 SourceMap，或将其存储在安全的位置。
+    - 一些工具允许生成不包含源代码内容的 SourceMap，仅包含映射信息。
+
+总结：
+SourceMap 的工作流程是一个按需激活的过程。它在构建时生成，但只有在开发者工具被激活时才会被加载和使用。这种机制既保证了调试的便利性，又不影响普通用户的体验，同时也提供了一定程度的源代码保护。SourceMap 的存在使得在生产环境中调试转换后的代码变得可能，大大提高了开发和维护的效率。
+
+
+## 14. 什么是PWA？
+PWA（Progressive Web App）是一种现代 Web 应用程序开发方法，旨在为用户提供类似原生应用的体验。PWA 结合了现代浏览器的最新功能和传统网页的优势，创造出一种可靠、快速且引人入胜的用户体验。以下是 PWA 的主要特点和概念：
+
+1. 渐进式增强：
+   - 在支持 PWA 功能的现代浏览器中提供更丰富的体验，同时在旧浏览器中保持基本功能。
+
+2. 响应式设计：
+   - 适应不同的屏幕尺寸和设备类型。
+
+3. 离线工作：
+   - 使用 Service Workers 技术，允许应用在离线或网络不稳定的情况下继续运行。
+
+4. 类似应用的体验：
+   - 可以添加到主屏幕，全屏运行，没有浏览器地址栏。
+
+5. 及时更新：
+   - 当有新版本可用时，PWA 可以自动更新。
+
+6. 安全：
+   - 通过 HTTPS 提供服务，确保数据传输的安全性。
+
+7. 可发现：
+   - 可以被搜索引擎索引，增加应用的可见性。
+
+8. 可安装：
+   - 用户可以将 PWA "安装" 到他们的设备上，无需通过应用商店。
+
+9. 可链接：
+   - 可以通过 URL 分享，无需复杂的安装过程。
+
+10. 推送通知：
+    - 支持推送通知，即使在用户未打开应用时也能接收更新。
+
+11. 硬件访问：
+    - 可以访问设备硬件，如摄像头、GPS 等（需要用户授权）。
+
+12. 快速加载：
+    - 利用缓存策略，实现快速加载和流畅的用户体验。
+
+PWA 的核心技术包括：
+
+1. Service Workers：
+   - 在后台运行的脚本，用于处理网络请求、缓存和离线功能。
+
+2. Web App Manifest：
+   - 一个 JSON 文件，定义了应用的外观和行为。
+
+3. HTTPS：
+   - 为了安全性和信任，PWA 必须通过 HTTPS 提供服务。
+
+4. 响应式设计：
+   - 使用 CSS 媒体查询等技术适应不同的屏幕尺寸。
+
+5. App Shell 架构：
+   - 将应用的核心基础结构与内容分离，以实现快速加载。
+
+PWA 的优势：
+
+1. 跨平台：一次开发，多平台运行。
+2. 无需安装：直接通过浏览器访问。
+3. 自动更新：无需用户手动更新。
+4. 较小的存储空间占用。
+5. 搜索引擎可索引。
+6. 开发和维护成本较低。
+
+示例应用：
+许多知名公司已经采用 PWA 技术，如 Twitter Lite、Starbucks、Pinterest 等。
+
+实现 PWA：
+要将现有的 Web 应用转换为 PWA，通常需要以下步骤：
+
+1. 创建 Web App Manifest 文件。
+2. 实现 Service Worker 以处理缓存和离线功能。
+3. 确保应用通过 HTTPS 提供服务。
+4. 优化应用性能，实现快速加载。
+5. 实现响应式设计。
+6. 添加推送通知功能（可选）。
+
+总结：
+PWA 代表了 Web 应用的未来发展方向，结合了 Web 和原生应用的优势。它提供了更好的用户体验，同时降低了开发和维护成本。随着浏览器支持的不断改进，PWA 的应用范围和功能将继续扩大。
+
+## 15. 什么是service-worker？
+Service Worker 是一种在 Web 应用程序、浏览器和网络（如果可用）之间的代理服务器。它是一个脚本，浏览器可以在后台运行，独立于网页，为 Web 应用提供高级的特性。Service Worker 是 Progressive Web Apps (PWA) 的核心技术之一。以下是 Service Worker 的主要特点和用途：
+
+1. 离线功能：
+   - 可以拦截网络请求并根据网络是否可用采取不同的操作。
+   - 能够缓存资源，使应用在离线状态下也能运行。
+
+2. 后台同步：
+   - 可以在网络恢复时，在后台执行数据同步。
+
+3. 推送通知：
+   - 允许应用接收服务器的推送消息，即使应用没有在前台运行。
+
+4. 性能优化：
+   - 通过缓存和控制网络请求，可以显著提高应用的加载速度。
+
+5. 资源缓存：
+   - 可以精细控制缓存策略，决定哪些资源需要缓存，如何缓存。
+
+6. 网络代理：
+   - 可以拦截并修改网络请求，实现如请求重写、响应修改等功能。
+
+7. 独立于页面：
+   - Service Worker 在其自己的全局脚本上下文中运行，不绑定到特定的网页。
+
+8. 生命周期：
+   - 有自己的安装、激活和终止过程，独立于网页的生命周期。
+
+9. 只能在 HTTPS 下运行：
+   - 出于安全考虑，Service Worker 只能在 HTTPS 环境下运行（localhost 除外）。
+
+10. 不能直接访问 DOM：
+    - Service Worker 运行在 worker 上下文中，无法直接操作 DOM。
+
+11. 可编程的网络代理：
+    - 允许开发者控制如何处理来自页面的网络请求。
+
+12. 异步设计：
+    - 大量使用 Promise，设计为完全异步。
+
+Service Worker 的基本工作流程：
+
+1. 注册：在网页中注册 Service Worker。
+2. 安装：首次注册时，浏览器会尝试安装并激活 Service Worker。
+3. 激活：安装成功后，Service Worker 被激活。
+4. 控制：激活后，它可以控制在其范围内的页面。
+5. 更新：当 Service Worker 文件更新时，新版本会在后台安装，并在适当的时机激活。
+
+示例代码（注册 Service Worker）：
+
+```javascript
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+```
+
+Service Worker 文件（简单示例）：
+
+```javascript
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('my-cache').then(function(cache) {
+      return cache.addAll([
+        '/',
+        '/styles/main.css',
+        '/script/main.js'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
+});
+```
+
+这个简单的 Service Worker 在安装时缓存关键资源，并在fetch事件中首先尝试从缓存中响应请求，如果缓存中没有，则从网络获取。
+
+Service Worker 是实现 PWA 的关键技术，它使得 Web 应用能够提供更接近原生应用的体验，特别是在性能和离线功能方面。
+
+## 16. Tree Shaking的工作原理？
+**Tree shaking** 是现代 JavaScript 打包工具（如 Webpack、Rollup、Vite）中用于优化打包体积的技术。它的主要目标是通过静态分析代码，去除未使用的代码，从而减小最终生成的打包文件体积。Tree shaking 通常依赖于 ECMAScript 2015 (ES6) 的模块系统，即 **ES Modules**，因为它们是静态结构，这使得在打包时能准确地知道哪些代码被实际引用，哪些没有被使用。
+
+### Tree Shaking 的工作原理：
+1. **静态分析模块依赖**：
+   - Tree shaking 首先会对代码进行静态分析，解析整个依赖图。由于 ES Modules 是静态的，导入和导出是显式声明的，所以在构建时，工具能够识别出模块之间的关系，明确哪些模块或模块中的部分被使用，哪些没有。
+
+2. **标记未使用的代码**：
+   - 在解析了代码的依赖关系后，Tree shaking 会根据代码的实际使用情况，标记那些未使用的模块或模块内部的函数、变量等。例如，若某个模块只导入了特定函数，而未导入模块中的其他函数，未导入的部分就会被标记为“无用代码”。
+
+3. **移除未引用的代码**：
+   - 在标记未使用的代码后，打包工具会在生成最终的代码时移除这些未使用的部分。这个步骤确保了最终的打包文件只包含被实际使用到的代码，而不会将未引用的代码一起打包进去。
+
+4. **死代码消除**：
+   - Tree shaking 会结合 “死代码消除” 技术，即根据代码逻辑，进一步移除无法被执行的代码段。比如一些只出现在条件判断中的从未触发的代码也会被移除。
+
+### 关键因素：
+1. **ES Modules**：
+   - Tree shaking 的一个核心依赖是 ES6 的模块系统 (`import/export`)，因为 ES6 模块是静态解析的，在编译阶段就能确定依赖关系。相比之下，CommonJS 模块 (`require`) 是动态的，难以在构建时确定依赖关系，因此 Tree shaking 无法在 CommonJS 上很好地工作。
+
+2. **Pure Function Annotation（纯函数注释）**：
+   - 一些库（如 lodash）使用了纯函数注释来帮助 Tree shaking 识别哪些函数是副作用-free 的，可以安全地删除未使用的部分。
+
+3. **Side Effects（副作用）**：
+   - 一些模块可能会包含副作用（如在导入时会修改全局状态）。为了确保 Tree shaking 不误删重要代码，打包工具允许开发者通过 `package.json` 的 `sideEffects` 字段显式声明模块是否有副作用。这样，打包工具能更加准确地判断哪些代码可以被安全删除。
+
+### Tree Shaking 适用的情况：
+1. **库的精简化**：在导入大型库时，若只使用了其中的一部分功能，Tree shaking 会帮助去除未使用的部分，从而减少最终打包的大小。
+2. **去除未使用的工具函数**：在代码中导入了一些工具函数，但没有实际使用时，Tree shaking 会自动将这些工具函数从打包结果中移除。
+
+### Tree Shaking 的限制：
+1. **动态导入/导出**：Tree shaking 无法处理动态导入 (`require`) 或导出，因为它们在打包阶段无法被静态分析。
+2. **带副作用的代码**：如果模块在导入时执行了一些操作，比如修改全局变量，Tree shaking 可能不会将这些模块移除，因为它无法确定移除这些代码是否安全。
+
+### 代码示例：
+
+```js
+// utils.js
+export function usedFunction() {
+  return 'This is used';
+}
+
+export function unusedFunction() {
+  return 'This is unused';
+}
+
+// main.js
+import { usedFunction } from './utils';
+
+console.log(usedFunction());
+```
+
+在这个例子中，`unusedFunction` 从未被使用，Tree shaking 会在打包时将其移除，只保留 `usedFunction`。
+
+### 总结：
+Tree shaking 通过静态分析模块依赖关系，去除未使用的代码，减少打包体积，提高性能。然而，它依赖于 ES Modules 的静态特性，并且需要注意副作用代码的处理。
