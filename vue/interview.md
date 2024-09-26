@@ -672,3 +672,225 @@ const router = new VueRouter({
 
 ## 13. vue3 中的ref 是如何实现的？
 在 Vue 3中，ref 是通过 createRef 函数来实现的。这个函数接受一个参数，这个参数可以是一个基本数据类型（如字符串、数字、布尔值等）或者是一个对象。如果参数是一个对象，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始对象。如果参数是一个基本数据类型，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始数据。
+
+## 14. vue2 中，数据双向绑定为什么使用的Object.defineProperty 而不是Object.defineProperties?
+主要原因在于以下几个方面：
+
+1. 递归劫持 vs 单次批量定义
+在 Vue 2 的响应式系统中，不仅仅是对对象的顶层属性进行劫持，还需要递归地劫持嵌套的对象属性。例如，对于一个深层嵌套的对象，Vue 2 需要递归遍历每一层属性，对每个属性都单独进行 Object.defineProperty 操作。这种递归操作要求灵活性，因为 Vue 不仅要处理简单对象，还要处理数组、嵌套对象等复杂结构。
+
+Object.defineProperty 允许逐个属性地进行递归劫持，这使得 Vue 可以处理每个属性、每一层级的递归操作。
+Object.defineProperties 则是一次性定义多个属性，缺少了递归的机制。如果使用 Object.defineProperties，当一个属性是嵌套对象时，无法方便地递归对嵌套属性进行响应式处理。
+2. 数组和对象的特殊处理
+Vue 2 对数组和对象的响应式处理方式不同。Vue 2 使用 Object.defineProperty 来对对象的属性进行拦截，但对数组的操作（比如 push、pop 等方法）则是通过函数重写的方式来进行劫持。如果使用 Object.defineProperties，在处理数组时并不适用。
+
+3. 灵活性
+Object.defineProperty 的逐个属性劫持方法非常灵活，可以在处理不同类型的数据结构（比如数组、对象、普通数据类型）时进行细粒度的控制。例如，如果一个属性是对象，Vue 会递归进行深层的劫持；而如果一个属性是原始类型（比如 number 或 string），Vue 就不会递归。这种灵活的处理方式在 Vue 的数据响应式设计中是非常关键的。
+
+4. 性能考虑
+虽然 Object.defineProperties 允许一次性定义多个属性，但 Vue 的数据响应式系统需要对每一个属性进行深度处理。如果使用 Object.defineProperties，在递归嵌套对象时，依然需要在每层都调用它，这会增加性能上的开销。相反，Object.defineProperty 可以让 Vue 更加精细化地控制每个属性的处理和递归。
+
+5. 每个属性的特殊拦截逻辑
+虽然大部分属性的 getter 和 setter 逻辑是一样的，但 Vue 在某些情况下需要对特定属性进行特殊处理。比如对于数组的某些变更方法（如 push、pop），Vue 需要重写这些方法，以确保数组变更能被检测到。这种情况下，Object.defineProperty 逐个属性地定义 getter 和 setter 更加灵活。
+
+总结
+Vue 2 使用 Object.defineProperty 而不是 Object.defineProperties，是因为 Vue 的响应式系统需要递归处理深层嵌套的对象，还要处理不同类型的数据结构（比如数组）。Object.defineProperty 可以逐个属性地进行递归、灵活地处理嵌套对象和数组变更。而 Object.defineProperties 虽然允许一次性定义多个属性，但在 Vue 这样的响应式系统中不具备足够的灵活性，也无法处理递归的复杂场景。
+
+所以，Vue 选择 Object.defineProperty 主要是出于灵活性、递归深层嵌套处理和性能上的考虑。
+
+## 15. proxy 相对于 Object.defineProperty 有哪些优势？
+Proxy 相对于 Object.defineProperty 确实有许多优势。让我们详细比较一下：
+
+1. 更全面的拦截能力：
+   - Proxy 可以拦截多达 13 种不同的基本操作，包括属性查找、赋值、删除、函数调用等。
+   - Object.defineProperty 主要用于拦截属性的读取（get）和设置（set）操作。
+
+2. 数组操作：
+   - Proxy 可以直接监听数组的变化，包括通过索引设置元素、修改数组长度等操作。
+   - Object.defineProperty 无法直接监听数组索引和长度的变化，需要额外的包装和处理。
+
+3. 动态属性：
+   - Proxy 可以监听整个对象，包括新添加的属性。
+   - Object.defineProperty 只能监听对象的已存在属性，新添加的属性需要额外处理。
+
+4. 性能：
+   - 对于大型对象，Proxy 可能会有更好的性能，因为它不需要递归遍历对象的所有属性。
+   - Object.defineProperty 需要遍历对象的每个属性并为其设置 getter 和 setter，这在大型对象上可能会有性能问题。
+
+5. 更简洁的代码：
+   - Proxy 的使用通常leads to更简洁、更易于理解的代码。
+   - Object.defineProperty 往往需要更多的样板代码，特别是在处理嵌套对象时。
+
+6. 原始对象不被修改：
+   - Proxy 创建一个原始对象的代理，不直接修改原始对象。
+   - Object.defineProperty 直接修改原始对象。
+
+7. 可撤销代理：
+   - Proxy 提供 `Proxy.revocable()`，允许创建可撤销的代理。
+   - Object.defineProperty 没有类似的功能。
+
+8. 更好的错误捕获：
+   - Proxy 可以捕获并抛出更多类型的错误，提供更好的调试体验。
+
+9. 支持更多数据类型：
+   - Proxy 可以代理各种类型的对象，包括数组、函数、甚至是 DOM 节点。
+   - Object.defineProperty 主要用于对象的属性。
+
+10. 元编程能力：
+    - Proxy 提供了强大的元编程能力，允许你自定义对象的基本行为。
+
+示例对比：
+
+```javascript
+// 使用 Object.defineProperty
+let obj = { a: 1 };
+Object.defineProperty(obj, 'a', {
+  get() {
+    console.log('Getting a');
+    return this._a;
+  },
+  set(newVal) {
+    console.log('Setting a');
+    this._a = newVal;
+  }
+});
+
+// 使用 Proxy
+let obj = { a: 1 };
+let proxy = new Proxy(obj, {
+  get(target, property) {
+    console.log(`Getting ${property}`);
+    return target[property];
+  },
+  set(target, property, value) {
+    console.log(`Setting ${property}`);
+    target[property] = value;
+    return true;
+  }
+});
+```
+
+在这个例子中，Proxy 版本可以拦截所有属性的访问和设置，而不仅仅是 'a'。
+
+总的来说，Proxy 提供了更强大、更灵活的对象操作拦截能力，这也是为什么 Vue 3 选择使用 Proxy 来重写其响应式系统的原因。然而，Proxy 的一个主要缺点是它不支持 IE 浏览器，这在某些需要兼容旧版浏览器的项目中可能是一个问题。
+
+## 16. vue 相对于 react 有哪些优势？
+相对于 React，Vue 在方法层面具有以下优势：
+
+### 1. **更简洁的模板语法**
+   - **Vue** 使用的是模板语法（Template），它类似于 HTML，可以让开发者直观地绑定数据和事件。Vue 的模板语法对大部分前端开发者来说更加容易上手，因为它使用的是基于现有 HTML 扩展的语法，像指令（`v-bind`, `v-model`, `v-if`）等来实现功能。
+   - **React** 采用 JSX 语法，虽然功能强大，但对不熟悉 JavaScript 扩展语法的开发者来说，可能不太直观。React 通过在 JavaScript 中混合 HTML 元素来构建视图，开发者需要更多地掌握 JavaScript。
+
+### 2. **双向数据绑定**
+   - **Vue** 默认支持 **双向数据绑定**，通过 `v-model` 可以非常方便地实现表单数据的双向同步，尤其在表单处理和用户输入交互上表现得更为简洁。Vue 的双向绑定通过 `getter` 和 `setter` 自动更新 DOM。
+   - **React** 不提供内置的双向数据绑定，开发者需要手动管理表单控件的状态，处理表单数据同步的逻辑，通常需要写更多的代码。
+
+### 3. **计算属性（Computed Properties）**
+   - **Vue** 提供了计算属性（`computed`），用于基于已有的状态派生出新的状态，并且自动追踪依赖关系，避免重复计算。计算属性使得代码更加直观简洁，尤其适用于在视图中计算和处理数据。
+   - **React** 没有提供类似计算属性的功能，开发者需要在 JSX 中直接计算状态或者通过 Hooks 手动实现计算和依赖追踪，这往往增加了代码的复杂性。
+
+### 4. **内置的指令和指令简化**
+   - **Vue** 提供了丰富的指令，例如 `v-show`, `v-if`, `v-for`, `v-bind`, `v-on` 等，使得常见的 DOM 操作和事件绑定变得简单明了。这些指令让开发者无需手动处理 DOM 或事件。
+   - **React** 没有内置这些指令，开发者需要通过 JavaScript 或 JSX 语法来实现，逻辑上相对复杂。
+
+### 5. **渐进式框架**
+   - **Vue** 是一个渐进式框架，提供了更灵活的集成方式。开发者可以将 Vue 作为一个库来为现有项目添加交互性，或者将其扩展为一个完整的前端框架，而不会像 React 一样要求从头到尾采用单一的方式。
+   - **React** 主要作为视图层的库，不提供完整的框架式功能，开发者通常需要引入其他库（如 Redux, React Router）来构建复杂的应用。
+
+### 6. **Vue CLI 对于项目的支持**
+   - **Vue CLI** 提供了开箱即用的项目配置模板，能够快速生成 Vue 项目结构，自动支持 TypeScript、Babel、Linting 等配置。
+   - **React** 虽然有 **Create React App** 作为项目初始化工具，但在某些特定项目需求下，Vue CLI 提供了更多的配置灵活性和插件支持。
+
+### 7. **更好的组件通信（基于 `props` 和 `emit` 的模式）**
+   - **Vue** 中，父子组件通信通过 `props` 和 `emit` 非常直观，遵循单向数据流。同时，Vue 3 提供了 `provide/inject` 机制，进一步简化了多层嵌套组件之间的通信。
+   - **React** 主要通过 `props` 来实现父子组件通信，在更复杂的情况下，可能需要引入上下文 API 或其他状态管理工具。
+
+### 8. **动画过渡支持**
+   - **Vue** 原生支持动画和过渡效果，通过 `transition` 和 `transition-group` 组件，开发者可以轻松为元素添加动画效果。
+   - **React** 没有内置的动画功能，通常需要引入第三方库如 `react-transition-group` 或 `framer-motion` 来实现。
+
+### 总结：
+Vue 在模板语法、双向绑定、计算属性、指令支持以及 CLI 工具等方面提供了更直观和简洁的解决方案，特别是在项目规模相对较小时，Vue 的学习曲线更平滑，开发体验更顺畅。而 React 的灵活性和生态系统广度适合构建更大型、复杂的应用，但需要更强的 JavaScript 基础。
+
+这并不是说 Vue 绝对优于 React，而是两者各有其适用场景，Vue 的方法和设计理念让它在某些开发场景中表现得更加简洁直观。
+
+## 18. vue 组件在什么时候会执行组件销毁？是当一个页面跳转到另一个页面时，之前的页面的组件都会被销毁吗？
+这是一个很好的问题，涉及到 Vue 组件的生命周期和路由管理。让我们详细探讨一下：
+
+1. 组件销毁的时机
+
+Vue 组件在以下情况下会被销毁：
+
+a. 当组件被从 DOM 中移除时。
+b. 当使用 v-if 指令且条件变为 false 时。
+c. 当使用 v-for 指令且对应的数组项被移除时。
+d. 当组件的父组件被销毁时。
+
+2. 页面跳转时的组件销毁
+
+关于页面跳转时组件是否被销毁，这取决于你的路由配置和应用结构：
+
+a. 单页应用（SPA）中的普通路由切换：
+   - 通常情况下，当从一个页面跳转到另一个页面时，前一个页面的组件会被销毁，新页面的组件会被创建。
+   - 这是因为在默认情况下，Vue Router 会在路由变化时卸载旧的组件，并挂载新的组件。
+
+b. 使用 <keep-alive> 组件：
+   - 如果你使用了 <keep-alive> 包裹路由组件，则组件在切换时不会被销毁，而是会被缓存。
+   - 这种情况下，组件会触发 deactivated 钩子而不是 destroyed 钩子，当再次进入时会触发 activated 钩子。
+
+c. 嵌套路由：
+   - 在嵌套路由的情况下，只有发生变化的部分会被销毁和重新创建，而共享的父级组件会保持不变。
+
+d. 动态组件：
+   - 使用 <component :is="componentName"> 的动态组件，在切换时默认也会销毁旧组件并创建新组件，除非使用 <keep-alive>。
+
+3. 示例
+
+```vue
+<!-- App.vue -->
+<template>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</template>
+
+<!-- 使用 keep-alive 的情况 -->
+<template>
+  <div id="app">
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+  </div>
+</template>
+```
+
+4. 验证组件销毁
+
+你可以在组件中添加 destroyed 生命周期钩子来验证组件是否被销毁：
+
+```javascript
+export default {
+  destroyed() {
+    console.log('Component destroyed');
+  }
+}
+```
+
+5. 注意事项
+
+- 组件销毁时，所有的事件监听器和子组件也会被销毁。
+- 如果在组件中设置了定时器或添加了全局事件监听，应该在 beforeDestroy 或 destroyed 钩子中清理它们，以防止内存泄漏。
+
+6. 性能考虑
+
+- 频繁地销毁和重建组件可能会影响性能。在某些情况下，使用 <keep-alive> 可以提高性能和用户体验。
+- 但是过度使用 <keep-alive> 也可能导致内存占用增加，需要权衡。
+
+7. Vue 3 的变化
+
+在 Vue 3 中，生命周期钩子有些变化：
+- destroyed 改名为 unmounted
+- beforeDestroy 改名为 beforeUnmount
+
+总结：
+在默认情况下，当在单页应用中从一个页面跳转到另一个页面时，前一个页面的组件通常会被销毁。但这个行为可以通过 <keep-alive>、嵌套路由等方式来改变。了解组件的生命周期和销毁机制对于正确管理资源、优化性能和防止内存泄漏非常重要。
