@@ -151,3 +151,176 @@ React Hooks 与类组件生命周期之间存在对应关系，Hooks 提供了�
 ### 总结
 - Hooks 提供了 `useEffect` 来覆盖 `componentDidMount`、`componentDidUpdate`、`componentWillUnmount`，使得开发者可以在一个地方处理副作用。
 - Hooks 让函数组件能够管理状态和副作用，简化了原来类组件的生命周期逻辑，减少了代码的复杂性。
+
+## useEffect 和 useLayoutEffect 的区别？
+`useEffect` 和 `useLayoutEffect` 是 React 中用于处理副作用的两个 Hook，它们的主要区别在于执行时机和使用场景。以下是它们的详细比较：
+
+### 1. 执行时机
+
+- **`useEffect`**：
+  - 在浏览器完成绘制后执行。也就是说，`useEffect` 的回调函数会在 DOM 更新后、浏览器绘制完成后执行。
+  - 适合处理不需要阻塞浏览器绘制的副作用，如数据获取、订阅、事件监听等。
+
+```javascript
+useEffect(() => {
+  // 这里的代码在 DOM 更新后执行
+  console.log('Effect executed after render');
+}, [dependencies]);
+```
+
+- **`useLayoutEffect`**：
+  - 在浏览器绘制之前执行。`useLayoutEffect` 的回调函数会在 DOM 更新后、浏览器绘制之前执行。
+  - 适合处理需要在浏览器绘制之前完成的副作用，如读取布局信息、同步 DOM 操作等。
+
+```javascript
+useLayoutEffect(() => {
+  // 这里的代码在 DOM 更新后但在浏览器绘制之前执行
+  console.log('Layout effect executed before render');
+}, [dependencies]);
+```
+
+### 2. 性能影响
+
+- **`useEffect`**：
+  - 由于在浏览器绘制后执行，不会阻塞浏览器的绘制过程，因此对性能影响较小。
+  - 适合大多数副作用场景。
+
+- **`useLayoutEffect`**：
+  - 由于在浏览器绘制之前执行，可能会阻塞浏览器的绘制过程，导致性能下降。
+  - 应谨慎使用，尤其是在需要频繁更新的场景中。
+
+### 3. 使用场景
+
+- **`useEffect`**：
+  - 数据获取：从 API 获取数据并更新状态。
+  - 订阅：设置和清理事件监听器。
+  - 动画：在组件更新后启动动画。
+
+- **`useLayoutEffect`**：
+  - 读取布局信息：在 DOM 更新后立即读取元素的尺寸或位置。
+  - 需要同步更新的 DOM 操作：例如，调整元素的样式或位置，确保在浏览器绘制之前完成。
+
+### 4. 代码示例
+
+**使用 `useEffect`**：
+
+```javascript
+import React, { useEffect, useState } from 'react';
+
+const ExampleComponent = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetchData().then(response => setData(response));
+  }, []);
+
+  return <div>{data}</div>;
+};
+```
+
+**使用 `useLayoutEffect`**：
+
+```javascript
+import React, { useLayoutEffect, useRef } from 'react';
+
+const LayoutExample = () => {
+  const divRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const height = divRef.current.getBoundingClientRect().height;
+    console.log('Height:', height); // 在浏览器绘制之前读取高度
+  }, []);
+
+  return <div ref={divRef}>Hello, World!</div>;
+};
+```
+
+### 总结
+
+- **`useEffect`**：在浏览器绘制后执行，适合大多数副作用场景，性能影响较小。
+- **`useLayoutEffect`**：在浏览器绘制之前执行，适合需要同步更新的副作用，可能会影响性能。
+
+在选择使用哪个 Hook 时，通常推荐优先使用 `useEffect`，只有在确实需要在浏览器绘制之前执行某些操作时，才使用 `useLayoutEffect`。
+
+## 说一下react hooks 的执行过程，当它遇到钩子函数（原生钩子以及自定义钩子）时，它会重新执行一遍吗？
+在 React 中，Hooks 组件的执行过程涉及多个步骤，特别是在使用 `useEffect` 和自定义 Hooks 时。以下是详细的执行过程说明：
+
+### 1. 组件的初始渲染
+
+- **函数组件调用**：当组件首次渲染时，React 会调用该函数组件。
+- **执行 Hooks**：在组件内部，React 会按顺序执行所有的 Hooks，包括 `useState`、`useEffect` 和自定义 Hooks。
+
+```javascript
+const MyComponent = () => {
+  const [count, setCount] = useState(0); // 初始化状态
+
+  useEffect(() => {
+    console.log('Effect executed on mount');
+  }, []); // 仅在组件挂载时执行
+
+  return <div>{count}</div>;
+};
+```
+
+### 2. 组件的更新
+
+- **状态或属性变化**：当组件的状态（通过 `setState`）或属性发生变化时，React 会重新调用该组件的函数。
+- **重新执行 Hooks**：每次组件重新渲染时，所有的 Hooks 都会被重新执行。这意味着 `useState` 会返回当前状态和更新函数，而 `useEffect` 的回调函数会在适当的时机执行。
+
+### 3. `useEffect` 的执行
+
+- **初始渲染**：在组件首次渲染后，React 会在 DOM 更新完成后执行 `useEffect` 中的回调函数。
+- **依赖数组**：如果 `useEffect` 的依赖数组为空（`[]`），则回调函数只会在组件挂载时执行一次。如果依赖数组中有变量，只有当这些变量发生变化时，`useEffect` 的回调函数才会重新执行。
+
+```javascript
+useEffect(() => {
+  console.log('Effect executed on count change');
+}, [count]); // 仅在 count 变化时执行
+```
+
+### 4. 自定义 Hooks 的执行
+
+- **自定义 Hooks**：自定义 Hooks 是一个函数，可以调用其他 Hooks。每次组件重新渲染时，自定义 Hooks 也会被重新执行。
+
+```javascript
+const useCustomHook = () => {
+  const [value, setValue] = useState(0);
+  // 其他逻辑
+  return [value, setValue];
+};
+
+const MyComponent = () => {
+  const [customValue, setCustomValue] = useCustomHook(); // 自定义 Hook
+  // 组件逻辑
+};
+```
+
+### 5. 清理副作用
+
+- **清理函数**：如果 `useEffect` 返回一个清理函数，React 会在组件卸载或依赖项变化时调用该清理函数。这使得可以在组件卸载时清理副作用（如取消订阅、清除定时器等）。
+
+```javascript
+useEffect(() => {
+  const timer = setTimeout(() => {
+    console.log('Timer executed');
+  }, 1000);
+
+  return () => {
+    clearTimeout(timer); // 清理定时器
+  };
+}, []);
+```
+
+### 6. 组件卸载
+
+- **卸载过程**：当组件从 UI 中移除时，React 会调用 `useEffect` 中的清理函数（如果有），并且组件的状态和 Hooks 会被清除。
+
+### 总结
+
+- 每次组件重新渲染时，所有的 Hooks（包括 `useEffect` 和自定义 Hooks）都会被重新执行。
+- `useEffect` 的回调函数在组件挂载后执行，并根据依赖数组的变化决定是否重新执行。
+- 自定义 Hooks 也会在每次渲染时被重新调用，允许在多个组件之间共享逻辑。
+- 清理函数在组件卸载或依赖项变化时执行，确保副作用的正确管理。
+
+这种机制使得 React 的 Hooks 组件能够灵活地管理状态和副作用，同时保持代码的简洁性和可读性。
+
