@@ -497,4 +497,4 @@ store.dispatch({ type: 'DECREMENT' }); // State changed: { count: 1 }
 
 Redux 的工作原理和工作流程围绕着单一数据源、不可变状态和纯函数的原则。通过定义 action、reducer 和 store，Redux 提供了一种可预测的状态管理方式，使得应用的状态变化清晰可控。通过派发 action 和更新状态，Redux 能够高效地管理复杂应用的状态。
 
-## 
+## 说一下dva 和 redux 的区别？
