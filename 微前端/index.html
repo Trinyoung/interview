@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        a = {
+            b: 1,
+            c: 2,
+            d: 3
+        }
+        window.aObj = a;
+    </script>
+    <script>
+        a = {
+            b: 3,
+            c: 4,
+            d: 5
+        }
+        console.log(aObj.b)
+    </script>
+    <script>
+        console.log(a, aObj, '=======>')
+    </script>
+</body>
+</html>
