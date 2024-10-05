@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>面试 on Trinyoung</title>
-        <link>http://localhost:1313/interview/categories/%E9%9D%A2%E8%AF%95/</link>
+        <link>https://trinyoung.github.io/interview/categories/%E9%9D%A2%E8%AF%95/</link>
         <description>Recent content in 面试 on Trinyoung</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/interview/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>vue 面试题汇总</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;1-vue-中keepalive-的原理&#34;&gt;1. vue 中keepAlive 的原理
 &lt;/h2&gt;&lt;p&gt;在 Vue 中，&lt;code&gt;keep-alive&lt;/code&gt; 是一个内置组件，用于缓存不活动的组件实例，从而在它们重新激活时避免重新渲染。这个功能特别适合需要在不同视图之间切换时保留组件状态的场景，如路由组件切换时保留表单输入数据、滚动位置等。&lt;/p&gt;
 &lt;h3 id=&#34;keep-alive-的工作原理&#34;&gt;&lt;code&gt;keep-alive&lt;/code&gt; 的工作原理
