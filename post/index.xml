@@ -99,10 +99,10 @@
         </item>
         <item>
         <title>vue 面试题汇总</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;1-vue-中keepalive-的原理&#34;&gt;1. vue 中keepAlive 的原理
 &lt;/h2&gt;&lt;p&gt;在 Vue 中，&lt;code&gt;keep-alive&lt;/code&gt; 是一个内置组件，用于缓存不活动的组件实例，从而在它们重新激活时避免重新渲染。这个功能特别适合需要在不同视图之间切换时保留组件状态的场景，如路由组件切换时保留表单输入数据、滚动位置等。&lt;/p&gt;
 &lt;h3 id=&#34;keep-alive-的工作原理&#34;&gt;&lt;code&gt;keep-alive&lt;/code&gt; 的工作原理
