@@ -9,10 +9,10 @@
         <copyright>Trinyoung</copyright>
         <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/categories/react/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>React 面试题汇总2</title>
-        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese2/</link>
         <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese2/</guid>
         <description>&lt;h2 id=&#34;1-说一下react的生命周期以及对应的钩子函数&#34;&gt;1. 说一下react的生命周期，以及对应的钩子函数？
 &lt;/h2&gt;&lt;p&gt;React 的生命周期方法主要分为&lt;strong&gt;三个阶段&lt;/strong&gt;：&lt;strong&gt;挂载阶段 (Mounting)&lt;/strong&gt;、&lt;strong&gt;更新阶段 (Updating)&lt;/strong&gt; 和 &lt;strong&gt;卸载阶段 (Unmounting)&lt;/strong&gt;。这些生命周期方法在类组件中尤为明显，下面详细介绍各个阶段的生命周期和对应的钩子函数：&lt;/p&gt;
 &lt;h3 id=&#34;1-挂载阶段-mounting&#34;&gt;1. &lt;strong&gt;挂载阶段 (Mounting)&lt;/strong&gt;
