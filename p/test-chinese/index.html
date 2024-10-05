@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/interview/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=interview/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是React的面试题汇总">
-<title>vue 面试题汇总</title>
+<title>React 面试题汇总</title>
 
-<link rel='canonical' href='https://trinyoung.github.io/interview/p/test-chinese/'>
+<link rel='canonical' href='http://localhost:1313/interview/p/test-chinese/'>
 
-<link rel="stylesheet" href="/interview/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="React 面试题汇总">
+<link rel="stylesheet" href="/interview/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="vue 面试题汇总">
 <meta property='og:description' content="这是React的面试题汇总">
-<meta property='og:url' content='https://trinyoung.github.io/interview/p/test-chinese/'>
+<meta property='og:url' content='http://localhost:1313/interview/p/test-chinese/'>
 <meta property='og:site_name' content='Trinyoung'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-09-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-09-09T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="React 面试题汇总">
+<meta name="twitter:title" content="vue 面试题汇总">
 <meta name="twitter:description" content="这是React的面试题汇总">
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -267,156 +267,171 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#1-vue-中keepalive-的原理">1. vue 中keepAlive 的原理</a>
+    <li><a href="#1-说一下react的生命周期以及对应的钩子函数">1. 说一下react的生命周期，以及对应的钩子函数？</a>
       <ol>
-        <li><a href="#keep-alive-的工作原理"><code>keep-alive</code> 的工作原理</a></li>
-        <li><a href="#keep-alive-的常用属性"><code>keep-alive</code> 的常用属性</a></li>
-        <li><a href="#使用示例">使用示例</a></li>
-        <li><a href="#简单的示意代码">简单的示意代码</a></li>
+        <li><a href="#1-挂载阶段-mounting">1. <strong>挂载阶段 (Mounting)</strong></a></li>
+        <li><a href="#2-更新阶段-updating">2. <strong>更新阶段 (Updating)</strong></a></li>
+        <li><a href="#3-卸载阶段-unmounting">3. <strong>卸载阶段 (Unmounting)</strong></a></li>
+        <li><a href="#4-错误处理-error-handling">4. <strong>错误处理 (Error Handling)</strong></a></li>
+        <li><a href="#react-163-以后新生命周期方法与已废弃方法">React 16.3 以后新生命周期方法与已废弃方法</a></li>
+        <li><a href="#图示帮助理解">图示帮助理解</a></li>
         <li><a href="#总结">总结</a></li>
       </ol>
     </li>
-    <li><a href="#2-vue-中diff算法的原理">2. vue 中diff算法的原理</a>
+    <li><a href="#2-说一下什么是jsx">2. 说一下什么是jsx?</a>
       <ol>
-        <li><a href="#diff-算法的核心思想">Diff 算法的核心思想</a></li>
-        <li><a href="#diff-算法的具体步骤">Diff 算法的具体步骤</a></li>
-        <li><a href="#diff-算法的复杂度">Diff 算法的复杂度</a></li>
-        <li><a href="#总结-1">总结</a></li>
+        <li><a href="#特点与原理"><strong>特点与原理</strong></a></li>
+        <li><a href="#优势"><strong>优势</strong></a></li>
+        <li><a href="#注意事项"><strong>注意事项</strong></a></li>
       </ol>
     </li>
-    <li><a href="#3-vue-的核心概念是什么">3. vue 的核心概念是什么？</a>
+    <li><a href="#3-对比一下react-jsx-和-vue-中的-template-模板语法有何区别">3. 对比一下react jsx 和 vue 中的 template 模板语法有何区别？</a>
       <ol>
-        <li><a href="#1-数据驱动视图">1. 数据驱动视图</a></li>
-        <li><a href="#2-组件化">2. 组件化</a></li>
-        <li><a href="#3-其他核心概念">3. 其他核心概念</a></li>
-        <li><a href="#总结-2">总结</a></li>
+        <li><a href="#1-语法层面">1. <strong>语法层面</strong></a></li>
+        <li><a href="#2-灵活性">2. <strong>灵活性</strong></a></li>
+        <li><a href="#3-编译原理">3. <strong>编译原理</strong></a></li>
+        <li><a href="#4-开发体验">4. <strong>开发体验</strong></a></li>
+        <li><a href="#5-状态与数据绑定">5. <strong>状态与数据绑定</strong></a></li>
+        <li><a href="#总结-1"><strong>总结</strong></a></li>
       </ol>
     </li>
-    <li><a href="#4-vue-的双向绑定的原理是什么vue2和vue3的区别是什么">4. vue 的双向绑定的原理是什么？vue2和vue3的区别是什么？</a>
+    <li><a href="#3-说一下react-类组件和函数组件的区别">3. 说一下react 类组件和函数组件的区别？</a>
       <ol>
-        <li><a href="#vue-2-的数据双向绑定原理">Vue 2 的数据双向绑定原理</a>
-          <ol>
-            <li><a href="#1-observer-监听器">1. <strong>Observer 监听器</strong></a></li>
-            <li><a href="#2-dep-和-watcher">2. <strong>Dep 和 Watcher</strong></a></li>
-            <li><a href="#3-数据流动">3. <strong>数据流动</strong></a></li>
-            <li><a href="#局限性"><strong>局限性</strong></a></li>
-          </ol>
-        </li>
-        <li><a href="#vue-3-的数据双向绑定原理">Vue 3 的数据双向绑定原理</a>
-          <ol>
-            <li><a href="#1-proxy-与-reflect">1. <strong>Proxy 与 Reflect</strong></a></li>
-            <li><a href="#2-reactivity-模块">2. <strong>Reactivity 模块</strong></a></li>
-            <li><a href="#3-依赖追踪和触发">3. <strong>依赖追踪和触发</strong></a></li>
-          </ol>
-        </li>
-        <li><a href="#vue-2-与-vue-3-的主要区别">Vue 2 与 Vue 3 的主要区别</a></li>
+        <li><a href="#1-语法和定义">1. <strong>语法和定义</strong></a></li>
+        <li><a href="#2-状态管理和生命周期">2. <strong>状态管理和生命周期</strong></a></li>
+        <li><a href="#3-性能和效率">3. <strong>性能和效率</strong></a></li>
+        <li><a href="#4-可读性和代码简洁性">4. <strong>可读性和代码简洁性</strong></a></li>
+        <li><a href="#5-开发体验">5. <strong>开发体验</strong></a></li>
+        <li><a href="#6-未来趋势">6. <strong>未来趋势</strong></a></li>
+        <li><a href="#总结-2"><strong>总结</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#4-为什么react-和-vue-都选择了hook">4. 为什么react 和 vue 都选择了hook？</a>
+      <ol>
+        <li><a href="#1-逻辑复用性增强">1. <strong>逻辑复用性增强</strong></a></li>
+        <li><a href="#2-函数式编程的特性">2. <strong>函数式编程的特性</strong></a></li>
+        <li><a href="#3-解决组件复杂度问题">3. <strong>解决组件复杂度问题</strong></a></li>
+        <li><a href="#4-性能优化">4. <strong>性能优化</strong></a></li>
+        <li><a href="#5-未来的趋势和生态">5. <strong>未来的趋势和生态</strong></a></li>
         <li><a href="#总结-3">总结</a></li>
       </ol>
     </li>
-    <li><a href="#5-vue-的生命周期有哪些">5. vue 的生命周期有哪些？</a>
+    <li><a href="#什么是hoc">什么是HOC?</a></li>
+    <li><a href="#哪些方法会触发react重新渲染重新渲染render-会做些什么">哪些方法会触发React重新渲染？重新渲染render 会做些什么？</a></li>
+    <li><a href="#react-的事件机制是如何实现的">react 的事件机制是如何实现的？</a>
       <ol>
-        <li><a href="#1-创建阶段creation-phase">1. <strong>创建阶段（Creation Phase）</strong></a></li>
-        <li><a href="#2-挂载阶段mounting-phase">2. <strong>挂载阶段（Mounting Phase）</strong></a></li>
-        <li><a href="#3-更新阶段updating-phase">3. <strong>更新阶段（Updating Phase）</strong></a></li>
-        <li><a href="#4-销毁阶段destruction-phase">4. <strong>销毁阶段（Destruction Phase）</strong></a></li>
-        <li><a href="#5-vue-3-特有的生命周期钩子">5. <strong>Vue 3 特有的生命周期钩子</strong></a></li>
-        <li><a href="#总结-4">总结</a></li>
+        <li><a href="#1-合成事件synthetic-event">1. <strong>合成事件（Synthetic Event）</strong></a></li>
+        <li><a href="#2-事件委托">2. <strong>事件委托</strong></a></li>
+        <li><a href="#3-事件冒泡与捕获">3. <strong>事件冒泡与捕获</strong></a></li>
+        <li><a href="#4-事件池化">4. <strong>事件池化</strong></a></li>
+        <li><a href="#5-阻止默认行为与停止冒泡">5. <strong>阻止默认行为与停止冒泡</strong></a></li>
+        <li><a href="#6-事件绑定方式">6. <strong>事件绑定方式</strong></a></li>
+        <li><a href="#7-性能优化批量更新">7. <strong>性能优化：批量更新</strong></a></li>
+        <li><a href="#总结-4">总结：</a></li>
       </ol>
     </li>
-    <li><a href="#6-vue-的组件通信方式有哪些">6. vue 的组件通信方式有哪些？</a>
+    <li><a href="#说一下什么是虚拟dom它如何工作">说一下什么是虚拟DOM？它如何工作？</a>
       <ol>
-        <li><a href="#1-父子组件通信">1. <strong>父子组件通信</strong></a>
+        <li><a href="#1-什么是虚拟-dom">1. <strong>什么是虚拟 DOM？</strong></a></li>
+        <li><a href="#2-虚拟-dom-工作流程">2. <strong>虚拟 DOM 工作流程</strong></a>
           <ol>
-            <li><a href="#11-props-传递">1.1 <code>Props</code> 传递</a></li>
-            <li><a href="#12-event-触发">1.2 <code>Event</code> 触发</a></li>
+            <li><a href="#step-1-构建虚拟-dom"><strong>Step 1: 构建虚拟 DOM</strong></a></li>
+            <li><a href="#step-2-状态更新生成新的虚拟-dom"><strong>Step 2: 状态更新，生成新的虚拟 DOM</strong></a></li>
+            <li><a href="#step-3-diff-算法比较新旧虚拟-dom"><strong>Step 3: Diff 算法比较新旧虚拟 DOM</strong></a></li>
+            <li><a href="#step-4-计算差异reconciliation"><strong>Step 4: 计算差异（Reconciliation）</strong></a></li>
+            <li><a href="#step-5-更新真实-dom"><strong>Step 5: 更新真实 DOM</strong></a></li>
           </ol>
         </li>
-        <li><a href="#2-兄弟组件通信">2. <strong>兄弟组件通信</strong></a>
+        <li><a href="#3-虚拟-dom-的优势">3. <strong>虚拟 DOM 的优势</strong></a></li>
+        <li><a href="#4-diff-算法的工作原理">4. <strong>Diff 算法的工作原理</strong></a></li>
+        <li><a href="#5-虚拟-dom-的局限性">5. <strong>虚拟 DOM 的局限性</strong></a></li>
+        <li><a href="#总结-5"><strong>总结</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#对react-fiber的理解它解决了什么问题">对react fiber的理解，它解决了什么问题？</a>
+      <ol>
+        <li><a href="#1-为什么需要-fiber">1. 为什么需要 Fiber</a></li>
+        <li><a href="#2-react-fiber-的核心概念">2. React Fiber 的核心概念</a></li>
+        <li><a href="#3-react-fiber-的工作阶段">3. React Fiber 的工作阶段</a></li>
+        <li><a href="#4-fiber-和传统-stack-reconciler-的区别">4. Fiber 和传统 Stack Reconciler 的区别</a></li>
+        <li><a href="#5-fiber-的应用场景">5. Fiber 的应用场景</a></li>
+        <li><a href="#6-fiber-的限制">6. Fiber 的限制</a></li>
+        <li><a href="#总结-6">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#react-component-和-purecomponent-的区别">React Component 和 PureComponent 的区别？</a></li>
+    <li><a href="#谈一谈对-react-context-的理解">谈一谈对 React Context 的理解</a>
+      <ol>
+        <li><a href="#1-主要用途">1. 主要用途</a></li>
+        <li><a href="#2-创建-context">2. 创建 Context</a></li>
+        <li><a href="#3-provider-和-consumer">3. Provider 和 Consumer</a></li>
+        <li><a href="#4-使用-usecontext-hook">4. 使用 <code>useContext</code> Hook</a></li>
+        <li><a href="#5-示例">5. 示例</a></li>
+        <li><a href="#6-性能考虑">6. 性能考虑</a></li>
+        <li><a href="#7-适用场景">7. 适用场景</a></li>
+        <li><a href="#8-限制">8. 限制</a></li>
+        <li><a href="#9-结合其他状态管理工具">9. 结合其他状态管理工具</a></li>
+        <li><a href="#10-总结">10. 总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#react-中什么是受控组件什么是非受控组件">react 中什么是受控组件，什么是非受控组件？</a>
+      <ol>
+        <li><a href="#1-受控组件controlled-components">1. 受控组件（Controlled Components）</a></li>
+        <li><a href="#2-非受控组件uncontrolled-components">2. 非受控组件（Uncontrolled Components）</a></li>
+        <li><a href="#总结-7">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#react-中refs-中有哪些应用场景">react 中refs 中有哪些应用场景</a>
+      <ol>
+        <li><a href="#1-访问-dom-元素">1. 访问 DOM 元素</a></li>
+        <li><a href="#2-管理动画">2. 管理动画</a></li>
+        <li><a href="#3-集成第三方库">3. 集成第三方库</a></li>
+        <li><a href="#4-表单管理">4. 表单管理</a></li>
+        <li><a href="#5-访问子组件实例">5. 访问子组件实例</a></li>
+        <li><a href="#6-处理焦点管理">6. 处理焦点管理</a></li>
+        <li><a href="#7-访问组件的-dom-节点">7. 访问组件的 DOM 节点</a></li>
+        <li><a href="#8-处理滚动位置">8. 处理滚动位置</a></li>
+        <li><a href="#总结-8">总结</a></li>
+        <li><a href="#1-用途">1. 用途</a></li>
+        <li><a href="#2-更新机制">2. 更新机制</a></li>
+        <li><a href="#3-数据持久性">3. 数据持久性</a></li>
+        <li><a href="#4-适用场景">4. 适用场景</a></li>
+        <li><a href="#5-性能">5. 性能</a></li>
+        <li><a href="#总结-9">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#类组件和函数组件有何异同">类组件和函数组件有何异同？</a>
+      <ol>
+        <li><a href="#一类组件与函数组件的异同"><strong>一、类组件与函数组件的异同</strong></a>
           <ol>
-            <li><a href="#21-通过父组件作为中介">2.1 通过父组件作为中介</a></li>
-            <li><a href="#22-事件总线-event-bus">2.2 事件总线 (Event Bus)</a></li>
-            <li><a href="#23-vuex-状态管理">2.3 Vuex (状态管理)</a></li>
+            <li><a href="#1-定义方式">1. <strong>定义方式</strong></a></li>
+            <li><a href="#2-状态管理">2. <strong>状态管理</strong></a></li>
+            <li><a href="#3-生命周期">3. <strong>生命周期</strong></a></li>
+            <li><a href="#4-this-关键字">4. <strong><code>this</code> 关键字</strong></a></li>
+            <li><a href="#5-性能-1">5. <strong>性能</strong></a></li>
           </ol>
         </li>
-        <li><a href="#3-跨层级组件通信">3. <strong>跨层级组件通信</strong></a>
+        <li><a href="#二代表的思想"><strong>二、代表的思想</strong></a>
           <ol>
-            <li><a href="#31-provide-和-inject">3.1 <code>Provide</code> 和 <code>Inject</code></a></li>
-            <li><a href="#32-vuex">3.2 Vuex</a></li>
+            <li><a href="#1-类组件面向对象编程-oop">1. <strong>类组件：面向对象编程 (OOP)</strong></a></li>
+            <li><a href="#2-函数组件函数式编程-fp">2. <strong>函数组件：函数式编程 (FP)</strong></a></li>
           </ol>
         </li>
-        <li><a href="#4-其他通信方式">4. <strong>其他通信方式</strong></a>
-          <ol>
-            <li><a href="#41-attrs-和-listeners">4.1 <code>$attrs</code> 和 <code>$listeners</code></a></li>
-            <li><a href="#42-parent-和-children">4.2 <code>$parent</code> 和 <code>$children</code></a></li>
-            <li><a href="#43-ref-和-refs">4.3 <code>Ref</code> 和 <code>$refs</code></a></li>
-          </ol>
-        </li>
-        <li><a href="#总结-5">总结</a></li>
+        <li><a href="#总结-10"><strong>总结</strong></a></li>
       </ol>
     </li>
-    <li><a href="#7-vue-的路由模式有哪些">7. vue 的路由模式有哪些？</a>
+    <li><a href="#react-setstate的调用原理">React setState的调用原理</a>
       <ol>
-        <li><a href="#1-hash-模式">1. <strong>Hash 模式</strong></a>
-          <ol>
-            <li><a href="#优点">优点</a></li>
-            <li><a href="#缺点">缺点</a></li>
-          </ol>
-        </li>
-        <li><a href="#2-history-模式">2. <strong>History 模式</strong></a>
-          <ol>
-            <li><a href="#优点-1">优点</a></li>
-            <li><a href="#缺点-1">缺点</a></li>
-            <li><a href="#总结-6">总结</a></li>
-          </ol>
-        </li>
+        <li><a href="#1-状态更新的异步性">1. 状态更新的异步性</a></li>
+        <li><a href="#2-更新队列的合并">2. 更新队列的合并</a></li>
+        <li><a href="#3-处理更新队列">3. 处理更新队列</a></li>
+        <li><a href="#4-例子">4. 例子</a></li>
+        <li><a href="#5-使用函数式更新">5. 使用函数式更新</a></li>
+        <li><a href="#总结-11">总结</a></li>
       </ol>
     </li>
-    <li><a href="#8-vue-的路由守卫有哪些">8. vue 的路由守卫有哪些？</a>
-      <ol>
-        <li><a href="#1-全局守卫">1. <strong>全局守卫</strong></a></li>
-        <li><a href="#2-路由独享守卫">2. <strong>路由独享守卫</strong></a></li>
-        <li><a href="#3-组件内守卫">3. <strong>组件内守卫</strong></a></li>
-        <li><a href="#4-路由元信息">4. <strong>路由元信息</strong></a></li>
-        <li><a href="#5-导航守卫的执行顺序">5. <strong>导航守卫的执行顺序</strong></a></li>
-        <li><a href="#6-总结">6. 总结</a></li>
-      </ol>
-    </li>
-    <li><a href="#9-vue-的路由懒加载有哪些方式">9. vue 的路由懒加载有哪些方式？</a>
-      <ol>
-        <li><a href="#1-异步组件">1. <strong>异步组件</strong></a></li>
-        <li><a href="#2-异步路由组件">2. <strong>异步路由组件</strong></a></li>
-        <li><a href="#3-异步路由">3. <strong>异步路由</strong></a></li>
-      </ol>
-    </li>
-    <li><a href="#10-vue-路由的原理是什么">10. vue 路由的原理是什么？</a></li>
-    <li><a href="#11-vue3-中的reactive-和-ref-的区别">11. vue3 中的reactive 和 ref 的区别？</a>
-      <ol>
-        <li><a href="#1-数据类型">1. 数据类型</a></li>
-        <li><a href="#2-追踪依赖">2. 追踪依赖</a></li>
-        <li><a href="#3-深层响应式">3. 深层响应式</a></li>
-        <li><a href="#4-性能考虑">4. 性能考虑</a></li>
-        <li><a href="#5-使用场景">5. 使用场景</a></li>
-        <li><a href="#总结来说">总结来说</a></li>
-      </ol>
-    </li>
-    <li><a href="#12-vue3-中的reactive-是如何实现的">12. vue3 中的reactive 是如何实现的？</a></li>
-    <li><a href="#13-vue3-中的ref-是如何实现的">13. vue3 中的ref 是如何实现的？</a></li>
-    <li><a href="#14-vue2-中数据双向绑定为什么使用的objectdefineproperty-而不是objectdefineproperties">14. vue2 中，数据双向绑定为什么使用的Object.defineProperty 而不是Object.defineProperties?</a></li>
-    <li><a href="#15-proxy-相对于-objectdefineproperty-有哪些优势">15. proxy 相对于 Object.defineProperty 有哪些优势？</a></li>
-    <li><a href="#16-vue-相对于-react-有哪些优势">16. vue 相对于 react 有哪些优势？</a>
-      <ol>
-        <li><a href="#1-更简洁的模板语法">1. <strong>更简洁的模板语法</strong></a></li>
-        <li><a href="#2-双向数据绑定">2. <strong>双向数据绑定</strong></a></li>
-        <li><a href="#3-计算属性computed-properties">3. <strong>计算属性（Computed Properties）</strong></a></li>
-        <li><a href="#4-内置的指令和指令简化">4. <strong>内置的指令和指令简化</strong></a></li>
-        <li><a href="#5-渐进式框架">5. <strong>渐进式框架</strong></a></li>
-        <li><a href="#6-vue-cli-对于项目的支持">6. <strong>Vue CLI 对于项目的支持</strong></a></li>
-        <li><a href="#7-更好的组件通信基于-props-和-emit-的模式">7. <strong>更好的组件通信（基于 <code>props</code> 和 <code>emit</code> 的模式）</strong></a></li>
-        <li><a href="#8-动画过渡支持">8. <strong>动画过渡支持</strong></a></li>
-        <li><a href="#总结-7">总结：</a></li>
-      </ol>
-    </li>
-    <li><a href="#18-vue-组件在什么时候会执行组件销毁是当一个页面跳转到另一个页面时之前的页面的组件都会被销毁吗">18. vue 组件在什么时候会执行组件销毁？是当一个页面跳转到另一个页面时，之前的页面的组件都会被销毁吗？</a></li>
+    <li><a href="#完整的说一下当路由进入到当前的react页面时整个流程是什么">完整的说一下当路由进入到当前的react页面时，整个流程是什么？</a></li>
+    <li><a href="#heading"></a></li>
   </ol>
 </nav>
         </div>
@@ -435,8 +450,8 @@
     
     <header class="article-category">
         
-            <a href="/interview/categories/react/" >
-                React
+            <a href="/interview/categories/vue/" >
+                Vue
             </a>
         
     </header>
@@ -444,12 +459,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/interview/p/test-chinese/">React 面试题汇总</a>
+            <a href="/interview/p/test-chinese/">vue 面试题汇总</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            这是React的面试题汇总
+            这是vue的面试题汇总
         </h3>
         
     </div>
@@ -485,7 +500,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 29 分钟
+                    阅读时长: 28 分钟
                 </time>
             </div>
         
@@ -500,420 +515,587 @@
     <section class="article-content">
     
     
-    <h2 id="1-vue-中keepalive-的原理">1. vue 中keepAlive 的原理
-</h2><p>在 Vue 中，<code>keep-alive</code> 是一个内置组件，用于缓存不活动的组件实例，从而在它们重新激活时避免重新渲染。这个功能特别适合需要在不同视图之间切换时保留组件状态的场景，如路由组件切换时保留表单输入数据、滚动位置等。</p>
-<h3 id="keep-alive-的工作原理"><code>keep-alive</code> 的工作原理
-</h3><p><code>keep-alive</code> 组件通过以下机制实现组件的缓存和复用：</p>
-<ol>
-<li>
-<p><strong>组件缓存</strong>：</p>
+    <h2 id="1-说一下react的生命周期以及对应的钩子函数">1. 说一下react的生命周期，以及对应的钩子函数？
+</h2><p>React 的生命周期方法主要分为<strong>三个阶段</strong>：<strong>挂载阶段 (Mounting)</strong>、<strong>更新阶段 (Updating)</strong> 和 <strong>卸载阶段 (Unmounting)</strong>。这些生命周期方法在类组件中尤为明显，下面详细介绍各个阶段的生命周期和对应的钩子函数：</p>
+<h3 id="1-挂载阶段-mounting">1. <strong>挂载阶段 (Mounting)</strong>
+</h3><p>当组件实例被创建并插入到 DOM 中时，触发以下钩子函数：</p>
 <ul>
-<li>当某个组件被包裹在 <code>keep-alive</code> 中，并且被移除（如路由切换、条件渲染），<code>keep-alive</code> 不会销毁这个组件的实例，而是将其缓存起来。</li>
-<li>当该组件再次被激活时，<code>keep-alive</code> 会直接从缓存中取出组件实例，而不是重新创建和渲染组件。这样可以节省性能开销。</li>
-</ul>
-</li>
 <li>
-<p><strong>缓存管理</strong>：</p>
+<p><code>constructor()</code></p>
 <ul>
-<li><code>keep-alive</code> 通过 <code>cache</code> 和 <code>keys</code> 属性来管理缓存的组件实例。</li>
-<li><code>cache</code> 是一个对象，存储了所有被缓存的组件实例。它的键是组件的 <code>key</code> 或 <code>cid</code>（组件的唯一标识符）。</li>
-<li><code>keys</code> 是一个数组，记录了缓存中的组件键的顺序，<code>keep-alive</code> 通过这个顺序来决定哪个组件需要被缓存或移除。</li>
+<li><strong>触发时机</strong>：组件被初始化时调用。</li>
+<li><strong>作用</strong>：用于初始化状态 <code>state</code> 和绑定事件处理方法。</li>
 </ul>
 </li>
 <li>
-<p><strong>生命周期钩子</strong>：</p>
+<p><code>static getDerivedStateFromProps(props, state)</code></p>
 <ul>
-<li>被 <code>keep-alive</code> 缓存的组件实例不会触发 <code>created</code>、<code>mounted</code> 等生命周期钩子。但会新增两个生命周期钩子：
+<li><strong>触发时机</strong>：在组件实例化时以及每次更新前被调用。</li>
+<li><strong>作用</strong>：返回新的状态对象，或返回 <code>null</code> 表示状态不需要更新。</li>
+</ul>
+</li>
+<li>
+<p><code>render()</code></p>
 <ul>
-<li><code>activated</code>: 当组件从缓存中激活时触发。</li>
-<li><code>deactivated</code>: 当组件被缓存且移除时触发。</li>
+<li><strong>触发时机</strong>：每次组件渲染时调用。</li>
+<li><strong>作用</strong>：返回组件的 JSX。</li>
+</ul>
+</li>
+<li>
+<p><code>componentDidMount()</code></p>
+<ul>
+<li><strong>触发时机</strong>：组件第一次渲染完成后调用。</li>
+<li><strong>作用</strong>：适合进行异步请求、数据获取或设置订阅等操作。</li>
 </ul>
 </li>
 </ul>
+<h3 id="2-更新阶段-updating">2. <strong>更新阶段 (Updating)</strong>
+</h3><p>当组件的 props 或 state 发生变化时，会进入更新阶段，触发以下钩子函数：</p>
+<ul>
+<li>
+<p><code>static getDerivedStateFromProps(props, state)</code></p>
+<ul>
+<li>与挂载阶段一致，每次更新前都会被调用。</li>
+</ul>
 </li>
-</ol>
-<h3 id="keep-alive-的常用属性"><code>keep-alive</code> 的常用属性
+<li>
+<p><code>shouldComponentUpdate(nextProps, nextState)</code></p>
+<ul>
+<li><strong>触发时机</strong>：在组件更新之前调用。</li>
+<li><strong>作用</strong>：返回 <code>true</code> 或 <code>false</code> 决定组件是否需要重新渲染，默认返回 <code>true</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>render()</code></p>
+<ul>
+<li>在组件更新阶段会再次被调用，用于重新渲染组件。</li>
+</ul>
+</li>
+<li>
+<p><code>getSnapshotBeforeUpdate(prevProps, prevState)</code></p>
+<ul>
+<li><strong>触发时机</strong>：更新发生在 DOM 更新之前调用。</li>
+<li><strong>作用</strong>：捕获一些 DOM 信息，例如滚动位置，可以返回值作为 <code>componentDidUpdate</code> 的第三个参数。</li>
+</ul>
+</li>
+<li>
+<p><code>componentDidUpdate(prevProps, prevState, snapshot)</code></p>
+<ul>
+<li><strong>触发时机</strong>：组件更新后调用。</li>
+<li><strong>作用</strong>：可以进行 DOM 操作或再次发起请求。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-卸载阶段-unmounting">3. <strong>卸载阶段 (Unmounting)</strong>
+</h3><p>当组件从 DOM 中移除时，触发以下钩子函数：</p>
+<ul>
+<li><code>componentWillUnmount()</code>
+<ul>
+<li><strong>触发时机</strong>：组件即将卸载和销毁时调用。</li>
+<li><strong>作用</strong>：可以用于清理定时器、取消订阅等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-错误处理-error-handling">4. <strong>错误处理 (Error Handling)</strong>
+</h3><p>当组件渲染或生命周期方法中抛出错误时，触发以下钩子函数：</p>
+<ul>
+<li>
+<p><code>static getDerivedStateFromError(error)</code></p>
+<ul>
+<li><strong>触发时机</strong>：当子组件抛出错误时调用。</li>
+<li><strong>作用</strong>：用于更新 state 以显示错误界面。</li>
+</ul>
+</li>
+<li>
+<p><code>componentDidCatch(error, info)</code></p>
+<ul>
+<li><strong>触发时机</strong>：当子组件抛出错误时调用。</li>
+<li><strong>作用</strong>：用于记录错误信息或进行错误处理。</li>
+</ul>
+</li>
+</ul>
+<h3 id="react-163-以后新生命周期方法与已废弃方法">React 16.3 以后新生命周期方法与已废弃方法
 </h3><ul>
-<li><code>include</code>：允许的组件名（或正则表达式），只有匹配的组件才会被缓存。</li>
-<li><code>exclude</code>：排除的组件名（或正则表达式），匹配的组件不会被缓存。</li>
-<li><code>max</code>：缓存的最大组件实例数目，超过这个数目时，最先缓存的组件实例将被移除。</li>
+<li>React 16.3 开始，推荐使用 <code>getDerivedStateFromProps</code> 和 <code>getSnapshotBeforeUpdate</code>。</li>
+<li>旧的生命周期方法如 <code>componentWillMount</code>、<code>componentWillReceiveProps</code> 和 <code>componentWillUpdate</code> 在严格模式下被标记为不安全，并计划在未来版本中删除。</li>
 </ul>
-<h3 id="使用示例">使用示例
-</h3><div class="highlight"><div class="chroma">
+<h3 id="图示帮助理解">图示帮助理解
+</h3><p>一个图示可以更好地帮助你了解 React 生命周期的顺序：</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">keep-alive</span> <span class="na">include</span><span class="o">=</span><span class="s">&#34;MyComponent&#34;</span> <span class="na">max</span><span class="o">=</span><span class="s">&#34;10&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">router-view</span><span class="p">&gt;&lt;/</span><span class="nt">router-view</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">keep-alive</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="简单的示意代码">简单的示意代码
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// 这是 keep-alive 组件内部的简化示意
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">class</span> <span class="nx">KeepAlive</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">cache</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// 用于缓存组件实例
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">keys</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 用于记录缓存的键的顺序
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">cacheVNode</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">vnode</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">vnode</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">pruneCacheEntry</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">cachedVNode</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">cachedVNode</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">cachedVNode</span><span class="p">.</span><span class="nx">componentInstance</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">();</span> <span class="c1">// 销毁实例
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Mounting</span><span class="p">:</span>        <span class="n">constructor</span> <span class="err">→</span> <span class="n">getDerivedStateFromProps</span> <span class="err">→</span> <span class="n">render</span> <span class="err">→</span> <span class="n">componentDidMount</span>
+</span></span><span class="line"><span class="cl"><span class="n">Updating</span><span class="p">:</span>        <span class="n">getDerivedStateFromProps</span> <span class="err">→</span> <span class="n">shouldComponentUpdate</span> <span class="err">→</span> <span class="n">render</span> <span class="err">→</span> <span class="n">getSnapshotBeforeUpdate</span> <span class="err">→</span> <span class="n">componentDidUpdate</span>
+</span></span><span class="line"><span class="cl"><span class="n">Unmounting</span><span class="p">:</span>      <span class="n">componentWillUnmount</span>
+</span></span><span class="line"><span class="cl"><span class="n">Error</span> <span class="n">Handling</span><span class="p">:</span>  <span class="n">getDerivedStateFromError</span> <span class="err">→</span> <span class="n">componentDidCatch</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="总结">总结
-</h3><p>keep-alive 的缓存是存储在 Vue 的内存中的，而不是存储在浏览器的本地存储或其他持久化存储中。具体来说，keep-alive 组件实例中维护的 cache 对象和 keys 数组，负责管理和存储这些缓存的组件实例。当需要重新渲染组件时，Vue 会从 cache 中取出对应的 VNode，从而避免重复的组件实例创建和渲染。</p>
-<h2 id="2-vue-中diff算法的原理">2. vue 中diff算法的原理
-</h2><p>Vue 中的 diff 算法是其虚拟 DOM (VNode) 实现的核心部分，用于高效地更新视图。它的基本思想是通过比较新旧两个虚拟 DOM 树，找出最小的变更集，然后在真实 DOM 上进行最小量的操作，从而优化性能。</p>
-<h3 id="diff-算法的核心思想">Diff 算法的核心思想
+</h3><p>React 生命周期方法让我们在不同阶段对组件进行控制，类组件中常用这些钩子函数来实现数据请求、资源管理和性能优化等操作。</p>
+<h2 id="2-说一下什么是jsx">2. 说一下什么是jsx?
+</h2><p><strong>JSX (JavaScript XML)</strong> 是一种 JavaScript 的语法扩展，通常用于在 React 中描述用户界面。它看起来非常像 HTML，但实际上在浏览器中运行之前会被编译成 JavaScript 函数调用。</p>
+<h3 id="特点与原理"><strong>特点与原理</strong>
 </h3><ol>
 <li>
-<p><strong>同层比较</strong>：</p>
-<ul>
-<li>Vue 的 diff 算法只会对比同层级的节点，而不会跨层级比较。因为跨层级的移动或者比较成本非常高，所以 Vue 的 diff 算法会假设不同层级的 DOM 结构差异不会太大。</li>
-</ul>
-</li>
+<p><strong>语法类似于 HTML</strong>:
+JSX 允许你在 JavaScript 代码中编写类似 HTML 的标签语法，可以直接描述组件的结构，这让 UI 代码更具可读性和直观性。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p><strong>双端比较</strong>：</p>
-<ul>
-<li>Vue 使用了一种双端比较算法，从前后两端同时进行比较，从而提高了效率。具体步骤如下：
-<ul>
-<li><strong>从头开始比较</strong>：首先比较新旧虚拟 DOM 树的第一个节点，如果相同就继续向下比较，如果不同则停止。</li>
-<li><strong>从尾开始比较</strong>：接着从两棵树的尾部开始比较，如果相同则继续向前比较，如果不同则停止。</li>
-<li><strong>如果中间有差异</strong>：Vue 会尝试通过查找旧节点中的 key 来确认新节点是否在旧节点中已经存在，如果存在则移动节点，如果不存在则创建新节点。</li>
-</ul>
-</li>
-</ul>
-</li>
+<p><strong>需要编译</strong>:
+浏览器无法直接理解 JSX，所以需要通过如 Babel 这样的编译器将其转换为标准的 JavaScript 代码。例如，上述 JSX 代码在编译后会变成：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;Hello, World!&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p><strong>同类型节点的更新</strong>：</p>
-<ul>
-<li>如果两个节点是相同类型（即标签相同），Vue 会继续比较他们的属性和子节点，找出需要更新的地方。</li>
-</ul>
-</li>
+<p><strong>表达式与嵌套</strong>:
+JSX 允许在 <code>{}</code> 中嵌入 JavaScript 表达式。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;John&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p><strong>删除、创建、移动节点</strong>：</p>
-<ul>
-<li><strong>删除</strong>：如果旧虚拟 DOM 树中的某个节点在新虚拟 DOM 树中不存在，那么这个节点会被删除。</li>
-<li><strong>创建</strong>：如果新虚拟 DOM 树中出现了旧虚拟 DOM 树中没有的节点，Vue 会创建这个新节点。</li>
-<li><strong>移动</strong>：如果发现相同的节点在新旧虚拟 DOM 树中的位置不同，Vue 会移动这个节点。</li>
-</ul>
-</li>
-<li>
-<p><strong>优化：通过 key 提升性能</strong>：</p>
-<ul>
-<li>Vue 建议为列表中的节点提供唯一的 <code>key</code>，这样可以使得 Vue 在 diff 的过程中能更准确地找到对应节点，提高更新效率。</li>
-<li>如果没有 <code>key</code>，Vue 会采用一种“就地复用”的策略，即如果两个节点是同一类型的，它们会被认为是同一个节点，即使它们在实际内容上不同。</li>
-</ul>
-</li>
+<p><strong>属性与子元素</strong>:
+你可以向 JSX 元素传递属性和嵌套子元素，类似于 HTML。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">JSX</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
-<h3 id="diff-算法的具体步骤">Diff 算法的具体步骤
-</h3><p>假设有两棵虚拟 DOM 树：<code>oldVNode</code> 和 <code>newVNode</code>。</p>
-<ol>
+<h3 id="优势"><strong>优势</strong>
+</h3><ul>
+<li><strong>直观性</strong>: JSX 让 UI 组件的结构与逻辑紧密结合在一起，开发者可以直观地看到组件的渲染结构。</li>
+<li><strong>更强的可维护性</strong>: 与分离的 HTML、CSS 和 JS 不同，JSX 通过组合组件的方式，提供了更好的模块化能力。</li>
+</ul>
+<h3 id="注意事项"><strong>注意事项</strong>
+</h3><ul>
+<li><strong>JSX 是表达式</strong>: JSX 可以赋值给变量、作为函数参数、从函数中返回，灵活性很高。</li>
+<li><strong>属性规范</strong>: 在 JSX 中，<code>class</code> 应该写为 <code>className</code>，<code>for</code> 应该写为 <code>htmlFor</code>，以符合 JavaScript 的命名规则。</li>
+</ul>
+<p><strong>总结</strong>: JSX 是一种将 UI 与逻辑相结合的语法糖，它使得 React 组件的开发变得更高效、直观和可维护。在使用 React 开发应用时，JSX 是一种核心的工具。</p>
+<h2 id="3-对比一下react-jsx-和-vue-中的-template-模板语法有何区别">3. 对比一下react jsx 和 vue 中的 template 模板语法有何区别？
+</h2><p>React JSX 和 Vue 中的模板语法都是用来描述视图结构的，但两者在设计理念、灵活性、语法特性等方面有明显的区别。以下是它们的主要区别：</p>
+<h3 id="1-语法层面">1. <strong>语法层面</strong>
+</h3><ul>
 <li>
-<p><strong>比较根节点</strong>：</p>
+<p><strong>React JSX</strong>:</p>
 <ul>
-<li>首先比较 <code>oldVNode</code> 和 <code>newVNode</code> 的根节点，如果节点类型不同，直接替换整个节点。</li>
+<li>更接近 JavaScript，允许在 JSX 中直接编写 JavaScript 表达式，因此具有更强的灵活性和可编程性。</li>
+<li>支持 JavaScript 原生控制语句（如 <code>if</code>、<code>for</code> 等），需要借助三元表达式或逻辑运算符来实现条件渲染和列表渲染。</li>
+<li>JSX 使用 HTML 标签作为函数调用的语法糖，实际上会被编译成 <code>React.createElement</code> 方法。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">isLoggedIn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nx">isLoggedIn</span> <span class="o">?</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Welcome</span> <span class="nx">back</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> <span class="o">:</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Please</span> <span class="nx">sign</span> <span class="k">in</span><span class="p">.&lt;/</span><span class="nt">h1</span><span class="p">&gt;}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>Vue Template</strong>:</p>
+<ul>
+<li>采用类似于 HTML 的模板语法，允许使用特殊的指令（如 <code>v-if</code>、<code>v-for</code> 等）来实现条件渲染和列表渲染，这些指令更贴近 HTML，简单易用。</li>
+<li>Vue 的模板不直接包含复杂的 JavaScript 逻辑，而是通过指令和表达式来描述视图，更注重视图的声明式描述。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span> <span class="nt">v-if</span><span class="o">=</span><span class="s">&#34;isLoggedIn&#34;</span><span class="p">&gt;</span><span class="na">Welcome</span> <span class="na">back</span><span class="err">!</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span> <span class="nt">v-else</span><span class="p">&gt;</span><span class="na">Please</span> <span class="na">sign</span> <span class="na">in.</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="2-灵活性">2. <strong>灵活性</strong>
+</h3><ul>
+<li>
+<p><strong>React JSX</strong>:</p>
+<ul>
+<li>可以在 JSX 中编写复杂的逻辑，所有表达式都是 JavaScript 代码，具有更高的灵活性和可定制性。你可以将组件的渲染逻辑与 JavaScript 的条件判断、循环、函数等结合使用。</li>
 </ul>
 </li>
 <li>
-<p><strong>比较子节点</strong>：</p>
+<p><strong>Vue Template</strong>:</p>
 <ul>
-<li>如果根节点类型相同，则进入子节点的比较。如果子节点有 <code>key</code> 属性，会基于 <code>key</code> 进行比对，否则基于节点的位置和类型。</li>
+<li>更强调视图与逻辑的分离，模板部分主要用于描述视图结构。虽然模板中也可以编写简单的表达式，但不支持复杂的控制逻辑，较为简洁和易读。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-编译原理">3. <strong>编译原理</strong>
+</h3><ul>
+<li>
+<p><strong>React JSX</strong>:</p>
+<ul>
+<li>JSX 会被编译成 <code>React.createElement</code> 调用，在运行时生成虚拟 DOM，最终由 React 渲染成真实 DOM。</li>
 </ul>
 </li>
 <li>
-<p><strong>同层比较</strong>：</p>
+<p><strong>Vue Template</strong>:</p>
 <ul>
-<li>在同一层级中，Vue 使用双端比较法（先从头到尾，再从尾到头）找出可以复用的节点。</li>
+<li>Vue 模板会被编译成渲染函数 (<code>render</code> 函数)，然后在运行时生成虚拟 DOM。这使得 Vue 在运行时与 React 类似，但模板语法的编译过程相对复杂。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-开发体验">4. <strong>开发体验</strong>
+</h3><ul>
+<li>
+<p><strong>React JSX</strong>:</p>
+<ul>
+<li>更自由和灵活，适合复杂逻辑的表达，但代码可能显得较为繁琐，尤其对于没有 JavaScript 背景的开发者来说，理解成本较高。</li>
 </ul>
 </li>
 <li>
-<p><strong>递归更新</strong>：</p>
+<p><strong>Vue Template</strong>:</p>
 <ul>
-<li>对于每一个节点，Vue 递归地对子节点进行相同的 diff 操作。</li>
+<li>更接近传统 HTML，学习成本低，对于初学者和前端开发者来说更加友好，模板语法简单直观。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-状态与数据绑定">5. <strong>状态与数据绑定</strong>
+</h3><ul>
+<li>
+<p><strong>React JSX</strong>:</p>
+<ul>
+<li>数据绑定是单向的，需要通过 <code>setState</code> 或者 Hooks（如 <code>useState</code>）来更新组件状态。</li>
 </ul>
 </li>
 <li>
-<p><strong>处理边界情况</strong>：</p>
+<p><strong>Vue Template</strong>:</p>
 <ul>
-<li>如果旧节点比新节点多，Vue 会删除多余的旧节点。</li>
-<li>如果新节点比旧节点多，Vue 会创建新的节点并插入。</li>
-</ul>
-</li>
-</ol>
-<h3 id="diff-算法的复杂度">Diff 算法的复杂度
-</h3><p>在最理想的情况下，Vue 的 diff 算法的复杂度为 O(n)，其中 n 是节点数量。但如果节点结构差异较大，可能会接近 O(n^2)，因此 Vue 强烈建议开发者在有序列表中使用 <code>key</code> 以提升 diff 算法的性能。</p>
-<h3 id="总结-1">总结
-</h3><p>Vue 的 diff 算法通过同层比较、双端比较以及递归地处理子节点，来确保 DOM 更新的最小化操作。合理使用 <code>key</code> 可以进一步提升 diff 算法的效率，从而在真实 DOM 中高效地反映虚拟 DOM 的变化。</p>
-<h2 id="3-vue-的核心概念是什么">3. vue 的核心概念是什么？
-</h2><h3 id="1-数据驱动视图">1. 数据驱动视图
-</h3><p>Vue 的核心理念之一是“<strong>数据驱动视图</strong>”，即视图层是由数据层驱动的。</p>
-<ul>
-<li>
-<p><strong>响应式数据绑定</strong>：</p>
-<ul>
-<li>Vue 采用双向数据绑定（Two-Way Data Binding），通过 <code>data</code> 选项定义的数据属性和视图之间建立自动的绑定关系。任何对数据的更新都会自动反映在视图中，而用户在视图中的操作也能即时更新数据。</li>
-<li>Vue 的响应式系统是基于 <code>Object.defineProperty</code>（Vue 2）或 Proxy（Vue 3）实现的。当数据发生变化时，Vue 的依赖追踪系统会自动侦测到并触发相应的视图更新。</li>
-</ul>
-</li>
-<li>
-<p><strong>声明式渲染</strong>：</p>
-<ul>
-<li>Vue 使用模板语法，让开发者可以声明式地定义 UI。模板中的表达式会动态绑定到 Vue 实例中的数据，开发者只需专注于数据本身，而无需直接操作 DOM。</li>
-<li>这种方式降低了操作 DOM 的复杂性，提升了开发效率和代码的可维护性。</li>
+<li>支持双向数据绑定（使用 <code>v-model</code>），使得表单控件的处理更加方便。</li>
 </ul>
 </li>
 </ul>
-<h3 id="2-组件化">2. 组件化
-</h3><p>“<strong>组件化</strong>”是 Vue 的另一核心思想，它允许开发者将应用拆分为独立、可复用的小块（组件），每个组件负责特定的功能或 UI 部分。</p>
-<ul>
+<h3 id="总结-1"><strong>总结</strong>
+</h3><ul>
+<li><strong>React JSX</strong> 更适合具有 JavaScript 编程能力的开发者，提供更大的灵活性和更强的逻辑处理能力。</li>
+<li><strong>Vue Template</strong> 则更专注于视图的声明式描述，更加易读、易学，尤其对于初学者和专注于前端视图开发的工程师更友好。</li>
+</ul>
+<p>两者各有优势，选择取决于团队技术背景、项目复杂度以及开发者对视图逻辑的偏好。</p>
+<h2 id="3-说一下react-类组件和函数组件的区别">3. 说一下react 类组件和函数组件的区别？
+</h2><p>React 类组件和函数组件是 React 中用于定义组件的两种不同方式。它们在语法、性能、特性等方面存在一定的区别，以下是它们的详细对比：</p>
+<h3 id="1-语法和定义">1. <strong>语法和定义</strong>
+</h3><ul>
 <li>
-<p><strong>组件封装</strong>：</p>
+<p><strong>类组件 (Class Component)</strong>:</p>
 <ul>
-<li>每个组件包含了自己的模板、逻辑和样式，使得组件内部的实现细节对外部是封装的。这样，开发者可以轻松地维护和复用组件，减少代码重复。</li>
+<li>通过 ES6 类语法定义，继承自 <code>React.Component</code>，并且必须包含一个 <code>render</code> 方法，该方法返回 JSX。</li>
+<li>通常使用类的方法来处理生命周期和状态。</li>
 </ul>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">MyComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p><strong>组件组合</strong>：</p>
+<p><strong>函数组件 (Function Component)</strong>:</p>
 <ul>
-<li>Vue 应用通常是通过多个组件的组合构建起来的。通过父子组件的组合和传递 props 及事件，可以构建出复杂的用户界面。</li>
+<li>使用 JavaScript 函数定义，直接接收 <code>props</code> 作为参数，并返回 JSX。</li>
+<li>通过 React Hooks（如 <code>useState</code> 和 <code>useEffect</code>）来处理状态和生命周期。</li>
 </ul>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="2-状态管理和生命周期">2. <strong>状态管理和生命周期</strong>
+</h3><ul>
 <li>
-<p><strong>单文件组件 (SFC)</strong>：</p>
+<p><strong>类组件</strong>:</p>
 <ul>
-<li>Vue 提供了单文件组件的开发方式（.vue 文件），将模板、逻辑和样式集中在一个文件中。SFC 使得组件的开发、维护和复用变得更加方便。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-其他核心概念">3. 其他核心概念
-</h3><p>除了以上两大核心思想，Vue 还具备以下重要的核心概念：</p>
-<ul>
-<li>
-<p><strong>渐进式框架</strong>：</p>
-<ul>
-<li>Vue 是一个渐进式框架，这意味着你可以根据需求从轻量级的视图库逐步扩展到功能完备的前端框架。Vue 可以与其他库或现有项目轻松集成，也可以单独用于构建复杂的单页面应用 (SPA)。</li>
-</ul>
-</li>
-<li>
-<p><strong>生态系统</strong>：</p>
-<ul>
-<li>Vue 的生态系统非常丰富，包括 Vue Router（路由管理）、Vuex（状态管理）等，这些工具帮助开发者在不同的场景下有效管理应用的复杂性。</li>
-</ul>
-</li>
-<li>
-<p><strong>虚拟 DOM</strong>：</p>
-<ul>
-<li>Vue 使用虚拟 DOM 技术来提升性能。通过比较虚拟 DOM 树的差异（diff），Vue 可以智能地决定最小化的 DOM 操作，从而高效地更新视图。</li>
-</ul>
-</li>
-</ul>
-<h3 id="总结-2">总结
-</h3><p>Vue 的核心思想是通过数据驱动视图，结合组件化的方式，帮助开发者构建高效、可维护、可复用的用户界面。Vue 的响应式数据系统和渐进式特性，使得它既适合小型项目，也能胜任复杂的单页面应用。</p>
-<h2 id="4-vue-的双向绑定的原理是什么vue2和vue3的区别是什么">4. vue 的双向绑定的原理是什么？vue2和vue3的区别是什么？
-</h2><p>Vue 的数据双向绑定是 Vue 框架的核心特性之一，它使得数据和视图之间保持同步，即数据的变化会自动反映到视图上，而用户在视图上的操作也会自动更新数据。Vue 2 和 Vue 3 在实现数据双向绑定的方式上有一些不同，下面我将分别介绍它们的原理及差异。</p>
-<h3 id="vue-2-的数据双向绑定原理">Vue 2 的数据双向绑定原理
-</h3><p>Vue 2 的数据双向绑定主要依赖于 <code>Object.defineProperty</code>，通过劫持对象属性的 getter 和 setter 来实现数据的响应式。</p>
-<h4 id="1-observer-监听器">1. <strong>Observer 监听器</strong>
-</h4><ul>
-<li>Vue 2 中，当一个 Vue 实例被创建时，Vue 会遍历 <code>data</code> 对象中的所有属性，并使用 <code>Object.defineProperty</code> 将这些属性转为 getter 和 setter。</li>
-<li>通过这些 getter 和 setter，Vue 可以在数据被访问时（通过 getter）或修改时（通过 setter）进行额外的操作，比如依赖收集和派发更新。</li>
-</ul>
-<h4 id="2-dep-和-watcher">2. <strong>Dep 和 Watcher</strong>
-</h4><ul>
-<li><strong>Dep</strong>：每个被观察的属性（即每个 <code>data</code> 中的属性）都有一个依赖管理器（Dep），负责收集依赖于这个属性的所有“观察者” (Watcher)。</li>
-<li><strong>Watcher</strong>：Watcher 是一个观察者对象，负责监听属性的变化。当属性发生变化时，Watcher 会触发视图的更新。</li>
-</ul>
-<h4 id="3-数据流动">3. <strong>数据流动</strong>
-</h4><ul>
-<li>当组件的模板被渲染时，模板中的数据会触发属性的 getter，从而触发依赖收集（Dep 将 Watcher 收集起来）。</li>
-<li>当数据发生变化时（即属性的 setter 被触发），Vue 会通知对应的 Watcher，Watcher 随后通知视图进行重新渲染。</li>
-</ul>
-<h4 id="局限性"><strong>局限性</strong>
-</h4><ul>
-<li>Vue 2 的实现方式基于 <code>Object.defineProperty</code>，它无法直接监听数组的变化，也无法直接监听对象属性的添加和删除，因此 Vue 2 需要通过一些特殊方法（如 <code>Vue.set</code>、<code>Vue.delete</code>）来处理这些情况。</li>
-</ul>
-<h3 id="vue-3-的数据双向绑定原理">Vue 3 的数据双向绑定原理
-</h3><p>Vue 3 引入了 <code>Proxy</code> 对象，取代了 Vue 2 中的 <code>Object.defineProperty</code>，以实现更为强大和灵活的数据双向绑定。</p>
-<h4 id="1-proxy-与-reflect">1. <strong>Proxy 与 Reflect</strong>
-</h4><ul>
-<li>Vue 3 中，响应式数据的核心是 <code>Proxy</code>，它能够直接拦截对象的所有操作，包括读取、写入、删除属性等。这意味着 Vue 3 能够监听数组的变化以及对象属性的动态添加和删除。</li>
-<li>Vue 3 使用 <code>Proxy</code> 代理了 <code>data</code> 对象，并通过 <code>Reflect</code> 来处理代理对象的默认行为。</li>
-</ul>
-<h4 id="2-reactivity-模块">2. <strong>Reactivity 模块</strong>
-</h4><ul>
-<li>Vue 3 的响应式系统是基于一个独立的 Reactivity 模块实现的，这个模块包含了 <code>reactive</code>、<code>ref</code>、<code>computed</code> 等 API，允许开发者以更加灵活的方式创建响应式数据。</li>
-<li>通过 <code>reactive</code>，Vue 3 可以将一个普通对象转为响应式对象，类似于 Vue 2 中的 <code>data</code>。</li>
-</ul>
-<h4 id="3-依赖追踪和触发">3. <strong>依赖追踪和触发</strong>
-</h4><ul>
-<li>Vue 3 的依赖追踪和触发更新机制与 Vue 2 类似，都是通过依赖收集（依赖于数据的组件或方法会被收集）和触发更新（当数据改变时通知依赖的组件或方法进行更新）来实现的。</li>
-<li>由于 <code>Proxy</code> 的强大功能，Vue 3 可以更精细地追踪变化，避免了 Vue 2 中的一些局限性，比如对数组操作的监测问题。</li>
-</ul>
-<h3 id="vue-2-与-vue-3-的主要区别">Vue 2 与 Vue 3 的主要区别
-</h3><ol>
-<li>
-<p><strong>实现方式</strong>：</p>
-<ul>
-<li>Vue 2 使用 <code>Object.defineProperty</code> 实现数据双向绑定，Vue 3 使用 <code>Proxy</code> 来实现更为强大和灵活的响应式系统。</li>
+<li>具有内置的状态管理能力，通过 <code>this.state</code> 和 <code>this.setState</code> 来管理状态。</li>
+<li>提供了完整的生命周期方法，例如 <code>componentDidMount</code>、<code>componentDidUpdate</code>、<code>componentWillUnmount</code> 等，可以更细粒度地控制组件的生命周期。</li>
 </ul>
 </li>
 <li>
-<p><strong>响应式系统的灵活性</strong>：</p>
+<p><strong>函数组件</strong>:</p>
 <ul>
-<li>Vue 3 的 <code>Proxy</code> 可以直接监听数组的变化、对象属性的添加和删除等操作，避免了 Vue 2 的局限性。</li>
-<li>Vue 3 的响应式 API（如 <code>reactive</code>、<code>ref</code>）提供了更多的控制和灵活性。</li>
+<li>没有原生的状态管理和生命周期方法，需要使用 React Hooks（如 <code>useState</code>、<code>useEffect</code> 等）来实现相同的功能。</li>
+<li>Hooks 可以更方便地组织逻辑，并且可以在一个组件中组合多个 <code>useEffect</code> 实现逻辑的分离。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-性能和效率">3. <strong>性能和效率</strong>
+</h3><ul>
+<li>
+<p><strong>类组件</strong>:</p>
+<ul>
+<li>在 React 16.8 以前，类组件是唯一可以管理状态的方式，但是由于类组件包含更多的逻辑和开销（如 <code>this</code> 绑定），相对来说性能不如函数组件高效。</li>
 </ul>
 </li>
 <li>
-<p><strong>性能</strong>：</p>
+<p><strong>函数组件</strong>:</p>
 <ul>
-<li>Vue 3 的响应式系统在性能上有了很大的提升，特别是在大规模数据操作和复杂的组件树结构中，Vue 3 表现得更为高效。</li>
+<li>函数组件通常更轻量，不需要 <code>this</code> 绑定，性能上更加高效，尤其是搭配 React Hooks 的使用。</li>
+<li>React 团队建议在新项目中优先使用函数组件，因为它们更简洁且性能更优。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-可读性和代码简洁性">4. <strong>可读性和代码简洁性</strong>
+</h3><ul>
+<li>
+<p><strong>类组件</strong>:</p>
+<ul>
+<li>代码相对复杂，容易出现冗余，特别是在状态和事件处理时需要 <code>this</code> 绑定。</li>
+<li>对于初学者来说，可能会因为 <code>this</code> 关键字的使用而增加理解难度。</li>
 </ul>
 </li>
 <li>
-<p><strong>代码结构和模块化</strong>：</p>
+<p><strong>函数组件</strong>:</p>
 <ul>
-<li>Vue 3 的响应式系统是一个独立的模块，允许更好的树摇优化（tree-shaking），减小打包体积。</li>
+<li>代码更加简洁，易读易维护，避免了 <code>this</code> 相关的困扰。</li>
+<li>更符合函数式编程的风格，可以通过 Hooks 使逻辑更直观地组合和复用。</li>
 </ul>
 </li>
-</ol>
+</ul>
+<h3 id="5-开发体验">5. <strong>开发体验</strong>
+</h3><ul>
+<li>
+<p><strong>类组件</strong>:</p>
+<ul>
+<li>由于类组件具有完整的生命周期方法，可以更明确地进行生命周期阶段的控制，适用于一些复杂的业务场景。</li>
+</ul>
+</li>
+<li>
+<p><strong>函数组件</strong>:</p>
+<ul>
+<li>Hooks 的引入使函数组件的功能更加丰富，并且可以实现与类组件相同的状态管理和副作用处理，开发体验上更加现代化。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-未来趋势">6. <strong>未来趋势</strong>
+</h3><ul>
+<li>React 从 16.8 版本开始引入了 Hooks，Hooks 已经成为官方推荐的管理状态和副作用的方式。React 官方表示，未来的新功能和特性会更加侧重于函数组件，因此函数组件被认为是 React 未来的发展方向。</li>
+</ul>
+<h3 id="总结-2"><strong>总结</strong>
+</h3><ul>
+<li><strong>类组件</strong> 更适合传统 React 开发方式，适用于需要完整生命周期管理或对老项目进行维护的场景。</li>
+<li><strong>函数组件</strong> 更简洁、性能更高，结合 Hooks 提供了更强的灵活性和开发体验，是现代 React 开发的首选。</li>
+</ul>
+<p>在实际开发中，建议优先使用函数组件，只有在需要兼容老项目或特定场景时才使用类组件。</p>
+<h2 id="4-为什么react-和-vue-都选择了hook">4. 为什么react 和 vue 都选择了hook？
+</h2><p>Vue 和 React 都选择引入 Hooks 的原因主要有以下几个方面：</p>
+<h3 id="1-逻辑复用性增强">1. <strong>逻辑复用性增强</strong>
+</h3><ul>
+<li><strong>问题</strong>：在 Vue 和 React 的传统组件开发方式中，逻辑复用通常需要通过高阶组件 (HOC) 或混入 (Mixins) 来实现，这种方式会导致代码结构变得复杂，逻辑难以追踪，增加了维护成本。</li>
+<li><strong>Hooks 的优势</strong>：Hooks 提供了一种更加直观和轻量的方式来实现逻辑复用。开发者可以将组件中的逻辑提取到独立的 Hook 函数中，并在不同组件中直接调用，实现逻辑的共享和复用。例如，React 中的 <code>useState</code>、<code>useEffect</code>，Vue 中的 <code>ref</code>、<code>watchEffect</code> 等都使逻辑分离更加容易。</li>
+</ul>
+<h3 id="2-函数式编程的特性">2. <strong>函数式编程的特性</strong>
+</h3><ul>
+<li><strong>函数组件和组合式 API</strong>：Hooks 引入了函数式编程的特性，使得组件逻辑更加清晰和简洁。React 和 Vue 都在函数组件或组合式 API 中使用 Hooks，将状态和生命周期管理函数化，使代码更易读、易维护。</li>
+<li><strong>函数更易组合</strong>：通过 Hooks，可以更方便地将逻辑模块化，从而实现代码的组合和复用。例如，在 Vue 3 中使用 <code>setup</code> 函数可以将相关的逻辑组织在一起，使组件内部的代码结构更加清晰。</li>
+</ul>
+<h3 id="3-解决组件复杂度问题">3. <strong>解决组件复杂度问题</strong>
+</h3><ul>
+<li><strong>类组件的问题</strong>：React 类组件和 Vue 2.x 的选项式 API 在处理复杂状态逻辑时，会导致代码变得难以管理，特别是生命周期方法分散在各个部分，导致逻辑的割裂。而 Hooks 通过函数形式，将相关的逻辑组合到一起，解决了类组件的复杂性问题。</li>
+<li><strong>Hooks 带来的优势</strong>：通过 React Hooks 和 Vue 3 的组合式 API，状态、生命周期、事件等逻辑可以在一个函数作用域内处理，代码变得更加易读和维护。</li>
+</ul>
+<h3 id="4-性能优化">4. <strong>性能优化</strong>
+</h3><ul>
+<li><strong>更轻量的组件</strong>：函数组件加上 Hooks 在性能上往往更轻量，因为函数组件不需要实例化类，减少了内存和性能开销。</li>
+<li><strong>对渲染的控制</strong>：React 中的 Hooks 允许开发者通过 <code>useMemo</code>、<code>useCallback</code> 等手段来优化渲染性能。同样地，Vue 3 也引入了 <code>computed</code> 和 <code>watch</code> 来实现对性能的优化。</li>
+</ul>
+<h3 id="5-未来的趋势和生态">5. <strong>未来的趋势和生态</strong>
+</h3><ul>
+<li><strong>统一 API 和开发体验</strong>：通过 Hooks，React 和 Vue 都实现了状态管理、生命周期管理、逻辑复用等功能的一致化，使开发体验更统一和一致，也更容易将项目从类组件过渡到函数组件或组合式 API。</li>
+<li><strong>社区和生态的推动</strong>：React Hooks 和 Vue 3 的组合式 API 已经得到了社区的广泛支持，越来越多的第三方库也开始兼容和支持 Hooks，推动了它们的普及。</li>
+</ul>
 <h3 id="总结-3">总结
-</h3><p>Vue 的数据双向绑定是通过数据的响应式系统实现的，Vue 2 使用 <code>Object.defineProperty</code>，而 Vue 3 则使用 <code>Proxy</code> 来实现。Vue 3 的实现方式更加灵活和强大，解决了 Vue 2 中的一些局限性，同时也带来了更好的性能和开发体验。</p>
-<h2 id="5-vue-的生命周期有哪些">5. vue 的生命周期有哪些？
-</h2><p>Vue 的生命周期钩子函数是指在 Vue 实例的各个不同阶段执行的函数。这些钩子函数允许开发者在 Vue 实例的不同生命周期阶段执行自定义的代码。Vue 2 和 Vue 3 的生命周期钩子基本一致，以下是主要的生命周期钩子函数及其触发时机：</p>
-<h3 id="1-创建阶段creation-phase">1. <strong>创建阶段（Creation Phase）</strong>
-</h3><ul>
-<li>
-<p><strong><code>beforeCreate</code></strong>：实例初始化之后，数据观测 (data observer) 和事件配置还未完成。在这个阶段，<code>data</code> 和 <code>props</code> 还没有被初始化，因此在这个钩子中无法访问 <code>data</code> 和 <code>props</code>。</p>
-</li>
-<li>
-<p><strong><code>created</code></strong>：实例创建完成，完成数据观测、属性与方法的初始化，<code>data</code>、<code>props</code> 等都可以访问。此时尚未挂载到 DOM 中，也没有生成 <code>$el</code>。</p>
-</li>
-</ul>
-<h3 id="2-挂载阶段mounting-phase">2. <strong>挂载阶段（Mounting Phase）</strong>
-</h3><ul>
-<li>
-<p><strong><code>beforeMount</code></strong>：在挂载开始之前被调用，相关的 <code>render</code> 函数首次被调用。在这个阶段，虚拟 DOM 已经创建，但尚未渲染到实际的 DOM 上。</p>
-</li>
-<li>
-<p><strong><code>mounted</code></strong>：实例挂载到 DOM 后调用，此时 <code>el</code> 被新创建的 <code>vm.$el</code> 替换。此时组件已被挂载到页面上，DOM 操作可以在这里进行。</p>
-</li>
-</ul>
-<h3 id="3-更新阶段updating-phase">3. <strong>更新阶段（Updating Phase）</strong>
-</h3><ul>
-<li>
-<p><strong><code>beforeUpdate</code></strong>：响应式数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁 (patch) 之前。在这个钩子中，可以访问到更新前的 DOM。</p>
-</li>
-<li>
-<p><strong><code>updated</code></strong>：由于数据更改导致的虚拟 DOM 重新渲染和打补丁之后调用。此时组件 DOM 已经更新，因此可以执行基于新 DOM 的操作。</p>
-</li>
-</ul>
-<h3 id="4-销毁阶段destruction-phase">4. <strong>销毁阶段（Destruction Phase）</strong>
-</h3><ul>
-<li>
-<p><strong><code>beforeDestroy</code></strong>：实例销毁之前调用。在这一步，实例仍然完全可用。</p>
-</li>
-<li>
-<p><strong><code>destroyed</code></strong>：实例销毁后调用。调用后，Vue 实例的所有指令绑定和事件监听器都会被解除，所有子实例也会被销毁。</p>
-</li>
-</ul>
-<h3 id="5-vue-3-特有的生命周期钩子">5. <strong>Vue 3 特有的生命周期钩子</strong>
-</h3><p>Vue 3 引入了与组合式 API（Composition API）一起使用的生命周期钩子函数，这些函数与 Vue 2 中的钩子作用相同，但命名更具可读性，并且使用更灵活。</p>
+</h3><p>Vue 和 React 都选择 Hooks 是为了：</p>
 <ul>
-<li><strong><code>onBeforeMount</code></strong>：等同于 Vue 2 的 <code>beforeMount</code>。</li>
-<li><strong><code>onMounted</code></strong>：等同于 Vue 2 的 <code>mounted</code>。</li>
-<li><strong><code>onBeforeUpdate</code></strong>：等同于 Vue 2 的 <code>beforeUpdate</code>。</li>
-<li><strong><code>onUpdated</code></strong>：等同于 Vue 2 的 <code>updated</code>。</li>
-<li><strong><code>onBeforeUnmount</code></strong>：等同于 Vue 2 的 <code>beforeDestroy</code>。</li>
-<li><strong><code>onUnmounted</code></strong>：等同于 Vue 2 的 <code>destroyed</code>。</li>
+<li>提高逻辑复用性，解决原本组件开发中逻辑难以复用的问题。</li>
+<li>提供更简洁、清晰、函数式的开发方式，改善代码组织和可维护性。</li>
+<li>提供更强大的性能优化手段，适应现代前端开发的需求。</li>
+<li>顺应未来的开发趋势，统一 API，推动生态发展。</li>
 </ul>
-<p>这些钩子函数可以在 Vue 3 的组合式 API 中使用，例如在 <code>setup</code> 函数中调用。</p>
-<h3 id="总结-4">总结
-</h3><p>Vue 的生命周期提供了一个从创建、挂载、更新到销毁的完整流程的钩子函数，让开发者可以在每个关键节点执行相应的操作。了解和使用这些钩子函数，可以帮助更好地控制组件的行为，处理复杂的逻辑或优化性能。</p>
-<h2 id="6-vue-的组件通信方式有哪些">6. vue 的组件通信方式有哪些？
-</h2><p>在 Vue 中，组件之间的通信方式有多种，具体选择哪种方式取决于组件之间的关系（如父子关系、兄弟关系）以及数据流的复杂度。以下是 Vue 组件之间常见的通信方式：</p>
-<h3 id="1-父子组件通信">1. <strong>父子组件通信</strong>
-</h3><h4 id="11-props-传递">1.1 <code>Props</code> 传递
-</h4><p>父组件通过 <code>props</code> 向子组件传递数据。这是 Vue 中最常用的通信方式之一。</p>
+<p>两者虽然有不同的设计理念，但在 Hooks 这一点上，目标是一致的：<strong>通过函数式的方式让开发更高效、灵活、易维护</strong>。</p>
+<h2 id="什么是hoc">什么是HOC?
+</h2><p>HOC（Higher-Order Component）是 React 中的一个概念，它指的是一个函数，该函数接受一个组件作为参数，返回一个新的组件。HOC 的主要作用是<strong>将一些通用的逻辑提取出来，并将其封装成一个函数，然后通过 HOC 的方式来复用这些逻辑</strong>。
+高阶组件（HOC）就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件，它只是一种组件的设计模式，这种设计模式是由react自身的组合性质必然产生的。我们将它们称为纯组件，因为它们可以接受任何动态提供的子组件，但它们不会修改或复制其输入组件中的任何行为。
+1）HOC的优缺点
+● 优点∶ 逻辑服用、不影响被包裹组件的内部逻辑。
+● 缺点∶hoc传递给被包裹组件的props容易和被包裹后的组件重名，进而被覆盖</p>
+<p>2）适用场景
+● 代码复用，逻辑抽象
+● 渲染劫持
+● State 抽象和更改
+● Props 更改</p>
+<h2 id="哪些方法会触发react重新渲染重新渲染render-会做些什么">哪些方法会触发React重新渲染？重新渲染render 会做些什么？
+</h2><h2 id="react-的事件机制是如何实现的">react 的事件机制是如何实现的？
+</h2><p>React 的事件机制与传统的 DOM 事件机制有所不同，它实现了一套基于合成事件（Synthetic Event）的系统。合成事件是一种跨浏览器的事件封装，用来统一不同浏览器的事件行为，同时提高性能。下面是 React 事件机制的详细实现过程：</p>
+<h3 id="1-合成事件synthetic-event">1. <strong>合成事件（Synthetic Event）</strong>
+</h3><p>React 为了解决浏览器的兼容性问题，创建了一套自己的事件系统，称为“合成事件”。合成事件是对原生事件的封装，确保在不同浏览器下事件行为一致。</p>
+<p>合成事件具有以下特点：</p>
+<ul>
+<li>React 会拦截所有原生事件，并将它们转换为合成事件。</li>
+<li>合成事件对象模仿了原生事件对象，但不直接来自浏览器的事件对象。</li>
+<li>合成事件会被自动回收并重用，提升性能。</li>
+</ul>
+<h3 id="2-事件委托">2. <strong>事件委托</strong>
+</h3><p>React 的事件处理基于事件委托机制。它并不会为每个 DOM 元素绑定事件处理器，而是在组件的根节点（通常是 <code>document</code> 或 <code>#root</code>）上统一绑定所有事件。</p>
+<p>事件委托的工作原理：</p>
+<ul>
+<li>当用户触发事件时，事件冒泡到根节点，在根节点上统一处理事件。</li>
+<li>React 会根据触发事件的目标元素和事件类型，在内部进行事件调度和分发，找到对应的组件和事件处理函数。</li>
+</ul>
+<p>这样做的好处：</p>
+<ul>
+<li>减少内存消耗：不需要为每个元素都绑定独立的事件处理器。</li>
+<li>简化事件管理：所有事件都集中处理，统一调度。</li>
+</ul>
+<h3 id="3-事件冒泡与捕获">3. <strong>事件冒泡与捕获</strong>
+</h3><p>React 的事件系统支持事件冒泡和事件捕获。你可以通过 <code>capture</code> 属性指定是否使用捕获阶段来处理事件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">父组件</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="nt">:message</span><span class="o">=</span><span class="s">&#34;parentMessage&#34;</span> <span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">子组件</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{{</span> <span class="nx">message</span> <span class="p">}}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">props</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleClick</span><span class="p">}</span> <span class="na">onClickCapture</span><span class="o">=</span><span class="p">{</span><span class="nx">handleCapture</span><span class="p">}&gt;</span><span class="nx">Click</span> <span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="12-event-触发">1.2 <code>Event</code> 触发
-</h4><p>子组件可以通过 <code>$emit</code> 触发事件，父组件监听事件来接收数据。</p>
+</div><ul>
+<li><code>onClick</code> 默认会在冒泡阶段触发。</li>
+<li><code>onClickCapture</code> 则会在捕获阶段触发。</li>
+</ul>
+<h3 id="4-事件池化">4. <strong>事件池化</strong>
+</h3><p>React 使用事件池（event pooling）来优化性能。每次触发事件时，React 并不会为每个事件分配一个新的对象，而是复用旧的事件对象。</p>
+<p>合成事件对象在事件处理函数执行完成后会被重置和回收，因此在事件回调函数中异步使用事件对象时，必须先调用 <code>event.persist()</code>，以避免事件对象被重用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handleClick</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">event</span><span class="p">.</span><span class="nx">persist</span><span class="p">();</span>  <span class="c1">// 保留事件对象，防止其被复用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span> <span class="c1">// 可以安全使用事件对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-阻止默认行为与停止冒泡">5. <strong>阻止默认行为与停止冒泡</strong>
+</h3><p>与原生 DOM 事件类似，React 的合成事件也提供了 <code>preventDefault()</code> 和 <code>stopPropagation()</code> 方法来阻止默认行为和事件冒泡。</p>
+<ul>
+<li><code>event.preventDefault()</code>：阻止浏览器执行事件的默认行为。</li>
+<li><code>event.stopPropagation()</code>：阻止事件冒泡到父级元素。</li>
+</ul>
+<h3 id="6-事件绑定方式">6. <strong>事件绑定方式</strong>
+</h3><p>在 React 中，事件处理函数通常通过 JSX 的形式绑定，语法上与原生 HTML 事件不同，React 使用小驼峰命名的事件属性，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleClick</span><span class="p">}&gt;</span><span class="nx">Click</span> <span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而不是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;handleClick()&#34;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>另外，React 中事件处理函数的 <code>this</code> 指向默认情况下不会自动绑定到组件实例，必须手动绑定或使用箭头函数处理。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -942,47 +1124,279 @@
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">子组件</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">button</span> <span class="nt">@click</span><span class="s">=&#34;sendMessage&#34;</span><span class="p">&gt;</span><span class="na">Send</span> <span class="na">Message</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="c1">// 方法1：手动绑定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">class</span> <span class="nx">MyComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">sendMessage</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s1">&#39;message-sent&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello from child&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>  <span class="c1">// 正确绑定到组件实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">}&gt;</span><span class="nx">Click</span> <span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">父组件</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="nt">@message-sent</span><span class="s">=&#34;receiveMessage&#34;</span> <span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 方法2：使用箭头函数自动绑定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">class</span> <span class="nx">MyComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>  <span class="c1">// 自动绑定到组件实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">receiveMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">}&gt;</span><span class="nx">Click</span> <span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="2-兄弟组件通信">2. <strong>兄弟组件通信</strong>
-</h3><h4 id="21-通过父组件作为中介">2.1 通过父组件作为中介
-</h4><p>兄弟组件可以通过父组件传递数据。例如，一个兄弟组件通过 <code>Event</code> 传递数据给父组件，父组件再将数据通过 <code>Props</code> 传递给另一个兄弟组件。</p>
-<h4 id="22-事件总线-event-bus">2.2 事件总线 (Event Bus)
-</h4><p>创建一个空的 Vue 实例作为事件总线，兄弟组件可以通过这个总线来通信。不过在 Vue 3 中，建议使用其他方式替代事件总线。</p>
+</div><h3 id="7-性能优化批量更新">7. <strong>性能优化：批量更新</strong>
+</h3><p>React 的事件处理机制与其状态更新机制结合得非常紧密。React 在事件处理函数中触发状态更新时，通常会进行批量更新，而不是每次调用 <code>setState</code> 都立即触发重新渲染。批量更新减少了不必要的重新渲染，提高了性能。</p>
+<h3 id="总结-4">总结：
+</h3><p>React 的事件机制通过合成事件、事件委托和事件池化等技术实现了高效、跨浏览器一致的事件处理系统。开发者只需使用 React 提供的事件接口，专注于业务逻辑，而不必关心底层的事件绑定和优化问题。</p>
+<h2 id="说一下什么是虚拟dom它如何工作">说一下什么是虚拟DOM？它如何工作？
+</h2><p>虚拟 DOM（Virtual DOM）是 React 用于优化 UI 渲染性能的一种技术，它是对真实 DOM 的一种抽象表示，可以理解为在内存中以 JavaScript 对象形式存在的 DOM 树的副本。通过虚拟 DOM，React 可以高效地管理 UI 的更新，减少真实 DOM 操作的次数，从而提升性能。</p>
+<h3 id="1-什么是虚拟-dom">1. <strong>什么是虚拟 DOM？</strong>
+</h3><p>虚拟 DOM 是一个轻量级的 JavaScript 对象，它表示了 DOM 树的结构，包含了真实 DOM 元素的属性、节点关系以及内容等信息。虚拟 DOM 并不直接映射到浏览器，而是存在于内存中，当状态或数据发生变化时，React 首先在虚拟 DOM 上进行计算，然后将差异更新到真实 DOM 中。</p>
+<h3 id="2-虚拟-dom-工作流程">2. <strong>虚拟 DOM 工作流程</strong>
+</h3><p>当组件的状态或属性发生变化时，虚拟 DOM 的更新和渲染过程一般分为以下几个步骤：</p>
+<h4 id="step-1-构建虚拟-dom"><strong>Step 1: 构建虚拟 DOM</strong>
+</h4><ul>
+<li>当应用初次渲染时，React 会根据组件的 <code>render()</code> 方法生成一棵虚拟 DOM 树。</li>
+<li>这个虚拟 DOM 是由纯 JavaScript 对象组成的，描述了页面的初始状态。</li>
+</ul>
+<h4 id="step-2-状态更新生成新的虚拟-dom"><strong>Step 2: 状态更新，生成新的虚拟 DOM</strong>
+</h4><ul>
+<li>当组件的 <code>state</code> 或 <code>props</code> 发生变化时，React 会重新调用 <code>render()</code> 方法，生成一棵新的虚拟 DOM 树。</li>
+</ul>
+<h4 id="step-3-diff-算法比较新旧虚拟-dom"><strong>Step 3: Diff 算法比较新旧虚拟 DOM</strong>
+</h4><ul>
+<li>React 会使用 “Diff 算法” 比较新的虚拟 DOM 与旧的虚拟 DOM，找出两者之间的差异（即需要更新的部分）。</li>
+<li>Diff 算法的复杂度被优化到 O(n)，意味着它只会检查有变化的节点，忽略没有变化的部分。</li>
+</ul>
+<h4 id="step-4-计算差异reconciliation"><strong>Step 4: 计算差异（Reconciliation）</strong>
+</h4><ul>
+<li>React 将新旧虚拟 DOM 的差异（称为“补丁”或“patch”）记录下来，这些差异包含了应该如何更新真实 DOM。</li>
+</ul>
+<h4 id="step-5-更新真实-dom"><strong>Step 5: 更新真实 DOM</strong>
+</h4><ul>
+<li>最后，React 会将这些差异应用到真实 DOM 中，进行必要的更新操作。由于 React 只会更新发生变化的部分，这极大地提高了渲染效率。</li>
+</ul>
+<h3 id="3-虚拟-dom-的优势">3. <strong>虚拟 DOM 的优势</strong>
+</h3><ul>
+<li><strong>性能优化</strong>：与直接操作真实 DOM 相比，虚拟 DOM 通过在内存中进行计算，大幅减少了对真实 DOM 的操作次数，从而提高了性能。</li>
+<li><strong>跨平台能力</strong>：虚拟 DOM 是与平台无关的 JavaScript 对象，可以被用来生成多种目标输出，不仅限于浏览器的 DOM 操作。这使得 React 可以用于构建移动应用（如 React Native）。</li>
+<li><strong>简化开发</strong>：开发者只需关注组件的状态变化，而无需手动操作 DOM，React 会自动进行更新和渲染，提供更简洁的开发体验。</li>
+</ul>
+<h3 id="4-diff-算法的工作原理">4. <strong>Diff 算法的工作原理</strong>
+</h3><p>React 在更新虚拟 DOM 时，使用了一种高效的 Diff 算法来比较新旧虚拟 DOM 树，主要基于以下三条策略：</p>
+<ol>
+<li><strong>同级比较</strong>：只会对同一级别的节点进行比较，不会跨级比较，这样大大降低了计算复杂度。</li>
+<li><strong>节点类型不同，直接替换</strong>：如果两个节点的类型不同（例如从 <code>&lt;div&gt;</code> 变为 <code>&lt;span&gt;</code>），则会直接移除旧节点及其子节点，并创建新的节点。</li>
+<li><strong>通过 <code>key</code> 进行列表比较</strong>：当渲染列表时，React 通过每个节点的 <code>key</code> 值来识别节点的身份，从而准确、高效地处理节点的增删改操作。</li>
+</ol>
+<h3 id="5-虚拟-dom-的局限性">5. <strong>虚拟 DOM 的局限性</strong>
+</h3><ul>
+<li><strong>初次渲染性能</strong>：虚拟 DOM 在初次渲染时会生成整个虚拟 DOM 树，对于大型应用来说，初次渲染的性能可能会受到影响。</li>
+<li><strong>不适用于所有场景</strong>：在高性能要求的场景（如 WebGL、游戏开发）中，手动优化可能比虚拟 DOM 更有效。</li>
+</ul>
+<h3 id="总结-5"><strong>总结</strong>
+</h3><p>虚拟 DOM 是 React 提高渲染性能的核心技术，通过在内存中维护一个虚拟的 DOM 树，将每次状态变化引起的 DOM 更新变得更高效。它通过 Diff 算法计算新旧虚拟 DOM 之间的差异，并将最小的更新应用到真实 DOM，从而实现性能的优化和快速的界面更新。</p>
+<h2 id="对react-fiber的理解它解决了什么问题">对react fiber的理解，它解决了什么问题？
+</h2><p>React Fiber 是 React 16 版本引入的新架构，它是一种用于协调和渲染 React 应用的<strong>渐进式调度算法</strong>，旨在提高 React 应用的性能，特别是对于大型应用和复杂的动画效果。</p>
+<h3 id="1-为什么需要-fiber">1. 为什么需要 Fiber
+</h3><p>React 在早期的版本中，使用的是同步递归渲染机制，这意味着在一次更新中，React 会从根节点开始递归地进行渲染工作，直到整个组件树渲染完成。在大型组件树或复杂的渲染过程中，这可能会导致浏览器阻塞，导致页面卡顿或无法响应用户的交互。</p>
+<p>为了提升性能和提高渲染的流畅度，React Fiber 引入了一种新的架构，能够将渲染工作拆分成<strong>更小的任务单元</strong>，并允许在任务之间进行调度，从而更好地控制渲染的优先级，避免阻塞主线程。</p>
+<h3 id="2-react-fiber-的核心概念">2. React Fiber 的核心概念
+</h3><ul>
+<li><strong>Fiber 是一种数据结构</strong>：它将每个组件的更新任务以链表的形式存储，形成一个<strong>Fiber 树</strong>，使得 React 可以逐步地、增量地更新视图。</li>
+<li><strong>可中断的渲染</strong>：Fiber 的最大优势是能够将渲染过程切分成小块，并且在必要的时候暂停、恢复或终止渲染任务，以确保高优先级的任务（如用户交互）能及时响应。</li>
+<li><strong>优先级调度</strong>：Fiber 会根据不同任务的优先级分配时间片（time slices）。这样高优先级的任务（如动画、输入事件）会比低优先级的任务（如数据加载）更早地得到处理。</li>
+</ul>
+<h3 id="3-react-fiber-的工作阶段">3. React Fiber 的工作阶段
+</h3><p>React Fiber 分为两个主要的阶段：</p>
+<ol>
+<li>
+<p><strong>调度阶段（Reconciliation Phase）</strong>：这一阶段是计算哪些组件需要更新的过程。Fiber 会遍历整个 Fiber 树，构建一个新版本的 Fiber 树，并确定要进行的更改。在这一步中，Fiber 可以暂停或中断，等待空闲时间继续执行。</p>
+</li>
+<li>
+<p><strong>提交阶段（Commit Phase）</strong>：这一阶段是将更新应用到实际的 DOM 中。在这个阶段，操作是真正同步执行的，并且无法被打断。</p>
+</li>
+</ol>
+<h3 id="4-fiber-和传统-stack-reconciler-的区别">4. Fiber 和传统 Stack Reconciler 的区别
+</h3><ul>
+<li><strong>可中断性</strong>：传统的 Stack Reconciler 是同步的、递归的，不能中断，而 Fiber 是异步的、可中断的。</li>
+<li><strong>优先级控制</strong>：Fiber 能根据任务的重要性对任务进行调度，而传统架构无法做到这一点。</li>
+</ul>
+<h3 id="5-fiber-的应用场景">5. Fiber 的应用场景
+</h3><ul>
+<li><strong>动画和流畅的用户交互</strong>：Fiber 能够让 React 应用在复杂的动画、过渡效果下保持流畅。</li>
+<li><strong>大型组件树</strong>：对于渲染庞大组件树的应用，Fiber 能有效减少卡顿，确保高优先级的任务可以及时得到响应。</li>
+</ul>
+<h3 id="6-fiber-的限制">6. Fiber 的限制
+</h3><p>虽然 React Fiber 引入了很多优点，但它也有一定的复杂性，例如调度算法的复杂性更高，同时它也会引入一定的性能开销，因此它并不是万能的优化工具，而是解决特定场景下性能问题的一种方案。</p>
+<h3 id="总结-6">总结
+</h3><p>React Fiber 提供了一种更灵活、更高效的渲染方式，通过引入渐进式的调度机制，实现了对渲染任务的可中断和优先级调度，从而在提高性能和流畅度方面提供了巨大优势。</p>
+<h2 id="react-component-和-purecomponent-的区别">React Component 和 PureComponent 的区别？
+</h2><p>默认行为：</p>
+<p>Component 是 React 中的基本组件类，它不保证任何性能优化措施。
+PureComponent 是对 Component 的一个优化版本，它实现了 shouldComponentUpdate 生命周期方法，提供了浅比较（shallow comparison）的优化。
+性能优化：</p>
+<p>使用 Component 时，开发者需要手动实现 shouldComponentUpdate 方法来控制组件是否需要更新。
+PureComponent 自动实现了一个简单的 shouldComponentUpdate 实现，它会比较新旧 props 和 state，如果它们的引用不同或者值不同，则认为需要更新组件。这种浅比较可以避免不必要的渲染，提高性能。
+适用场景：</p>
+<p>如果组件的 props 或 state 变化频繁且复杂，不适合使用 PureComponent，因为它的浅比较机制可能无法准确判断是否需要更新。
+对于简单且输入输出关系明确的组件，使用 PureComponent 可以减少开发者的负担，并且提升应用性能。
+自定义比较逻辑：</p>
+<p>在 Component 中可以通过自定义 shouldComponentUpdate 来实现更复杂的比较逻辑或条件判断。
+PureComponent 不支持自定义 shouldComponentUpdate 的逻辑，如果需要更复杂的逻辑，仍然需要使用普通的 Component 并手动实现该方法。
+总结来说，PureComponent 是一种轻量级的性能优化手段，适用于大多数情况下不需要复杂比较逻辑的组件。而 Component 提供了更大的灵活性，可以根据具体需求进行更细致的性能调优</p>
+<h2 id="谈一谈对-react-context-的理解">谈一谈对 React Context 的理解
+</h2><p>React Context 是 React 提供的一种用于在组件树中共享数据的机制，允许我们在不通过 props 逐层传递的情况下，轻松地在组件之间共享状态。以下是对 React Context 的详细理解：</p>
+<h3 id="1-主要用途">1. 主要用途
+</h3><ul>
+<li><strong>全局状态管理</strong>：Context 适合用于共享全局状态，如用户认证信息、主题设置、语言选择等。</li>
+<li><strong>避免 props drilling</strong>：在深层嵌套的组件中，使用 Context 可以避免通过每一层组件传递 props。</li>
+</ul>
+<h3 id="2-创建-context">2. 创建 Context
+</h3><p>使用 <code>React.createContext()</code> 创建一个 Context 对象：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">MyContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-provider-和-consumer">3. Provider 和 Consumer
+</h3><ul>
+<li><strong>Provider</strong>：用于提供 Context 的值，包裹需要访问该值的组件。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">MyContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="cm">/* 共享的值 */</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span><span class="cm">/* 子组件 */</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/MyContext.Provider&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>Consumer</strong>：用于访问 Context 的值，通常在子组件中使用。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">MyContext</span><span class="p">.</span><span class="nx">Consumer</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span><span class="nx">value</span> <span class="p">=&gt;</span> <span class="cm">/* 使用 Context 的值 */</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/MyContext.Consumer&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-使用-usecontext-hook">4. 使用 <code>useContext</code> Hook
+</h3><p>在函数组件中，可以使用 <code>useContext</code> Hook 更简洁地访问 Context 的值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">useContext</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">MyContext</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-示例">5. 示例
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ThemeContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">(</span><span class="s1">&#39;light&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">ThemeContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">Toolbar</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/ThemeContext.Provider&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">Toolbar</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">ThemedButton</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">ThemedButton</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">ThemeContext</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">theme</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">styled</span> <span class="nx">by</span> <span class="nx">theme</span> <span class="nx">context</span><span class="o">!&lt;</span><span class="err">/button&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6-性能考虑">6. 性能考虑
+</h3><ul>
+<li><strong>重渲染</strong>：当 Provider 的值发生变化时，所有使用该 Context 的组件都会重新渲染。因此，应该谨慎选择 Context 的值，避免不必要的重渲染。</li>
+<li><strong>分割 Context</strong>：如果有多个状态需要共享，可以考虑将它们分割成多个 Context，以减少重渲染的范围。</li>
+</ul>
+<h3 id="7-适用场景">7. 适用场景
+</h3><ul>
+<li><strong>主题切换</strong>：在应用中实现主题切换功能。</li>
+<li><strong>用户认证</strong>：在应用中共享用户的登录状态和信息。</li>
+<li><strong>多语言支持</strong>：在应用中实现国际化，动态切换语言。</li>
+</ul>
+<h3 id="8-限制">8. 限制
+</h3><ul>
+<li><strong>不适合频繁变化的状态</strong>：对于频繁变化的状态（如表单输入），使用 Context 可能导致性能问题，建议使用局部状态管理。</li>
+<li><strong>复杂性</strong>：在大型应用中，过度使用 Context 可能导致代码复杂性增加，难以维护。</li>
+</ul>
+<h3 id="9-结合其他状态管理工具">9. 结合其他状态管理工具
+</h3><ul>
+<li>Context 可以与其他状态管理工具（如 Redux、MobX）结合使用，作为全局状态的补充。</li>
+<li>在小型应用中，Context 可以替代 Redux 等复杂的状态管理库。</li>
+</ul>
+<h3 id="10-总结">10. 总结
+</h3><p>React Context 是一个强大的工具，适合用于在组件树中共享状态，避免 props drilling。它提供了一种简单的方式来管理全局状态，但在使用时需要注意性能和复杂性。合理地使用 Context 可以提高代码的可读性和可维护性。</p>
+<h2 id="react-中什么是受控组件什么是非受控组件">react 中什么是受控组件，什么是非受控组件？
+</h2><p>在 React 中，受控组件和非受控组件是两种处理表单输入的方式。它们的主要区别在于如何管理组件的状态。</p>
+<h3 id="1-受控组件controlled-components">1. 受控组件（Controlled Components）
+</h3><p><strong>定义</strong>：
+受控组件是指其值由 React 组件的状态（state）控制的组件。所有的输入值都通过 React 的状态管理来处理。</p>
+<p><strong>示例</strong>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -996,23 +1410,277 @@
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// eventBus.js
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">EventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">();</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件A
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s1">&#39;event-name&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ControlledComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">setValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件B
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;event-name&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">handleChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setValue</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">value</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">handleChange</span><span class="p">}</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="23-vuex-状态管理">2.3 Vuex (状态管理)
-</h4><p>在复杂应用中，可以使用 Vuex 进行状态管理。兄弟组件可以通过 Vuex 共享状态。</p>
+</div><p><strong>优点</strong>：</p>
+<ul>
+<li><strong>单一数据源</strong>：所有的输入值都存储在组件的状态中，便于管理和调试。</li>
+<li><strong>实时验证</strong>：可以在输入时进行验证和格式化。</li>
+<li><strong>更好的控制</strong>：可以轻松地实现复杂的交互逻辑，如动态禁用按钮、条件渲染等。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>性能开销</strong>：每次输入都会触发状态更新，可能导致性能问题，尤其是在大型表单中。</li>
+<li><strong>代码复杂性</strong>：需要编写额外的代码来管理状态和处理输入。</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>需要实时验证和格式化输入的场景。</li>
+<li>需要根据输入动态更新其他组件或状态的场景。</li>
+<li>需要在表单提交时获取所有输入值的场景。</li>
+</ul>
+<h3 id="2-非受控组件uncontrolled-components">2. 非受控组件（Uncontrolled Components）
+</h3><p><strong>定义</strong>：
+非受控组件是指其值不由 React 组件的状态控制，而是直接通过 DOM 元素的引用（ref）来访问。</p>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">UncontrolledComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">handleSubmit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;A name was submitted: &#39;</span> <span class="o">+</span> <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmit</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">inputRef</span><span class="p">}</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span><span class="o">&gt;</span><span class="nx">Submit</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/form&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>优点</strong>：</p>
+<ul>
+<li><strong>简单性</strong>：不需要管理状态，代码更简洁。</li>
+<li><strong>性能</strong>：在某些情况下，性能更好，因为不需要频繁更新状态。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>难以控制</strong>：不容易实现实时验证和格式化。</li>
+<li><strong>数据获取</strong>：在提交表单时需要通过 ref 获取数据，可能不够直观。</li>
+<li><strong>不易调试</strong>：由于数据不在 React 的状态中，调试和跟踪数据变化可能更困难。</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>简单的表单，且不需要实时验证的场景。</li>
+<li>需要快速实现的原型或小型应用。</li>
+<li>处理第三方库或非 React 组件的场景。</li>
+</ul>
+<h3 id="总结-7">总结
+</h3><ul>
+<li><strong>受控组件</strong>：适合需要精确控制和实时反馈的场景，提供更好的可维护性和可调试性。</li>
+<li><strong>非受控组件</strong>：适合简单场景，减少了状态管理的复杂性，但在复杂交互中可能不够灵活。</li>
+</ul>
+<p>选择使用受控组件还是非受控组件，取决于具体的应用需求和复杂性。在大多数情况下，受控组件是推荐的做法，因为它们提供了更好的控制和可维护性。</p>
+<h2 id="react-中refs-中有哪些应用场景">react 中refs 中有哪些应用场景
+</h2><p>在 React 中，<code>refs</code>（引用）是一个用于访问和操作 DOM 元素或 React 组件实例的工具。以下是一些常见的 <code>refs</code> 应用场景：</p>
+<h3 id="1-访问-dom-元素">1. 访问 DOM 元素
+</h3><ul>
+<li><strong>直接操作 DOM</strong>：当需要直接访问和操作 DOM 元素时，可以使用 <code>refs</code>。例如，聚焦输入框、滚动到特定位置等。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">FocusInput</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">handleFocus</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span> <span class="c1">// 聚焦输入框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">inputRef</span><span class="p">}</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleFocus</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Focus</span> <span class="nx">Input</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-管理动画">2. 管理动画
+</h3><ul>
+<li><strong>控制动画</strong>：在需要控制动画的场景中，可以使用 <code>refs</code> 来访问 DOM 元素并应用动画效果。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AnimatedBox</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">boxRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">handleAnimate</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">boxRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="s1">&#39;translateX(100px)&#39;</span><span class="p">;</span> <span class="c1">// 移动盒子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">boxRef</span><span class="p">}</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;100px&#39;</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="s1">&#39;100px&#39;</span><span class="p">,</span> <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;blue&#39;</span> <span class="p">}}</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleAnimate</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Animate</span> <span class="nx">Box</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-集成第三方库">3. 集成第三方库
+</h3><ul>
+<li><strong>与非 React 组件集成</strong>：在使用第三方库（如 jQuery、D3.js 等）时，可能需要直接访问 DOM 元素。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useRef</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">$</span> <span class="nx">from</span> <span class="s1">&#39;jquery&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">JqueryComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">divRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">(</span><span class="nx">divRef</span><span class="p">.</span><span class="nx">current</span><span class="p">).</span><span class="nx">fadeIn</span><span class="p">();</span> <span class="c1">// 使用 jQuery 操作 DOM
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span> <span class="p">[]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">divRef</span><span class="p">}</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">display</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span> <span class="p">}}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">jQuery</span><span class="o">!&lt;</span><span class="err">/div&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-表单管理">4. 表单管理
+</h3><ul>
+<li><strong>非受控组件</strong>：在某些情况下，使用 <code>refs</code> 可以简化表单管理，尤其是在处理第三方库或需要快速实现的场景。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">UncontrolledForm</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">handleSubmit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Input value: &#39;</span> <span class="o">+</span> <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 直接访问输入值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmit</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">inputRef</span><span class="p">}</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span><span class="o">&gt;</span><span class="nx">Submit</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/form&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-访问子组件实例">5. 访问子组件实例
+</h3><ul>
+<li><strong>获取子组件方法</strong>：在类组件中，可以使用 <code>refs</code> 访问子组件实例，从而调用其方法。</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1036,203 +1704,275 @@
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// store.js
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">state</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">mutations</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">setMessage</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">state</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">Child</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello from Child!&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件A
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;setMessage&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello from A&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Child</span> <span class="nx">Component</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件B
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">computed</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">message</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">Parent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">childRef</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createRef</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">childRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span> <span class="c1">// 调用子组件方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">Child</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">childRef</span><span class="p">}</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Call</span> <span class="nx">Child</span> <span class="nx">Method</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="3-跨层级组件通信">3. <strong>跨层级组件通信</strong>
-</h3><h4 id="31-provide-和-inject">3.1 <code>Provide</code> 和 <code>Inject</code>
-</h4><p><code>Provide</code> 和 <code>Inject</code> 允许父组件向任意层级的后代组件提供数据，而不必通过 <code>Props</code> 层层传递。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c1">// 父组件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">provide</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello World&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 任意层级的子组件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">inject</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="32-vuex">3.2 Vuex
-</h4><p>同样地，Vuex 也可以用于跨层级的组件通信，通过集中管理状态来实现跨层级的数据共享。</p>
-<h3 id="4-其他通信方式">4. <strong>其他通信方式</strong>
-</h3><h4 id="41-attrs-和-listeners">4.1 <code>$attrs</code> 和 <code>$listeners</code>
-</h4><p>父组件向子组件传递属性和事件，适用于高阶组件（Higher-order components）。</p>
-<h4 id="42-parent-和-children">4.2 <code>$parent</code> 和 <code>$children</code>
-</h4><p>通过访问组件实例的 <code>$parent</code> 和 <code>$children</code> 来通信，但这种方式不推荐使用，因为它会导致组件之间的耦合性增加。</p>
-<h4 id="43-ref-和-refs">4.3 <code>Ref</code> 和 <code>$refs</code>
-</h4><p>通过 <code>ref</code> 获取子组件的实例，从而访问或调用子组件的方法和属性。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">父组件</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="na">ref</span><span class="o">=</span><span class="s">&#34;child&#34;</span> <span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">child</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="总结-5">总结
-</h3><p>Vue 提供了多种组件通信方式，适用于不同的场景和复杂度。在选择通信方式时，应考虑组件之间的关系、数据流的复杂度以及应用的规模，尽量保持代码的简洁性和可维护性。</p>
-<h2 id="7-vue-的路由模式有哪些">7. vue 的路由模式有哪些？
-</h2><p>Vue 的路由模式是指在 Vue 应用中定义路由的方式，包括 <code>hash</code> 模式和 <code>history</code> 模式。</p>
-<h3 id="1-hash-模式">1. <strong>Hash 模式</strong>
-</h3><p>Hash 模式是 Vue 路由的默认模式，使用 URL 中的哈希值（#）来表示路由。例如，访问 <code>URL_ADDRESS 会将 </code>#/about` 作为哈希值，并将其作为路由。</p>
+</div><h3 id="6-处理焦点管理">6. 处理焦点管理
+</h3><ul>
+<li><strong>焦点控制</strong>：在复杂的表单中，可以使用 <code>refs</code> 来管理焦点，确保用户体验流畅。</li>
+</ul>
+<h3 id="7-访问组件的-dom-节点">7. 访问组件的 DOM 节点
+</h3><ul>
+<li><strong>获取组件的 DOM 节点</strong>：在需要直接操作组件的 DOM 节点时，可以使用 <code>refs</code>。</li>
+</ul>
+<h3 id="8-处理滚动位置">8. 处理滚动位置
+</h3><ul>
+<li><strong>滚动管理</strong>：在需要控制滚动位置的场景中，可以使用 <code>refs</code> 来访问和操作滚动条。</li>
+</ul>
+<h3 id="总结-8">总结
+</h3><p><code>refs</code> 在 React 中是一个强大的工具，适用于需要直接访问和操作 DOM 元素或组件实例的场景。尽管 <code>refs</code> 提供了灵活性，但应谨慎使用，避免过度依赖。通常情况下，推荐使用 React 的状态管理和生命周期方法来处理大多数场景，<code>refs</code> 应该用于特定的需求。</p>
+<p><code>refs</code> 和 <code>useState</code> 是 React 中用于管理状态和引用的两种不同机制。它们各自有不同的用途和特性。以下是它们之间的主要区别：</p>
+<h3 id="1-用途">1. 用途
+</h3><ul>
+<li>
+<p><strong><code>useState</code></strong>：</p>
+<ul>
+<li>用于在函数组件中管理状态。</li>
+<li>当状态更新时，组件会重新渲染。</li>
+<li>适用于需要响应用户输入、异步请求或其他事件的场景。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>refs</code></strong>：</p>
+<ul>
+<li>用于访问和操作 DOM 元素或 React 组件实例。</li>
+<li>不会引起组件重新渲染。</li>
+<li>适用于需要直接操作 DOM、集成第三方库或管理焦点等场景。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-更新机制">2. 更新机制
+</h3><ul>
+<li><strong><code>useState</code></strong>：
+<ul>
+<li>使用 <code>setState</code> 函数更新状态。</li>
+<li>更新状态后，React 会重新渲染组件，反映最新的状态。</li>
+</ul>
+</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">Home</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 访问 URL_ADDRESS/#/about
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 触发重新渲染
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="优点">优点
-</h4><ul>
-<li>兼容性好，支持所有浏览器。</li>
-<li>易于分享，因为 URL 中没有 <code>#</code>，因此可以轻松分享链接。</li>
+</div><ul>
+<li><strong><code>refs</code></strong>：
+<ul>
+<li>直接通过 <code>ref</code> 对象访问 DOM 元素或组件实例。</li>
+<li>更新 <code>refs</code> 的值不会触发组件重新渲染。</li>
 </ul>
-<h4 id="缺点">缺点
-</h4><ul>
-<li>不利于 SEO，因为哈希值不会被包含在搜索引擎的索引中。</li>
-<li>不利于后端路由，因为哈希值不会被发送到服务器。</li>
-<li>不利于前端路由，因为哈希值的变化不会触发页面的刷新。</li>
+</li>
 </ul>
-<h3 id="2-history-模式">2. <strong>History 模式</strong>
-</h3><p>History 模式使用 HTML5 的 History API 来实现路由，它通过修改 URL 来实现路由跳转，从而避免了使用哈希值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">Home</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 访问 URL_ADDRESS/about
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;New Value&#39;</span><span class="p">;</span> <span class="c1">// 不会触发重新渲染
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="优点-1">优点
-</h4><ul>
-<li>易于分享，因为 URL 中没有 <code>#</code>，因此可以轻松分享链接。</li>
-<li>支持后端路由，因为服务器可以根据 URL 来返回相应的页面。</li>
-<li>支持前端路由，因为 URL 的变化会触发页面的刷新。</li>
+</div><h3 id="3-数据持久性">3. 数据持久性
+</h3><ul>
+<li>
+<p><strong><code>useState</code></strong>：</p>
+<ul>
+<li>状态在组件的生命周期内持久化，组件重新渲染时状态保持不变。</li>
+<li>状态可以是基本类型、对象或数组。</li>
 </ul>
-<h4 id="缺点-1">缺点
-</h4><ul>
-<li>兼容性稍差，需要浏览器支持 HTML5 的 History API。</li>
-<li>不利于 SEO，因为 URL 中没有 <code>#</code>，搜索引擎会认为这是一个普通的 URL，而不是锚点。</li>
+</li>
+<li>
+<p><strong><code>refs</code></strong>：</p>
+<ul>
+<li><code>refs</code> 的值在组件的生命周期内持久化，但不参与 React 的渲染过程。</li>
+<li>适合存储不需要引起渲染的值，如 DOM 引用或计时器 ID。</li>
 </ul>
-<h4 id="总结-6">总结
-</h4><p>Vue 的路由模式包括 <code>hash</code> 模式和 <code>history</code> 模式。<code>hash</code> 模式使用 URL 中的哈希值（#）来表示路由，而 <code>history</code> 模式使用 HTML5 的 History API 来实现路由。选择哪种模式取决于应用的需求和使用场景。</p>
-<h2 id="8-vue-的路由守卫有哪些">8. vue 的路由守卫有哪些？
-</h2><p>Vue 的路由守卫是指在路由跳转过程中执行的钩子函数，可以用来实现路由的权限控制、数据预加载等功能。Vue 提供了多种路由守卫，包括全局守卫、路由独享守卫和组件内守卫。</p>
-<h3 id="1-全局守卫">1. <strong>全局守卫</strong>
-</h3><p>全局守卫是指在路由跳转过程中，无论路由是跳转到哪个路由，都会执行的钩子函数。</p>
+</li>
+</ul>
+<h3 id="4-适用场景">4. 适用场景
+</h3><ul>
+<li>
+<p><strong><code>useState</code></strong>：</p>
+<ul>
+<li>适用于需要响应用户交互、表单输入、异步数据请求等场景。</li>
+<li>适合管理需要在 UI 中反映的状态。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>refs</code></strong>：</p>
+<ul>
+<li>适用于需要直接操作 DOM 元素、集成第三方库、管理焦点等场景。</li>
+<li>适合存储不需要在 UI 中反映的值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-性能">5. 性能
+</h3><ul>
+<li>
+<p><strong><code>useState</code></strong>：</p>
+<ul>
+<li>由于会引起重新渲染，频繁更新状态可能会影响性能。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>refs</code></strong>：</p>
+<ul>
+<li>由于不引起重新渲染，使用 <code>refs</code> 可以避免不必要的性能开销。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-9">总结
+</h3><ul>
+<li><strong><code>useState</code></strong> 是用于管理组件状态的钩子，适合需要响应用户交互的场景。</li>
+<li><strong><code>refs</code></strong> 是用于访问和操作 DOM 元素或组件实例的工具，适合需要直接操作 DOM 的场景。</li>
+</ul>
+<p>在实际开发中，选择使用 <code>useState</code> 还是 <code>refs</code> 取决于具体的需求和场景。通常情况下，优先使用 <code>useState</code> 来管理需要在 UI 中反映的状态，而在需要直接操作 DOM 或不需要引起渲染的情况下使用 <code>refs</code>。</p>
+<h2 id="类组件和函数组件有何异同">类组件和函数组件有何异同？
+</h2><p>React 类组件和函数组件有以下异同，且代表了不同的思想：</p>
+<h3 id="一类组件与函数组件的异同"><strong>一、类组件与函数组件的异同</strong>
+</h3><h4 id="1-定义方式">1. <strong>定义方式</strong>
+</h4><ul>
+<li><strong>类组件</strong>：使用 ES6 的 <code>class</code> 关键字定义，继承自 <code>React.Component</code>，需要实现 <code>render()</code> 方法来返回 JSX。
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 全局前置守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">router</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 在跳转到目标路由之前执行的操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">next</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 全局后置守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">router</span><span class="p">.</span><span class="nx">afterEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 在跳转到目标路由之后执行的操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">MyComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">Class</span> <span class="nx">Component</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="2-路由独享守卫">2. <strong>路由独享守卫</strong>
-</h3><p>路由独享守卫是指在特定的路由上执行的钩子函数，可以用来实现路由的权限控制、数据预加载等功能。</p>
+</div></li>
+<li><strong>函数组件</strong>：使用 JavaScript 函数定义，直接返回 JSX。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nb">Function</span> <span class="nx">Component</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="2-状态管理">2. <strong>状态管理</strong>
+</h4><ul>
+<li><strong>类组件</strong>：通过 <code>this.state</code> 管理组件状态，使用 <code>this.setState()</code> 更新状态。</li>
+<li><strong>函数组件</strong>：原先函数组件是无状态的，但自从 React 16.8 引入 Hooks 后，可以使用 <code>useState</code> 等 Hook 来管理状态。</li>
+</ul>
+<h4 id="3-生命周期">3. <strong>生命周期</strong>
+</h4><ul>
+<li><strong>类组件</strong>：提供了丰富的生命周期方法（如 <code>componentDidMount</code>、<code>componentDidUpdate</code>、<code>componentWillUnmount</code> 等）来处理组件的不同阶段。</li>
+<li><strong>函数组件</strong>：没有直接的生命周期方法，但可以使用 <code>useEffect</code> Hook 模拟生命周期行为。</li>
+</ul>
+<h4 id="4-this-关键字">4. <strong><code>this</code> 关键字</strong>
+</h4><ul>
+<li><strong>类组件</strong>：需要注意 <code>this</code> 的绑定问题，必须在构造函数中手动绑定，或者使用箭头函数解决。</li>
+<li><strong>函数组件</strong>：不存在 <code>this</code> 问题，代码更加简洁。</li>
+</ul>
+<h4 id="5-性能-1">5. <strong>性能</strong>
+</h4><ul>
+<li><strong>类组件</strong>：由于需要实例化，性能上会略低于函数组件。</li>
+<li><strong>函数组件</strong>：因为没有实例化过程，性能更优，尤其在引入 Hooks 后，可以满足大部分需求。</li>
+</ul>
+<h3 id="二代表的思想"><strong>二、代表的思想</strong>
+</h3><h4 id="1-类组件面向对象编程-oop">1. <strong>类组件：面向对象编程 (OOP)</strong>
+</h4><ul>
+<li>类组件符合面向对象编程的思想，通过 <code>class</code> 定义组件，可以封装状态、方法和生命周期，并支持继承。</li>
+<li>组件状态和行为都被封装在对象实例中，组件自身具有更强的独立性。</li>
+</ul>
+<h4 id="2-函数组件函数式编程-fp">2. <strong>函数组件：函数式编程 (FP)</strong>
+</h4><ul>
+<li>函数组件代表了函数式编程的思想，将组件视为纯函数，接收 <code>props</code> 作为输入，返回 UI 作为输出。</li>
+<li>Hooks 的引入加强了函数式编程风格，使得状态和副作用也可以通过 Hook 函数实现。</li>
+<li>函数组件更加简洁、直观，代码结构更清晰，避免了 <code>this</code> 的困扰，符合 React “UI 即函数”的理念。</li>
+</ul>
+<h3 id="总结-10"><strong>总结</strong>
+</h3><ul>
+<li>类组件和函数组件在实现方式、状态管理、生命周期和性能等方面有明显区别。</li>
+<li>类组件代表面向对象编程思想，强调封装和继承；而函数组件代表函数式编程思想，提倡函数的纯粹性和数据不可变性。</li>
+<li>在 Hooks 引入后，函数组件变得更加强大和灵活，React 官方也推荐优先使用函数组件进行开发。</li>
+</ul>
+<h2 id="react-setstate的调用原理">React setState的调用原理
+</h2><p>是的，您描述的场景基本上是正确的。在 React 中，<code>setState</code> 的调用是异步的，多个状态更新会被合并到一个更新队列中，直到 React 处理这些更新并进行重新渲染。以下是这个过程的详细说明：</p>
+<h3 id="1-状态更新的异步性">1. 状态更新的异步性
+</h3><p>当您调用 <code>setState</code> 方法时，React 不会立即更新组件的状态和重新渲染组件。相反，它会将状态更新请求放入一个更新队列中。这种设计的目的是为了提高性能，避免不必要的渲染。</p>
+<h3 id="2-更新队列的合并">2. 更新队列的合并
+</h3><p>如果在同一个事件处理函数中多次调用 <code>setState</code>，React 会将这些状态更新合并为一个更新。这意味着，如果您在一个方法中调用了多次 <code>setState</code>，React 会将这些更新合并为一个状态更新操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">});</span> <span class="c1">// 第一次更新
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">2</span> <span class="p">});</span> <span class="c1">// 第二次更新
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">});</span> <span class="c1">// 第三次更新
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，虽然调用了三次 <code>setState</code>，但 React 会将这些更新合并为一次更新，最终只会触发一次重新渲染。</p>
+<h3 id="3-处理更新队列">3. 处理更新队列
+</h3><p>React 会在合适的时机（例如事件处理完成后、定时器触发后等）处理更新队列。处理更新队列的过程如下：</p>
+<ul>
+<li><strong>合并状态更新</strong>：React 会合并所有在同一事件循环中的 <code>setState</code> 调用。</li>
+<li><strong>计算新的状态</strong>：React 会根据合并后的状态计算出新的状态。</li>
+<li><strong>触发重新渲染</strong>：一旦更新队列处理完成，React 会重新渲染组件，更新虚拟 DOM，并最终更新真实 DOM。</li>
+</ul>
+<h3 id="4-例子">4. 例子
+</h3><p>以下是一个完整的例子，展示了如何在一个事件处理函数中合并多个状态更新：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1257,152 +1997,34 @@
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由独享前置守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">beforeEnter</span><span class="o">:</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 在跳转到 /about 路由之前执行的操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">next</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 路由独享后置守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">afterEnter</span><span class="o">:</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 在跳转到 /about 路由之后执行的操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="3-组件内守卫">3. <strong>组件内守卫</strong>
-</h3><p>组件内守卫是指在组件内定义的钩子函数，可以用来实现组件内的权限控制、数据预加载等功能。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 组件内前置守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">template</span><span class="o">:</span> <span class="sb">`&lt;div&gt;Foo&lt;/div&gt;`</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">beforeRouteEnter</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 在跳转到该组件路由之前执行的操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">();</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">Counter</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 组件内后置守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">template</span><span class="o">:</span> <span class="sb">`&lt;div&gt;Foo&lt;/div&gt;`</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">beforeRouteLeave</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 在离开该组件路由之前执行的操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">});</span> <span class="c1">// 更新 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">2</span> <span class="p">});</span> <span class="c1">// 更新 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">});</span> <span class="c1">// 更新 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 这里的 count 最终会是 3，而不是 6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Count</span><span class="o">:</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">increment</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Increment</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="4-路由元信息">4. <strong>路由元信息</strong>
-</h3><p>路由元信息是指在路由配置中定义的额外信息，可以用来实现路由的权限控制、数据预加载等功能。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">requiresAuth</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 需要登录权限
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">requiresAdmin</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// 需要管理员权限
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 路由守卫
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">router</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">requiresAuth</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isAuthenticated</span><span class="p">())</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 如果需要登录权限，且用户未登录，则跳转到登录页面
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/login&#39;</span> <span class="p">});</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">requiresAdmin</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isAdmin</span><span class="p">())</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 如果需要管理员权限，且用户不是管理员，则跳转到 403 页面
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/403&#39;</span> <span class="p">});</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 如果不需要权限或权限验证通过，则继续跳转
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="5-导航守卫的执行顺序">5. <strong>导航守卫的执行顺序</strong>
-</h3><p>导航守卫的执行顺序是：全局前置守卫 -&gt; 路由独享前置守卫 -&gt; 组件内前置守卫 -&gt; 全局后置守卫 -&gt; 路由独享后置守卫 -&gt; 组件内后置守卫。</p>
-<h3 id="6-总结">6. 总结
-</h3><p>Vue 的路由守卫提供了多种方式来实现路由的权限控制、数据预加载等功能。全局守卫、路由独享守卫和组件内守卫可以根据需要进行配置，路由元信息可以用来定义路由的额外信息。导航守卫的执行顺序是：全局前置守卫 -&gt; 路由独享前置守卫 -&gt; 组件内前置守卫 -&gt; 全局后置守卫 -&gt; 路由独享后置守卫 -&gt; 组件内后置守卫。</p>
-<h2 id="9-vue-的路由懒加载有哪些方式">9. vue 的路由懒加载有哪些方式？
-</h2><p>Vue 的路由懒加载是指在路由配置中使用动态导入的方式来加载路由组件，从而减少应用的初始加载时间。Vue 提供了多种方式来实现路由懒加载，包括异步组件、异步路由组件和异步路由。</p>
-<h3 id="1-异步组件">1. <strong>异步组件</strong>
-</h3><p>异步组件是指在路由配置中使用 <code>import()</code> 函数来动态导入路由组件，从而实现路由懒加载。</p>
+</div><h3 id="5-使用函数式更新">5. 使用函数式更新
+</h3><p>为了确保每次更新都基于最新的状态，您可以使用函数式更新：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1411,455 +2033,26 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/About.vue&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">prevState</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">prevState</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">prevState</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">prevState</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">2</span> <span class="p">}));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">prevState</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">prevState</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">}));</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 这里的 count 最终会是 6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="2-异步路由组件">2. <strong>异步路由组件</strong>
-</h3><p>异步路由组件是指在路由配置中使用 <code>component</code> 属性来定义异步路由组件，从而实现路由懒加载。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/About.vue&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="3-异步路由">3. <strong>异步路由</strong>
-</h3><p>异步路由是指在路由配置中使用 <code>children</code> 属性来定义异步路由，从而实现路由懒加载。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;child1&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/Child1.vue&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;child2&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/Child2.vue&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="10-vue-路由的原理是什么">10. vue 路由的原理是什么？
-</h2><ol>
-<li>创建的页面路由会与该页面形成一个路由表（key value形式，key为该路由，value为该路由对应的页面组件）；</li>
-<li><code>vue-router</code> 会监听浏览器地址栏的变化，并将地址栏的值与路由表进行匹配，匹配成功后，将对应的页面组件渲染到页面中；</li>
-<li>然而当浏览器的中的路径发生变化时，它会向服务器请求资源，为了避免这种情况，vue 采用了两种方式来避免这种情况的发生： <code>hash</code> 和 <code>history</code>；</li>
-<li>hash 模式：hash 模式是通过在 URL 的末尾添加一个哈希值（#）来实现的，例如：`URL_ADDRESS URL 中的哈希值发生变化时，浏览器不会向服务器发送请求，而是通过 JavaScript 来处理哈希值的变化，从而实现页面的跳转。</li>
-<li>history 模式：利用了pushState() 和replaceState() 方法，实现往history中添加新的浏览记录、或替换对应的浏览记录。但是设置了history模式，需要</li>
-</ol>
-<h2 id="11-vue3-中的reactive-和-ref-的区别">11. vue3 中的reactive 和 ref 的区别？
-</h2><h3 id="1-数据类型">1. 数据类型
+</div><h3 id="总结-11">总结
 </h3><ul>
-<li><code>ref</code>主要用于创建基本数据类型的响应式数据（如字符串，数字，布尔值等），也可以用来包装一个引用类型的数据（如对象或数组）。当使用 <code>ref</code> 包装数据时，访问或修改这个数据需要通过 <code>.value</code> 属性。</li>
-<li><code>reactive</code> 则直接将一个对象或者数据变成响应式的，不需要通过 <code>.value</code> 属性访问或修改。可以直接使用对象属性或数组方法。</li>
+<li>React 的 <code>setState</code> 是异步的，多个状态更新会被合并到一个更新队列中。</li>
+<li>处理更新队列时，React 会合并状态更新并触发一次重新渲染。</li>
+<li>使用函数式更新可以确保每次更新都基于最新的状态。</li>
 </ul>
-<h3 id="2-追踪依赖">2. 追踪依赖
-</h3><ul>
-<li>使用 ref 创建的响应式数据，内部会转换成一个对象，并且添加了一个 .value 属性。这意味着在模板中或者计算属性中使用它时，需要以 .value 的形式来访问。</li>
-<li>reactive 直接返回原始对象，因此可以像操作普通对象一样操作它，这使得它在处理复杂数据结构时更为方便。</li>
-</ul>
-<h3 id="3-深层响应式">3. 深层响应式
-</h3><ul>
-<li><code>ref</code> 只能包装一层数据，如果要包装多层数据，需要使用 <code>ref</code> 包装每层数据，例如：<code>ref({a:1,b:{c:2}})</code>。</li>
-<li><code>reactive</code>  默认会递归地让对象内部的所有属性都变成响应式的，即它是深层响应式的。</li>
-</ul>
-<h3 id="4-性能考虑">4. 性能考虑
-</h3><ul>
-<li>对于大量的对象或复杂的嵌套数据结构，使用 reactive 可能会更高效，因为它避免了 ref 需要多次调用 .value 的问题。</li>
-<li>对于简单的数据，如字符串、数字、布尔值等，使用 ref 可能更方便，因为它不需要额外的开销。ref 更适合单个值或简单数据结构的响应式处理。</li>
-</ul>
-<h3 id="5-使用场景">5. 使用场景
-</h3><ul>
-<li>ref 更适合用于那些会被用在不同作用域中的数据，或者是需要在组件之间共享的状态管理。</li>
-<li>reactive 更适合用于那些需要深度响应式处理的数据，例如对象和数组等。</li>
-</ul>
-<h3 id="总结来说">总结来说
-</h3><p>总结来说，选择 ref 还是 reactive 主要看具体的应用场景和个人偏好。对于简单的值或者需要在多个组件间共享的状态，ref 可能更加合适；而对于复杂的对象结构或者组件内部的状态管理，reactive 通常更加方便。</p>
-<h2 id="12-vue3-中的reactive-是如何实现的">12. vue3 中的reactive 是如何实现的？
-</h2><p>在 Vue 3 中，reactive 是通过 Proxy 对象来实现的。当使用 reactive 创建一个对象时，Vue 会创建一个 Proxy 对象，并将其作为返回值。这个 Proxy 对象将拦截对对象的所有操作，包括读取和写入属性，并通过调用对应的响应式函数来处理。这样，当我们访问或修改这个对象的属性时，Vue 会自动更新视图。</p>
-<h2 id="13-vue3-中的ref-是如何实现的">13. vue3 中的ref 是如何实现的？
-</h2><p>在 Vue 3中，ref 是通过 createRef 函数来实现的。这个函数接受一个参数，这个参数可以是一个基本数据类型（如字符串、数字、布尔值等）或者是一个对象。如果参数是一个对象，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始对象。如果参数是一个基本数据类型，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始数据。</p>
-<h2 id="14-vue2-中数据双向绑定为什么使用的objectdefineproperty-而不是objectdefineproperties">14. vue2 中，数据双向绑定为什么使用的Object.defineProperty 而不是Object.defineProperties?
-</h2><p>主要原因在于以下几个方面：</p>
-<ol>
-<li>递归劫持 vs 单次批量定义
-在 Vue 2 的响应式系统中，不仅仅是对对象的顶层属性进行劫持，还需要递归地劫持嵌套的对象属性。例如，对于一个深层嵌套的对象，Vue 2 需要递归遍历每一层属性，对每个属性都单独进行 Object.defineProperty 操作。这种递归操作要求灵活性，因为 Vue 不仅要处理简单对象，还要处理数组、嵌套对象等复杂结构。</li>
-</ol>
-<p>Object.defineProperty 允许逐个属性地进行递归劫持，这使得 Vue 可以处理每个属性、每一层级的递归操作。
-Object.defineProperties 则是一次性定义多个属性，缺少了递归的机制。如果使用 Object.defineProperties，当一个属性是嵌套对象时，无法方便地递归对嵌套属性进行响应式处理。
-2. 数组和对象的特殊处理
-Vue 2 对数组和对象的响应式处理方式不同。Vue 2 使用 Object.defineProperty 来对对象的属性进行拦截，但对数组的操作（比如 push、pop 等方法）则是通过函数重写的方式来进行劫持。如果使用 Object.defineProperties，在处理数组时并不适用。</p>
-<ol start="3">
-<li>
-<p>灵活性
-Object.defineProperty 的逐个属性劫持方法非常灵活，可以在处理不同类型的数据结构（比如数组、对象、普通数据类型）时进行细粒度的控制。例如，如果一个属性是对象，Vue 会递归进行深层的劫持；而如果一个属性是原始类型（比如 number 或 string），Vue 就不会递归。这种灵活的处理方式在 Vue 的数据响应式设计中是非常关键的。</p>
-</li>
-<li>
-<p>性能考虑
-虽然 Object.defineProperties 允许一次性定义多个属性，但 Vue 的数据响应式系统需要对每一个属性进行深度处理。如果使用 Object.defineProperties，在递归嵌套对象时，依然需要在每层都调用它，这会增加性能上的开销。相反，Object.defineProperty 可以让 Vue 更加精细化地控制每个属性的处理和递归。</p>
-</li>
-<li>
-<p>每个属性的特殊拦截逻辑
-虽然大部分属性的 getter 和 setter 逻辑是一样的，但 Vue 在某些情况下需要对特定属性进行特殊处理。比如对于数组的某些变更方法（如 push、pop），Vue 需要重写这些方法，以确保数组变更能被检测到。这种情况下，Object.defineProperty 逐个属性地定义 getter 和 setter 更加灵活。</p>
-</li>
-</ol>
-<p>总结
-Vue 2 使用 Object.defineProperty 而不是 Object.defineProperties，是因为 Vue 的响应式系统需要递归处理深层嵌套的对象，还要处理不同类型的数据结构（比如数组）。Object.defineProperty 可以逐个属性地进行递归、灵活地处理嵌套对象和数组变更。而 Object.defineProperties 虽然允许一次性定义多个属性，但在 Vue 这样的响应式系统中不具备足够的灵活性，也无法处理递归的复杂场景。</p>
-<p>所以，Vue 选择 Object.defineProperty 主要是出于灵活性、递归深层嵌套处理和性能上的考虑。</p>
-<h2 id="15-proxy-相对于-objectdefineproperty-有哪些优势">15. proxy 相对于 Object.defineProperty 有哪些优势？
-</h2><p>Proxy 相对于 Object.defineProperty 确实有许多优势。让我们详细比较一下：</p>
-<ol>
-<li>
-<p>更全面的拦截能力：</p>
-<ul>
-<li>Proxy 可以拦截多达 13 种不同的基本操作，包括属性查找、赋值、删除、函数调用等。</li>
-<li>Object.defineProperty 主要用于拦截属性的读取（get）和设置（set）操作。</li>
-</ul>
-</li>
-<li>
-<p>数组操作：</p>
-<ul>
-<li>Proxy 可以直接监听数组的变化，包括通过索引设置元素、修改数组长度等操作。</li>
-<li>Object.defineProperty 无法直接监听数组索引和长度的变化，需要额外的包装和处理。</li>
-</ul>
-</li>
-<li>
-<p>动态属性：</p>
-<ul>
-<li>Proxy 可以监听整个对象，包括新添加的属性。</li>
-<li>Object.defineProperty 只能监听对象的已存在属性，新添加的属性需要额外处理。</li>
-</ul>
-</li>
-<li>
-<p>性能：</p>
-<ul>
-<li>对于大型对象，Proxy 可能会有更好的性能，因为它不需要递归遍历对象的所有属性。</li>
-<li>Object.defineProperty 需要遍历对象的每个属性并为其设置 getter 和 setter，这在大型对象上可能会有性能问题。</li>
-</ul>
-</li>
-<li>
-<p>更简洁的代码：</p>
-<ul>
-<li>Proxy 的使用通常leads to更简洁、更易于理解的代码。</li>
-<li>Object.defineProperty 往往需要更多的样板代码，特别是在处理嵌套对象时。</li>
-</ul>
-</li>
-<li>
-<p>原始对象不被修改：</p>
-<ul>
-<li>Proxy 创建一个原始对象的代理，不直接修改原始对象。</li>
-<li>Object.defineProperty 直接修改原始对象。</li>
-</ul>
-</li>
-<li>
-<p>可撤销代理：</p>
-<ul>
-<li>Proxy 提供 <code>Proxy.revocable()</code>，允许创建可撤销的代理。</li>
-<li>Object.defineProperty 没有类似的功能。</li>
-</ul>
-</li>
-<li>
-<p>更好的错误捕获：</p>
-<ul>
-<li>Proxy 可以捕获并抛出更多类型的错误，提供更好的调试体验。</li>
-</ul>
-</li>
-<li>
-<p>支持更多数据类型：</p>
-<ul>
-<li>Proxy 可以代理各种类型的对象，包括数组、函数、甚至是 DOM 节点。</li>
-<li>Object.defineProperty 主要用于对象的属性。</li>
-</ul>
-</li>
-<li>
-<p>元编程能力：</p>
-<ul>
-<li>Proxy 提供了强大的元编程能力，允许你自定义对象的基本行为。</li>
-</ul>
-</li>
-</ol>
-<p>示例对比：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 使用 Object.defineProperty
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">get</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Getting a&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_a</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">set</span><span class="p">(</span><span class="nx">newVal</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Setting a&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_a</span> <span class="o">=</span> <span class="nx">newVal</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 使用 Proxy
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">property</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Getting </span><span class="si">${</span><span class="nx">property</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">target</span><span class="p">[</span><span class="nx">property</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">property</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Setting </span><span class="si">${</span><span class="nx">property</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">target</span><span class="p">[</span><span class="nx">property</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在这个例子中，Proxy 版本可以拦截所有属性的访问和设置，而不仅仅是 &lsquo;a&rsquo;。</p>
-<p>总的来说，Proxy 提供了更强大、更灵活的对象操作拦截能力，这也是为什么 Vue 3 选择使用 Proxy 来重写其响应式系统的原因。然而，Proxy 的一个主要缺点是它不支持 IE 浏览器，这在某些需要兼容旧版浏览器的项目中可能是一个问题。</p>
-<h2 id="16-vue-相对于-react-有哪些优势">16. vue 相对于 react 有哪些优势？
-</h2><p>相对于 React，Vue 在方法层面具有以下优势：</p>
-<h3 id="1-更简洁的模板语法">1. <strong>更简洁的模板语法</strong>
-</h3><ul>
-<li><strong>Vue</strong> 使用的是模板语法（Template），它类似于 HTML，可以让开发者直观地绑定数据和事件。Vue 的模板语法对大部分前端开发者来说更加容易上手，因为它使用的是基于现有 HTML 扩展的语法，像指令（<code>v-bind</code>, <code>v-model</code>, <code>v-if</code>）等来实现功能。</li>
-<li><strong>React</strong> 采用 JSX 语法，虽然功能强大，但对不熟悉 JavaScript 扩展语法的开发者来说，可能不太直观。React 通过在 JavaScript 中混合 HTML 元素来构建视图，开发者需要更多地掌握 JavaScript。</li>
-</ul>
-<h3 id="2-双向数据绑定">2. <strong>双向数据绑定</strong>
-</h3><ul>
-<li><strong>Vue</strong> 默认支持 <strong>双向数据绑定</strong>，通过 <code>v-model</code> 可以非常方便地实现表单数据的双向同步，尤其在表单处理和用户输入交互上表现得更为简洁。Vue 的双向绑定通过 <code>getter</code> 和 <code>setter</code> 自动更新 DOM。</li>
-<li><strong>React</strong> 不提供内置的双向数据绑定，开发者需要手动管理表单控件的状态，处理表单数据同步的逻辑，通常需要写更多的代码。</li>
-</ul>
-<h3 id="3-计算属性computed-properties">3. <strong>计算属性（Computed Properties）</strong>
-</h3><ul>
-<li><strong>Vue</strong> 提供了计算属性（<code>computed</code>），用于基于已有的状态派生出新的状态，并且自动追踪依赖关系，避免重复计算。计算属性使得代码更加直观简洁，尤其适用于在视图中计算和处理数据。</li>
-<li><strong>React</strong> 没有提供类似计算属性的功能，开发者需要在 JSX 中直接计算状态或者通过 Hooks 手动实现计算和依赖追踪，这往往增加了代码的复杂性。</li>
-</ul>
-<h3 id="4-内置的指令和指令简化">4. <strong>内置的指令和指令简化</strong>
-</h3><ul>
-<li><strong>Vue</strong> 提供了丰富的指令，例如 <code>v-show</code>, <code>v-if</code>, <code>v-for</code>, <code>v-bind</code>, <code>v-on</code> 等，使得常见的 DOM 操作和事件绑定变得简单明了。这些指令让开发者无需手动处理 DOM 或事件。</li>
-<li><strong>React</strong> 没有内置这些指令，开发者需要通过 JavaScript 或 JSX 语法来实现，逻辑上相对复杂。</li>
-</ul>
-<h3 id="5-渐进式框架">5. <strong>渐进式框架</strong>
-</h3><ul>
-<li><strong>Vue</strong> 是一个渐进式框架，提供了更灵活的集成方式。开发者可以将 Vue 作为一个库来为现有项目添加交互性，或者将其扩展为一个完整的前端框架，而不会像 React 一样要求从头到尾采用单一的方式。</li>
-<li><strong>React</strong> 主要作为视图层的库，不提供完整的框架式功能，开发者通常需要引入其他库（如 Redux, React Router）来构建复杂的应用。</li>
-</ul>
-<h3 id="6-vue-cli-对于项目的支持">6. <strong>Vue CLI 对于项目的支持</strong>
-</h3><ul>
-<li><strong>Vue CLI</strong> 提供了开箱即用的项目配置模板，能够快速生成 Vue 项目结构，自动支持 TypeScript、Babel、Linting 等配置。</li>
-<li><strong>React</strong> 虽然有 <strong>Create React App</strong> 作为项目初始化工具，但在某些特定项目需求下，Vue CLI 提供了更多的配置灵活性和插件支持。</li>
-</ul>
-<h3 id="7-更好的组件通信基于-props-和-emit-的模式">7. <strong>更好的组件通信（基于 <code>props</code> 和 <code>emit</code> 的模式）</strong>
-</h3><ul>
-<li><strong>Vue</strong> 中，父子组件通信通过 <code>props</code> 和 <code>emit</code> 非常直观，遵循单向数据流。同时，Vue 3 提供了 <code>provide/inject</code> 机制，进一步简化了多层嵌套组件之间的通信。</li>
-<li><strong>React</strong> 主要通过 <code>props</code> 来实现父子组件通信，在更复杂的情况下，可能需要引入上下文 API 或其他状态管理工具。</li>
-</ul>
-<h3 id="8-动画过渡支持">8. <strong>动画过渡支持</strong>
-</h3><ul>
-<li><strong>Vue</strong> 原生支持动画和过渡效果，通过 <code>transition</code> 和 <code>transition-group</code> 组件，开发者可以轻松为元素添加动画效果。</li>
-<li><strong>React</strong> 没有内置的动画功能，通常需要引入第三方库如 <code>react-transition-group</code> 或 <code>framer-motion</code> 来实现。</li>
-</ul>
-<h3 id="总结-7">总结：
-</h3><p>Vue 在模板语法、双向绑定、计算属性、指令支持以及 CLI 工具等方面提供了更直观和简洁的解决方案，特别是在项目规模相对较小时，Vue 的学习曲线更平滑，开发体验更顺畅。而 React 的灵活性和生态系统广度适合构建更大型、复杂的应用，但需要更强的 JavaScript 基础。</p>
-<p>这并不是说 Vue 绝对优于 React，而是两者各有其适用场景，Vue 的方法和设计理念让它在某些开发场景中表现得更加简洁直观。</p>
-<h2 id="18-vue-组件在什么时候会执行组件销毁是当一个页面跳转到另一个页面时之前的页面的组件都会被销毁吗">18. vue 组件在什么时候会执行组件销毁？是当一个页面跳转到另一个页面时，之前的页面的组件都会被销毁吗？
-</h2><p>这是一个很好的问题，涉及到 Vue 组件的生命周期和路由管理。让我们详细探讨一下：</p>
-<ol>
-<li>组件销毁的时机</li>
-</ol>
-<p>Vue 组件在以下情况下会被销毁：</p>
-<p>a. 当组件被从 DOM 中移除时。
-b. 当使用 v-if 指令且条件变为 false 时。
-c. 当使用 v-for 指令且对应的数组项被移除时。
-d. 当组件的父组件被销毁时。</p>
-<ol start="2">
-<li>页面跳转时的组件销毁</li>
-</ol>
-<p>关于页面跳转时组件是否被销毁，这取决于你的路由配置和应用结构：</p>
-<p>a. 单页应用（SPA）中的普通路由切换：</p>
-<ul>
-<li>通常情况下，当从一个页面跳转到另一个页面时，前一个页面的组件会被销毁，新页面的组件会被创建。</li>
-<li>这是因为在默认情况下，Vue Router 会在路由变化时卸载旧的组件，并挂载新的组件。</li>
-</ul>
-<p>b. 使用 <keep-alive> 组件：</p>
-<ul>
-<li>如果你使用了 <keep-alive> 包裹路由组件，则组件在切换时不会被销毁，而是会被缓存。</li>
-<li>这种情况下，组件会触发 deactivated 钩子而不是 destroyed 钩子，当再次进入时会触发 activated 钩子。</li>
-</ul>
-<p>c. 嵌套路由：</p>
-<ul>
-<li>在嵌套路由的情况下，只有发生变化的部分会被销毁和重新创建，而共享的父级组件会保持不变。</li>
-</ul>
-<p>d. 动态组件：</p>
-<ul>
-<li>使用 <component :is="componentName"> 的动态组件，在切换时默认也会销毁旧组件并创建新组件，除非使用 <keep-alive>。</li>
-</ul>
-<ol start="3">
-<li>示例</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">App</span><span class="p">.</span><span class="nx">vue</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">router-view</span><span class="p">&gt;&lt;/</span><span class="nt">router-view</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">使用</span> <span class="nx">keep</span><span class="o">-</span><span class="nx">alive</span> <span class="nx">的情况</span> <span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">keep-alive</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">router-view</span><span class="p">&gt;&lt;/</span><span class="nt">router-view</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">keep-alive</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="4">
-<li>验证组件销毁</li>
-</ol>
-<p>你可以在组件中添加 destroyed 生命周期钩子来验证组件是否被销毁：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">destroyed</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Component destroyed&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="5">
-<li>注意事项</li>
-</ol>
-<ul>
-<li>组件销毁时，所有的事件监听器和子组件也会被销毁。</li>
-<li>如果在组件中设置了定时器或添加了全局事件监听，应该在 beforeDestroy 或 destroyed 钩子中清理它们，以防止内存泄漏。</li>
-</ul>
-<ol start="6">
-<li>性能考虑</li>
-</ol>
-<ul>
-<li>频繁地销毁和重建组件可能会影响性能。在某些情况下，使用 <keep-alive> 可以提高性能和用户体验。</li>
-<li>但是过度使用 <keep-alive> 也可能导致内存占用增加，需要权衡。</li>
-</ul>
-<ol start="7">
-<li>Vue 3 的变化</li>
-</ol>
-<p>在 Vue 3 中，生命周期钩子有些变化：</p>
-<ul>
-<li>destroyed 改名为 unmounted</li>
-<li>beforeDestroy 改名为 beforeUnmount</li>
-</ul>
-<p>总结：
-在默认情况下，当在单页应用中从一个页面跳转到另一个页面时，前一个页面的组件通常会被销毁。但这个行为可以通过 <keep-alive>、嵌套路由等方式来改变。了解组件的生命周期和销毁机制对于正确管理资源、优化性能和防止内存泄漏非常重要。</p>
-
+<p>这种机制使得 React 在处理状态更新时更加高效，避免了不必要的渲染和性能开销。</p>
+<h2 id="完整的说一下当路由进入到当前的react页面时整个流程是什么">完整的说一下当路由进入到当前的react页面时，整个流程是什么？
+</h2><h2 id="heading">
+</h2>
 </section>
 
 
