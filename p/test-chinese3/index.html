@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/interview/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=interview/livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是vue的面试题汇总">
+<title>vue 面试题汇总2</title>
+
+<link rel='canonical' href='http://localhost:1313/interview/p/test-chinese3/'>
+
+<link rel="stylesheet" href="/interview/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="vue 面试题汇总2">
+<meta property='og:description' content="这是vue的面试题汇总">
+<meta property='og:url' content='http://localhost:1313/interview/p/test-chinese3/'>
+<meta property='og:site_name' content='Trinyoung'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-09-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-09-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="vue 面试题汇总2">
+<meta name="twitter:description" content="这是vue的面试题汇总">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/interview/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/interview/img/avatar_hu6696643109827554558.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/interview">Trinyoung</a></h1>
+            <h2 class="site-description">欢迎来到我的博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/interview/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/interview/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/interview/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/interview/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/interview/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-vue-中keepalive-的原理">1. vue 中keepAlive 的原理</a>
+      <ol>
+        <li><a href="#keep-alive-的工作原理"><code>keep-alive</code> 的工作原理</a></li>
+        <li><a href="#keep-alive-的常用属性"><code>keep-alive</code> 的常用属性</a></li>
+        <li><a href="#使用示例">使用示例</a></li>
+        <li><a href="#简单的示意代码">简单的示意代码</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-vue-中diff算法的原理">2. vue 中diff算法的原理</a>
+      <ol>
+        <li><a href="#diff-算法的核心思想">Diff 算法的核心思想</a></li>
+        <li><a href="#diff-算法的具体步骤">Diff 算法的具体步骤</a></li>
+        <li><a href="#diff-算法的复杂度">Diff 算法的复杂度</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-vue-的核心概念是什么">3. vue 的核心概念是什么？</a>
+      <ol>
+        <li><a href="#1-数据驱动视图">1. 数据驱动视图</a></li>
+        <li><a href="#2-组件化">2. 组件化</a></li>
+        <li><a href="#3-其他核心概念">3. 其他核心概念</a></li>
+        <li><a href="#总结-2">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#4-vue-的双向绑定的原理是什么vue2和vue3的区别是什么">4. vue 的双向绑定的原理是什么？vue2和vue3的区别是什么？</a>
+      <ol>
+        <li><a href="#vue-2-的数据双向绑定原理">Vue 2 的数据双向绑定原理</a>
+          <ol>
+            <li><a href="#1-observer-监听器">1. <strong>Observer 监听器</strong></a></li>
+            <li><a href="#2-dep-和-watcher">2. <strong>Dep 和 Watcher</strong></a></li>
+            <li><a href="#3-数据流动">3. <strong>数据流动</strong></a></li>
+            <li><a href="#局限性"><strong>局限性</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#vue-3-的数据双向绑定原理">Vue 3 的数据双向绑定原理</a>
+          <ol>
+            <li><a href="#1-proxy-与-reflect">1. <strong>Proxy 与 Reflect</strong></a></li>
+            <li><a href="#2-reactivity-模块">2. <strong>Reactivity 模块</strong></a></li>
+            <li><a href="#3-依赖追踪和触发">3. <strong>依赖追踪和触发</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#vue-2-与-vue-3-的主要区别">Vue 2 与 Vue 3 的主要区别</a></li>
+        <li><a href="#总结-3">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#5-vue-的生命周期有哪些">5. vue 的生命周期有哪些？</a>
+      <ol>
+        <li><a href="#1-创建阶段creation-phase">1. <strong>创建阶段（Creation Phase）</strong></a></li>
+        <li><a href="#2-挂载阶段mounting-phase">2. <strong>挂载阶段（Mounting Phase）</strong></a></li>
+        <li><a href="#3-更新阶段updating-phase">3. <strong>更新阶段（Updating Phase）</strong></a></li>
+        <li><a href="#4-销毁阶段destruction-phase">4. <strong>销毁阶段（Destruction Phase）</strong></a></li>
+        <li><a href="#5-vue-3-特有的生命周期钩子">5. <strong>Vue 3 特有的生命周期钩子</strong></a></li>
+        <li><a href="#总结-4">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#6-vue-的组件通信方式有哪些">6. vue 的组件通信方式有哪些？</a>
+      <ol>
+        <li><a href="#1-父子组件通信">1. <strong>父子组件通信</strong></a>
+          <ol>
+            <li><a href="#11-props-传递">1.1 <code>Props</code> 传递</a></li>
+            <li><a href="#12-event-触发">1.2 <code>Event</code> 触发</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-兄弟组件通信">2. <strong>兄弟组件通信</strong></a>
+          <ol>
+            <li><a href="#21-通过父组件作为中介">2.1 通过父组件作为中介</a></li>
+            <li><a href="#22-事件总线-event-bus">2.2 事件总线 (Event Bus)</a></li>
+            <li><a href="#23-vuex-状态管理">2.3 Vuex (状态管理)</a></li>
+          </ol>
+        </li>
+        <li><a href="#3-跨层级组件通信">3. <strong>跨层级组件通信</strong></a>
+          <ol>
+            <li><a href="#31-provide-和-inject">3.1 <code>Provide</code> 和 <code>Inject</code></a></li>
+            <li><a href="#32-vuex">3.2 Vuex</a></li>
+          </ol>
+        </li>
+        <li><a href="#4-其他通信方式">4. <strong>其他通信方式</strong></a>
+          <ol>
+            <li><a href="#41-attrs-和-listeners">4.1 <code>$attrs</code> 和 <code>$listeners</code></a></li>
+            <li><a href="#42-parent-和-children">4.2 <code>$parent</code> 和 <code>$children</code></a></li>
+            <li><a href="#43-ref-和-refs">4.3 <code>Ref</code> 和 <code>$refs</code></a></li>
+          </ol>
+        </li>
+        <li><a href="#总结-5">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#7-vue-的路由模式有哪些">7. vue 的路由模式有哪些？</a>
+      <ol>
+        <li><a href="#1-hash-模式">1. <strong>Hash 模式</strong></a>
+          <ol>
+            <li><a href="#优点">优点</a></li>
+            <li><a href="#缺点">缺点</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-history-模式">2. <strong>History 模式</strong></a>
+          <ol>
+            <li><a href="#优点-1">优点</a></li>
+            <li><a href="#缺点-1">缺点</a></li>
+            <li><a href="#总结-6">总结</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#8-vue-的路由守卫有哪些">8. vue 的路由守卫有哪些？</a>
+      <ol>
+        <li><a href="#1-全局守卫">1. <strong>全局守卫</strong></a></li>
+        <li><a href="#2-路由独享守卫">2. <strong>路由独享守卫</strong></a></li>
+        <li><a href="#3-组件内守卫">3. <strong>组件内守卫</strong></a></li>
+        <li><a href="#4-路由元信息">4. <strong>路由元信息</strong></a></li>
+        <li><a href="#5-导航守卫的执行顺序">5. <strong>导航守卫的执行顺序</strong></a></li>
+        <li><a href="#6-总结">6. 总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#9-vue-的路由懒加载有哪些方式">9. vue 的路由懒加载有哪些方式？</a>
+      <ol>
+        <li><a href="#1-异步组件">1. <strong>异步组件</strong></a></li>
+        <li><a href="#2-异步路由组件">2. <strong>异步路由组件</strong></a></li>
+        <li><a href="#3-异步路由">3. <strong>异步路由</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#10-vue-路由的原理是什么">10. vue 路由的原理是什么？</a></li>
+    <li><a href="#11-vue3-中的reactive-和-ref-的区别">11. vue3 中的reactive 和 ref 的区别？</a>
+      <ol>
+        <li><a href="#1-数据类型">1. 数据类型</a></li>
+        <li><a href="#2-追踪依赖">2. 追踪依赖</a></li>
+        <li><a href="#3-深层响应式">3. 深层响应式</a></li>
+        <li><a href="#4-性能考虑">4. 性能考虑</a></li>
+        <li><a href="#5-使用场景">5. 使用场景</a></li>
+        <li><a href="#总结来说">总结来说</a></li>
+      </ol>
+    </li>
+    <li><a href="#12-vue3-中的reactive-是如何实现的">12. vue3 中的reactive 是如何实现的？</a></li>
+    <li><a href="#13-vue3-中的ref-是如何实现的">13. vue3 中的ref 是如何实现的？</a></li>
+    <li><a href="#14-vue2-中数据双向绑定为什么使用的objectdefineproperty-而不是objectdefineproperties">14. vue2 中，数据双向绑定为什么使用的Object.defineProperty 而不是Object.defineProperties?</a></li>
+    <li><a href="#15-proxy-相对于-objectdefineproperty-有哪些优势">15. proxy 相对于 Object.defineProperty 有哪些优势？</a></li>
+    <li><a href="#16-vue-相对于-react-有哪些优势">16. vue 相对于 react 有哪些优势？</a>
+      <ol>
+        <li><a href="#1-更简洁的模板语法">1. <strong>更简洁的模板语法</strong></a></li>
+        <li><a href="#2-双向数据绑定">2. <strong>双向数据绑定</strong></a></li>
+        <li><a href="#3-计算属性computed-properties">3. <strong>计算属性（Computed Properties）</strong></a></li>
+        <li><a href="#4-内置的指令和指令简化">4. <strong>内置的指令和指令简化</strong></a></li>
+        <li><a href="#5-渐进式框架">5. <strong>渐进式框架</strong></a></li>
+        <li><a href="#6-vue-cli-对于项目的支持">6. <strong>Vue CLI 对于项目的支持</strong></a></li>
+        <li><a href="#7-更好的组件通信基于-props-和-emit-的模式">7. <strong>更好的组件通信（基于 <code>props</code> 和 <code>emit</code> 的模式）</strong></a></li>
+        <li><a href="#8-动画过渡支持">8. <strong>动画过渡支持</strong></a></li>
+        <li><a href="#总结-7">总结：</a></li>
+      </ol>
+    </li>
+    <li><a href="#18-vue-组件在什么时候会执行组件销毁是当一个页面跳转到另一个页面时之前的页面的组件都会被销毁吗">18. vue 组件在什么时候会执行组件销毁？是当一个页面跳转到另一个页面时，之前的页面的组件都会被销毁吗？</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/interview/categories/vue/" >
+                Vue
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/interview/p/test-chinese3/">vue 面试题汇总2</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            这是vue的面试题汇总
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 09, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 28 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1-vue-中keepalive-的原理">1. vue 中keepAlive 的原理
+</h2><p>在 Vue 中，<code>keep-alive</code> 是一个内置组件，用于缓存不活动的组件实例，从而在它们重新激活时避免重新渲染。这个功能特别适合需要在不同视图之间切换时保留组件状态的场景，如路由组件切换时保留表单输入数据、滚动位置等。</p>
+<h3 id="keep-alive-的工作原理"><code>keep-alive</code> 的工作原理
+</h3><p><code>keep-alive</code> 组件通过以下机制实现组件的缓存和复用：</p>
+<ol>
+<li>
+<p><strong>组件缓存</strong>：</p>
+<ul>
+<li>当某个组件被包裹在 <code>keep-alive</code> 中，并且被移除（如路由切换、条件渲染），<code>keep-alive</code> 不会销毁这个组件的实例，而是将其缓存起来。</li>
+<li>当该组件再次被激活时，<code>keep-alive</code> 会直接从缓存中取出组件实例，而不是重新创建和渲染组件。这样可以节省性能开销。</li>
+</ul>
+</li>
+<li>
+<p><strong>缓存管理</strong>：</p>
+<ul>
+<li><code>keep-alive</code> 通过 <code>cache</code> 和 <code>keys</code> 属性来管理缓存的组件实例。</li>
+<li><code>cache</code> 是一个对象，存储了所有被缓存的组件实例。它的键是组件的 <code>key</code> 或 <code>cid</code>（组件的唯一标识符）。</li>
+<li><code>keys</code> 是一个数组，记录了缓存中的组件键的顺序，<code>keep-alive</code> 通过这个顺序来决定哪个组件需要被缓存或移除。</li>
+</ul>
+</li>
+<li>
+<p><strong>生命周期钩子</strong>：</p>
+<ul>
+<li>被 <code>keep-alive</code> 缓存的组件实例不会触发 <code>created</code>、<code>mounted</code> 等生命周期钩子。但会新增两个生命周期钩子：
+<ul>
+<li><code>activated</code>: 当组件从缓存中激活时触发。</li>
+<li><code>deactivated</code>: 当组件被缓存且移除时触发。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="keep-alive-的常用属性"><code>keep-alive</code> 的常用属性
+</h3><ul>
+<li><code>include</code>：允许的组件名（或正则表达式），只有匹配的组件才会被缓存。</li>
+<li><code>exclude</code>：排除的组件名（或正则表达式），匹配的组件不会被缓存。</li>
+<li><code>max</code>：缓存的最大组件实例数目，超过这个数目时，最先缓存的组件实例将被移除。</li>
+</ul>
+<h3 id="使用示例">使用示例
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">keep-alive</span> <span class="na">include</span><span class="o">=</span><span class="s">&#34;MyComponent&#34;</span> <span class="na">max</span><span class="o">=</span><span class="s">&#34;10&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">router-view</span><span class="p">&gt;&lt;/</span><span class="nt">router-view</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">keep-alive</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="简单的示意代码">简单的示意代码
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// 这是 keep-alive 组件内部的简化示意
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">class</span> <span class="nx">KeepAlive</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">cache</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// 用于缓存组件实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">keys</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 用于记录缓存的键的顺序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">cacheVNode</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">vnode</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">vnode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">pruneCacheEntry</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">cachedVNode</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">cachedVNode</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">cachedVNode</span><span class="p">.</span><span class="nx">componentInstance</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">();</span> <span class="c1">// 销毁实例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="总结">总结
+</h3><p>keep-alive 的缓存是存储在 Vue 的内存中的，而不是存储在浏览器的本地存储或其他持久化存储中。具体来说，keep-alive 组件实例中维护的 cache 对象和 keys 数组，负责管理和存储这些缓存的组件实例。当需要重新渲染组件时，Vue 会从 cache 中取出对应的 VNode，从而避免重复的组件实例创建和渲染。</p>
+<h2 id="2-vue-中diff算法的原理">2. vue 中diff算法的原理
+</h2><p>Vue 中的 diff 算法是其虚拟 DOM (VNode) 实现的核心部分，用于高效地更新视图。它的基本思想是通过比较新旧两个虚拟 DOM 树，找出最小的变更集，然后在真实 DOM 上进行最小量的操作，从而优化性能。</p>
+<h3 id="diff-算法的核心思想">Diff 算法的核心思想
+</h3><ol>
+<li>
+<p><strong>同层比较</strong>：</p>
+<ul>
+<li>Vue 的 diff 算法只会对比同层级的节点，而不会跨层级比较。因为跨层级的移动或者比较成本非常高，所以 Vue 的 diff 算法会假设不同层级的 DOM 结构差异不会太大。</li>
+</ul>
+</li>
+<li>
+<p><strong>双端比较</strong>：</p>
+<ul>
+<li>Vue 使用了一种双端比较算法，从前后两端同时进行比较，从而提高了效率。具体步骤如下：
+<ul>
+<li><strong>从头开始比较</strong>：首先比较新旧虚拟 DOM 树的第一个节点，如果相同就继续向下比较，如果不同则停止。</li>
+<li><strong>从尾开始比较</strong>：接着从两棵树的尾部开始比较，如果相同则继续向前比较，如果不同则停止。</li>
+<li><strong>如果中间有差异</strong>：Vue 会尝试通过查找旧节点中的 key 来确认新节点是否在旧节点中已经存在，如果存在则移动节点，如果不存在则创建新节点。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>同类型节点的更新</strong>：</p>
+<ul>
+<li>如果两个节点是相同类型（即标签相同），Vue 会继续比较他们的属性和子节点，找出需要更新的地方。</li>
+</ul>
+</li>
+<li>
+<p><strong>删除、创建、移动节点</strong>：</p>
+<ul>
+<li><strong>删除</strong>：如果旧虚拟 DOM 树中的某个节点在新虚拟 DOM 树中不存在，那么这个节点会被删除。</li>
+<li><strong>创建</strong>：如果新虚拟 DOM 树中出现了旧虚拟 DOM 树中没有的节点，Vue 会创建这个新节点。</li>
+<li><strong>移动</strong>：如果发现相同的节点在新旧虚拟 DOM 树中的位置不同，Vue 会移动这个节点。</li>
+</ul>
+</li>
+<li>
+<p><strong>优化：通过 key 提升性能</strong>：</p>
+<ul>
+<li>Vue 建议为列表中的节点提供唯一的 <code>key</code>，这样可以使得 Vue 在 diff 的过程中能更准确地找到对应节点，提高更新效率。</li>
+<li>如果没有 <code>key</code>，Vue 会采用一种“就地复用”的策略，即如果两个节点是同一类型的，它们会被认为是同一个节点，即使它们在实际内容上不同。</li>
+</ul>
+</li>
+</ol>
+<h3 id="diff-算法的具体步骤">Diff 算法的具体步骤
+</h3><p>假设有两棵虚拟 DOM 树：<code>oldVNode</code> 和 <code>newVNode</code>。</p>
+<ol>
+<li>
+<p><strong>比较根节点</strong>：</p>
+<ul>
+<li>首先比较 <code>oldVNode</code> 和 <code>newVNode</code> 的根节点，如果节点类型不同，直接替换整个节点。</li>
+</ul>
+</li>
+<li>
+<p><strong>比较子节点</strong>：</p>
+<ul>
+<li>如果根节点类型相同，则进入子节点的比较。如果子节点有 <code>key</code> 属性，会基于 <code>key</code> 进行比对，否则基于节点的位置和类型。</li>
+</ul>
+</li>
+<li>
+<p><strong>同层比较</strong>：</p>
+<ul>
+<li>在同一层级中，Vue 使用双端比较法（先从头到尾，再从尾到头）找出可以复用的节点。</li>
+</ul>
+</li>
+<li>
+<p><strong>递归更新</strong>：</p>
+<ul>
+<li>对于每一个节点，Vue 递归地对子节点进行相同的 diff 操作。</li>
+</ul>
+</li>
+<li>
+<p><strong>处理边界情况</strong>：</p>
+<ul>
+<li>如果旧节点比新节点多，Vue 会删除多余的旧节点。</li>
+<li>如果新节点比旧节点多，Vue 会创建新的节点并插入。</li>
+</ul>
+</li>
+</ol>
+<h3 id="diff-算法的复杂度">Diff 算法的复杂度
+</h3><p>在最理想的情况下，Vue 的 diff 算法的复杂度为 O(n)，其中 n 是节点数量。但如果节点结构差异较大，可能会接近 O(n^2)，因此 Vue 强烈建议开发者在有序列表中使用 <code>key</code> 以提升 diff 算法的性能。</p>
+<h3 id="总结-1">总结
+</h3><p>Vue 的 diff 算法通过同层比较、双端比较以及递归地处理子节点，来确保 DOM 更新的最小化操作。合理使用 <code>key</code> 可以进一步提升 diff 算法的效率，从而在真实 DOM 中高效地反映虚拟 DOM 的变化。</p>
+<h2 id="3-vue-的核心概念是什么">3. vue 的核心概念是什么？
+</h2><h3 id="1-数据驱动视图">1. 数据驱动视图
+</h3><p>Vue 的核心理念之一是“<strong>数据驱动视图</strong>”，即视图层是由数据层驱动的。</p>
+<ul>
+<li>
+<p><strong>响应式数据绑定</strong>：</p>
+<ul>
+<li>Vue 采用双向数据绑定（Two-Way Data Binding），通过 <code>data</code> 选项定义的数据属性和视图之间建立自动的绑定关系。任何对数据的更新都会自动反映在视图中，而用户在视图中的操作也能即时更新数据。</li>
+<li>Vue 的响应式系统是基于 <code>Object.defineProperty</code>（Vue 2）或 Proxy（Vue 3）实现的。当数据发生变化时，Vue 的依赖追踪系统会自动侦测到并触发相应的视图更新。</li>
+</ul>
+</li>
+<li>
+<p><strong>声明式渲染</strong>：</p>
+<ul>
+<li>Vue 使用模板语法，让开发者可以声明式地定义 UI。模板中的表达式会动态绑定到 Vue 实例中的数据，开发者只需专注于数据本身，而无需直接操作 DOM。</li>
+<li>这种方式降低了操作 DOM 的复杂性，提升了开发效率和代码的可维护性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-组件化">2. 组件化
+</h3><p>“<strong>组件化</strong>”是 Vue 的另一核心思想，它允许开发者将应用拆分为独立、可复用的小块（组件），每个组件负责特定的功能或 UI 部分。</p>
+<ul>
+<li>
+<p><strong>组件封装</strong>：</p>
+<ul>
+<li>每个组件包含了自己的模板、逻辑和样式，使得组件内部的实现细节对外部是封装的。这样，开发者可以轻松地维护和复用组件，减少代码重复。</li>
+</ul>
+</li>
+<li>
+<p><strong>组件组合</strong>：</p>
+<ul>
+<li>Vue 应用通常是通过多个组件的组合构建起来的。通过父子组件的组合和传递 props 及事件，可以构建出复杂的用户界面。</li>
+</ul>
+</li>
+<li>
+<p><strong>单文件组件 (SFC)</strong>：</p>
+<ul>
+<li>Vue 提供了单文件组件的开发方式（.vue 文件），将模板、逻辑和样式集中在一个文件中。SFC 使得组件的开发、维护和复用变得更加方便。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-其他核心概念">3. 其他核心概念
+</h3><p>除了以上两大核心思想，Vue 还具备以下重要的核心概念：</p>
+<ul>
+<li>
+<p><strong>渐进式框架</strong>：</p>
+<ul>
+<li>Vue 是一个渐进式框架，这意味着你可以根据需求从轻量级的视图库逐步扩展到功能完备的前端框架。Vue 可以与其他库或现有项目轻松集成，也可以单独用于构建复杂的单页面应用 (SPA)。</li>
+</ul>
+</li>
+<li>
+<p><strong>生态系统</strong>：</p>
+<ul>
+<li>Vue 的生态系统非常丰富，包括 Vue Router（路由管理）、Vuex（状态管理）等，这些工具帮助开发者在不同的场景下有效管理应用的复杂性。</li>
+</ul>
+</li>
+<li>
+<p><strong>虚拟 DOM</strong>：</p>
+<ul>
+<li>Vue 使用虚拟 DOM 技术来提升性能。通过比较虚拟 DOM 树的差异（diff），Vue 可以智能地决定最小化的 DOM 操作，从而高效地更新视图。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-2">总结
+</h3><p>Vue 的核心思想是通过数据驱动视图，结合组件化的方式，帮助开发者构建高效、可维护、可复用的用户界面。Vue 的响应式数据系统和渐进式特性，使得它既适合小型项目，也能胜任复杂的单页面应用。</p>
+<h2 id="4-vue-的双向绑定的原理是什么vue2和vue3的区别是什么">4. vue 的双向绑定的原理是什么？vue2和vue3的区别是什么？
+</h2><p>Vue 的数据双向绑定是 Vue 框架的核心特性之一，它使得数据和视图之间保持同步，即数据的变化会自动反映到视图上，而用户在视图上的操作也会自动更新数据。Vue 2 和 Vue 3 在实现数据双向绑定的方式上有一些不同，下面我将分别介绍它们的原理及差异。</p>
+<h3 id="vue-2-的数据双向绑定原理">Vue 2 的数据双向绑定原理
+</h3><p>Vue 2 的数据双向绑定主要依赖于 <code>Object.defineProperty</code>，通过劫持对象属性的 getter 和 setter 来实现数据的响应式。</p>
+<h4 id="1-observer-监听器">1. <strong>Observer 监听器</strong>
+</h4><ul>
+<li>Vue 2 中，当一个 Vue 实例被创建时，Vue 会遍历 <code>data</code> 对象中的所有属性，并使用 <code>Object.defineProperty</code> 将这些属性转为 getter 和 setter。</li>
+<li>通过这些 getter 和 setter，Vue 可以在数据被访问时（通过 getter）或修改时（通过 setter）进行额外的操作，比如依赖收集和派发更新。</li>
+</ul>
+<h4 id="2-dep-和-watcher">2. <strong>Dep 和 Watcher</strong>
+</h4><ul>
+<li><strong>Dep</strong>：每个被观察的属性（即每个 <code>data</code> 中的属性）都有一个依赖管理器（Dep），负责收集依赖于这个属性的所有“观察者” (Watcher)。</li>
+<li><strong>Watcher</strong>：Watcher 是一个观察者对象，负责监听属性的变化。当属性发生变化时，Watcher 会触发视图的更新。</li>
+</ul>
+<h4 id="3-数据流动">3. <strong>数据流动</strong>
+</h4><ul>
+<li>当组件的模板被渲染时，模板中的数据会触发属性的 getter，从而触发依赖收集（Dep 将 Watcher 收集起来）。</li>
+<li>当数据发生变化时（即属性的 setter 被触发），Vue 会通知对应的 Watcher，Watcher 随后通知视图进行重新渲染。</li>
+</ul>
+<h4 id="局限性"><strong>局限性</strong>
+</h4><ul>
+<li>Vue 2 的实现方式基于 <code>Object.defineProperty</code>，它无法直接监听数组的变化，也无法直接监听对象属性的添加和删除，因此 Vue 2 需要通过一些特殊方法（如 <code>Vue.set</code>、<code>Vue.delete</code>）来处理这些情况。</li>
+</ul>
+<h3 id="vue-3-的数据双向绑定原理">Vue 3 的数据双向绑定原理
+</h3><p>Vue 3 引入了 <code>Proxy</code> 对象，取代了 Vue 2 中的 <code>Object.defineProperty</code>，以实现更为强大和灵活的数据双向绑定。</p>
+<h4 id="1-proxy-与-reflect">1. <strong>Proxy 与 Reflect</strong>
+</h4><ul>
+<li>Vue 3 中，响应式数据的核心是 <code>Proxy</code>，它能够直接拦截对象的所有操作，包括读取、写入、删除属性等。这意味着 Vue 3 能够监听数组的变化以及对象属性的动态添加和删除。</li>
+<li>Vue 3 使用 <code>Proxy</code> 代理了 <code>data</code> 对象，并通过 <code>Reflect</code> 来处理代理对象的默认行为。</li>
+</ul>
+<h4 id="2-reactivity-模块">2. <strong>Reactivity 模块</strong>
+</h4><ul>
+<li>Vue 3 的响应式系统是基于一个独立的 Reactivity 模块实现的，这个模块包含了 <code>reactive</code>、<code>ref</code>、<code>computed</code> 等 API，允许开发者以更加灵活的方式创建响应式数据。</li>
+<li>通过 <code>reactive</code>，Vue 3 可以将一个普通对象转为响应式对象，类似于 Vue 2 中的 <code>data</code>。</li>
+</ul>
+<h4 id="3-依赖追踪和触发">3. <strong>依赖追踪和触发</strong>
+</h4><ul>
+<li>Vue 3 的依赖追踪和触发更新机制与 Vue 2 类似，都是通过依赖收集（依赖于数据的组件或方法会被收集）和触发更新（当数据改变时通知依赖的组件或方法进行更新）来实现的。</li>
+<li>由于 <code>Proxy</code> 的强大功能，Vue 3 可以更精细地追踪变化，避免了 Vue 2 中的一些局限性，比如对数组操作的监测问题。</li>
+</ul>
+<h3 id="vue-2-与-vue-3-的主要区别">Vue 2 与 Vue 3 的主要区别
+</h3><ol>
+<li>
+<p><strong>实现方式</strong>：</p>
+<ul>
+<li>Vue 2 使用 <code>Object.defineProperty</code> 实现数据双向绑定，Vue 3 使用 <code>Proxy</code> 来实现更为强大和灵活的响应式系统。</li>
+</ul>
+</li>
+<li>
+<p><strong>响应式系统的灵活性</strong>：</p>
+<ul>
+<li>Vue 3 的 <code>Proxy</code> 可以直接监听数组的变化、对象属性的添加和删除等操作，避免了 Vue 2 的局限性。</li>
+<li>Vue 3 的响应式 API（如 <code>reactive</code>、<code>ref</code>）提供了更多的控制和灵活性。</li>
+</ul>
+</li>
+<li>
+<p><strong>性能</strong>：</p>
+<ul>
+<li>Vue 3 的响应式系统在性能上有了很大的提升，特别是在大规模数据操作和复杂的组件树结构中，Vue 3 表现得更为高效。</li>
+</ul>
+</li>
+<li>
+<p><strong>代码结构和模块化</strong>：</p>
+<ul>
+<li>Vue 3 的响应式系统是一个独立的模块，允许更好的树摇优化（tree-shaking），减小打包体积。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-3">总结
+</h3><p>Vue 的数据双向绑定是通过数据的响应式系统实现的，Vue 2 使用 <code>Object.defineProperty</code>，而 Vue 3 则使用 <code>Proxy</code> 来实现。Vue 3 的实现方式更加灵活和强大，解决了 Vue 2 中的一些局限性，同时也带来了更好的性能和开发体验。</p>
+<h2 id="5-vue-的生命周期有哪些">5. vue 的生命周期有哪些？
+</h2><p>Vue 的生命周期钩子函数是指在 Vue 实例的各个不同阶段执行的函数。这些钩子函数允许开发者在 Vue 实例的不同生命周期阶段执行自定义的代码。Vue 2 和 Vue 3 的生命周期钩子基本一致，以下是主要的生命周期钩子函数及其触发时机：</p>
+<h3 id="1-创建阶段creation-phase">1. <strong>创建阶段（Creation Phase）</strong>
+</h3><ul>
+<li>
+<p><strong><code>beforeCreate</code></strong>：实例初始化之后，数据观测 (data observer) 和事件配置还未完成。在这个阶段，<code>data</code> 和 <code>props</code> 还没有被初始化，因此在这个钩子中无法访问 <code>data</code> 和 <code>props</code>。</p>
+</li>
+<li>
+<p><strong><code>created</code></strong>：实例创建完成，完成数据观测、属性与方法的初始化，<code>data</code>、<code>props</code> 等都可以访问。此时尚未挂载到 DOM 中，也没有生成 <code>$el</code>。</p>
+</li>
+</ul>
+<h3 id="2-挂载阶段mounting-phase">2. <strong>挂载阶段（Mounting Phase）</strong>
+</h3><ul>
+<li>
+<p><strong><code>beforeMount</code></strong>：在挂载开始之前被调用，相关的 <code>render</code> 函数首次被调用。在这个阶段，虚拟 DOM 已经创建，但尚未渲染到实际的 DOM 上。</p>
+</li>
+<li>
+<p><strong><code>mounted</code></strong>：实例挂载到 DOM 后调用，此时 <code>el</code> 被新创建的 <code>vm.$el</code> 替换。此时组件已被挂载到页面上，DOM 操作可以在这里进行。</p>
+</li>
+</ul>
+<h3 id="3-更新阶段updating-phase">3. <strong>更新阶段（Updating Phase）</strong>
+</h3><ul>
+<li>
+<p><strong><code>beforeUpdate</code></strong>：响应式数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁 (patch) 之前。在这个钩子中，可以访问到更新前的 DOM。</p>
+</li>
+<li>
+<p><strong><code>updated</code></strong>：由于数据更改导致的虚拟 DOM 重新渲染和打补丁之后调用。此时组件 DOM 已经更新，因此可以执行基于新 DOM 的操作。</p>
+</li>
+</ul>
+<h3 id="4-销毁阶段destruction-phase">4. <strong>销毁阶段（Destruction Phase）</strong>
+</h3><ul>
+<li>
+<p><strong><code>beforeDestroy</code></strong>：实例销毁之前调用。在这一步，实例仍然完全可用。</p>
+</li>
+<li>
+<p><strong><code>destroyed</code></strong>：实例销毁后调用。调用后，Vue 实例的所有指令绑定和事件监听器都会被解除，所有子实例也会被销毁。</p>
+</li>
+</ul>
+<h3 id="5-vue-3-特有的生命周期钩子">5. <strong>Vue 3 特有的生命周期钩子</strong>
+</h3><p>Vue 3 引入了与组合式 API（Composition API）一起使用的生命周期钩子函数，这些函数与 Vue 2 中的钩子作用相同，但命名更具可读性，并且使用更灵活。</p>
+<ul>
+<li><strong><code>onBeforeMount</code></strong>：等同于 Vue 2 的 <code>beforeMount</code>。</li>
+<li><strong><code>onMounted</code></strong>：等同于 Vue 2 的 <code>mounted</code>。</li>
+<li><strong><code>onBeforeUpdate</code></strong>：等同于 Vue 2 的 <code>beforeUpdate</code>。</li>
+<li><strong><code>onUpdated</code></strong>：等同于 Vue 2 的 <code>updated</code>。</li>
+<li><strong><code>onBeforeUnmount</code></strong>：等同于 Vue 2 的 <code>beforeDestroy</code>。</li>
+<li><strong><code>onUnmounted</code></strong>：等同于 Vue 2 的 <code>destroyed</code>。</li>
+</ul>
+<p>这些钩子函数可以在 Vue 3 的组合式 API 中使用，例如在 <code>setup</code> 函数中调用。</p>
+<h3 id="总结-4">总结
+</h3><p>Vue 的生命周期提供了一个从创建、挂载、更新到销毁的完整流程的钩子函数，让开发者可以在每个关键节点执行相应的操作。了解和使用这些钩子函数，可以帮助更好地控制组件的行为，处理复杂的逻辑或优化性能。</p>
+<h2 id="6-vue-的组件通信方式有哪些">6. vue 的组件通信方式有哪些？
+</h2><p>在 Vue 中，组件之间的通信方式有多种，具体选择哪种方式取决于组件之间的关系（如父子关系、兄弟关系）以及数据流的复杂度。以下是 Vue 组件之间常见的通信方式：</p>
+<h3 id="1-父子组件通信">1. <strong>父子组件通信</strong>
+</h3><h4 id="11-props-传递">1.1 <code>Props</code> 传递
+</h4><p>父组件通过 <code>props</code> 向子组件传递数据。这是 Vue 中最常用的通信方式之一。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">父组件</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="nt">:message</span><span class="o">=</span><span class="s">&#34;parentMessage&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">子组件</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{{</span> <span class="nx">message</span> <span class="p">}}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">props</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="12-event-触发">1.2 <code>Event</code> 触发
+</h4><p>子组件可以通过 <code>$emit</code> 触发事件，父组件监听事件来接收数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">子组件</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">button</span> <span class="nt">@click</span><span class="s">=&#34;sendMessage&#34;</span><span class="p">&gt;</span><span class="na">Send</span> <span class="na">Message</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sendMessage</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s1">&#39;message-sent&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello from child&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">父组件</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="nt">@message-sent</span><span class="s">=&#34;receiveMessage&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">receiveMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-兄弟组件通信">2. <strong>兄弟组件通信</strong>
+</h3><h4 id="21-通过父组件作为中介">2.1 通过父组件作为中介
+</h4><p>兄弟组件可以通过父组件传递数据。例如，一个兄弟组件通过 <code>Event</code> 传递数据给父组件，父组件再将数据通过 <code>Props</code> 传递给另一个兄弟组件。</p>
+<h4 id="22-事件总线-event-bus">2.2 事件总线 (Event Bus)
+</h4><p>创建一个空的 Vue 实例作为事件总线，兄弟组件可以通过这个总线来通信。不过在 Vue 3 中，建议使用其他方式替代事件总线。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// eventBus.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">EventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s1">&#39;event-name&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件B
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;event-name&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="23-vuex-状态管理">2.3 Vuex (状态管理)
+</h4><p>在复杂应用中，可以使用 Vuex 进行状态管理。兄弟组件可以通过 Vuex 共享状态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// store.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">state</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">mutations</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setMessage</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">state</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;setMessage&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello from A&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 兄弟组件B
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">computed</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">message</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-跨层级组件通信">3. <strong>跨层级组件通信</strong>
+</h3><h4 id="31-provide-和-inject">3.1 <code>Provide</code> 和 <code>Inject</code>
+</h4><p><code>Provide</code> 和 <code>Inject</code> 允许父组件向任意层级的后代组件提供数据，而不必通过 <code>Props</code> 层层传递。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c1">// 父组件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">provide</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello World&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 任意层级的子组件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">inject</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="32-vuex">3.2 Vuex
+</h4><p>同样地，Vuex 也可以用于跨层级的组件通信，通过集中管理状态来实现跨层级的数据共享。</p>
+<h3 id="4-其他通信方式">4. <strong>其他通信方式</strong>
+</h3><h4 id="41-attrs-和-listeners">4.1 <code>$attrs</code> 和 <code>$listeners</code>
+</h4><p>父组件向子组件传递属性和事件，适用于高阶组件（Higher-order components）。</p>
+<h4 id="42-parent-和-children">4.2 <code>$parent</code> 和 <code>$children</code>
+</h4><p>通过访问组件实例的 <code>$parent</code> 和 <code>$children</code> 来通信，但这种方式不推荐使用，因为它会导致组件之间的耦合性增加。</p>
+<h4 id="43-ref-和-refs">4.3 <code>Ref</code> 和 <code>$refs</code>
+</h4><p>通过 <code>ref</code> 获取子组件的实例，从而访问或调用子组件的方法和属性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">父组件</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="na">ref</span><span class="o">=</span><span class="s">&#34;child&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">child</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="总结-5">总结
+</h3><p>Vue 提供了多种组件通信方式，适用于不同的场景和复杂度。在选择通信方式时，应考虑组件之间的关系、数据流的复杂度以及应用的规模，尽量保持代码的简洁性和可维护性。</p>
+<h2 id="7-vue-的路由模式有哪些">7. vue 的路由模式有哪些？
+</h2><p>Vue 的路由模式是指在 Vue 应用中定义路由的方式，包括 <code>hash</code> 模式和 <code>history</code> 模式。</p>
+<h3 id="1-hash-模式">1. <strong>Hash 模式</strong>
+</h3><p>Hash 模式是 Vue 路由的默认模式，使用 URL 中的哈希值（#）来表示路由。例如，访问 <code>URL_ADDRESS 会将 </code>#/about` 作为哈希值，并将其作为路由。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">Home</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 访问 URL_ADDRESS/#/about
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="优点">优点
+</h4><ul>
+<li>兼容性好，支持所有浏览器。</li>
+<li>易于分享，因为 URL 中没有 <code>#</code>，因此可以轻松分享链接。</li>
+</ul>
+<h4 id="缺点">缺点
+</h4><ul>
+<li>不利于 SEO，因为哈希值不会被包含在搜索引擎的索引中。</li>
+<li>不利于后端路由，因为哈希值不会被发送到服务器。</li>
+<li>不利于前端路由，因为哈希值的变化不会触发页面的刷新。</li>
+</ul>
+<h3 id="2-history-模式">2. <strong>History 模式</strong>
+</h3><p>History 模式使用 HTML5 的 History API 来实现路由，它通过修改 URL 来实现路由跳转，从而避免了使用哈希值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">Home</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 访问 URL_ADDRESS/about
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="优点-1">优点
+</h4><ul>
+<li>易于分享，因为 URL 中没有 <code>#</code>，因此可以轻松分享链接。</li>
+<li>支持后端路由，因为服务器可以根据 URL 来返回相应的页面。</li>
+<li>支持前端路由，因为 URL 的变化会触发页面的刷新。</li>
+</ul>
+<h4 id="缺点-1">缺点
+</h4><ul>
+<li>兼容性稍差，需要浏览器支持 HTML5 的 History API。</li>
+<li>不利于 SEO，因为 URL 中没有 <code>#</code>，搜索引擎会认为这是一个普通的 URL，而不是锚点。</li>
+</ul>
+<h4 id="总结-6">总结
+</h4><p>Vue 的路由模式包括 <code>hash</code> 模式和 <code>history</code> 模式。<code>hash</code> 模式使用 URL 中的哈希值（#）来表示路由，而 <code>history</code> 模式使用 HTML5 的 History API 来实现路由。选择哪种模式取决于应用的需求和使用场景。</p>
+<h2 id="8-vue-的路由守卫有哪些">8. vue 的路由守卫有哪些？
+</h2><p>Vue 的路由守卫是指在路由跳转过程中执行的钩子函数，可以用来实现路由的权限控制、数据预加载等功能。Vue 提供了多种路由守卫，包括全局守卫、路由独享守卫和组件内守卫。</p>
+<h3 id="1-全局守卫">1. <strong>全局守卫</strong>
+</h3><p>全局守卫是指在路由跳转过程中，无论路由是跳转到哪个路由，都会执行的钩子函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 全局前置守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">router</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 在跳转到目标路由之前执行的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 全局后置守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">router</span><span class="p">.</span><span class="nx">afterEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 在跳转到目标路由之后执行的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-路由独享守卫">2. <strong>路由独享守卫</strong>
+</h3><p>路由独享守卫是指在特定的路由上执行的钩子函数，可以用来实现路由的权限控制、数据预加载等功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由独享前置守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">beforeEnter</span><span class="o">:</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 在跳转到 /about 路由之前执行的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 路由独享后置守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">afterEnter</span><span class="o">:</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 在跳转到 /about 路由之后执行的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-组件内守卫">3. <strong>组件内守卫</strong>
+</h3><p>组件内守卫是指在组件内定义的钩子函数，可以用来实现组件内的权限控制、数据预加载等功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 组件内前置守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">template</span><span class="o">:</span> <span class="sb">`&lt;div&gt;Foo&lt;/div&gt;`</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beforeRouteEnter</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 在跳转到该组件路由之前执行的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 组件内后置守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">template</span><span class="o">:</span> <span class="sb">`&lt;div&gt;Foo&lt;/div&gt;`</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beforeRouteLeave</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 在离开该组件路由之前执行的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-路由元信息">4. <strong>路由元信息</strong>
+</h3><p>路由元信息是指在路由配置中定义的额外信息，可以用来实现路由的权限控制、数据预加载等功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">requiresAuth</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 需要登录权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">requiresAdmin</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// 需要管理员权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 路由守卫
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">router</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">requiresAuth</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isAuthenticated</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果需要登录权限，且用户未登录，则跳转到登录页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/login&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">requiresAdmin</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isAdmin</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果需要管理员权限，且用户不是管理员，则跳转到 403 页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/403&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果不需要权限或权限验证通过，则继续跳转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-导航守卫的执行顺序">5. <strong>导航守卫的执行顺序</strong>
+</h3><p>导航守卫的执行顺序是：全局前置守卫 -&gt; 路由独享前置守卫 -&gt; 组件内前置守卫 -&gt; 全局后置守卫 -&gt; 路由独享后置守卫 -&gt; 组件内后置守卫。</p>
+<h3 id="6-总结">6. 总结
+</h3><p>Vue 的路由守卫提供了多种方式来实现路由的权限控制、数据预加载等功能。全局守卫、路由独享守卫和组件内守卫可以根据需要进行配置，路由元信息可以用来定义路由的额外信息。导航守卫的执行顺序是：全局前置守卫 -&gt; 路由独享前置守卫 -&gt; 组件内前置守卫 -&gt; 全局后置守卫 -&gt; 路由独享后置守卫 -&gt; 组件内后置守卫。</p>
+<h2 id="9-vue-的路由懒加载有哪些方式">9. vue 的路由懒加载有哪些方式？
+</h2><p>Vue 的路由懒加载是指在路由配置中使用动态导入的方式来加载路由组件，从而减少应用的初始加载时间。Vue 提供了多种方式来实现路由懒加载，包括异步组件、异步路由组件和异步路由。</p>
+<h3 id="1-异步组件">1. <strong>异步组件</strong>
+</h3><p>异步组件是指在路由配置中使用 <code>import()</code> 函数来动态导入路由组件，从而实现路由懒加载。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/About.vue&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-异步路由组件">2. <strong>异步路由组件</strong>
+</h3><p>异步路由组件是指在路由配置中使用 <code>component</code> 属性来定义异步路由组件，从而实现路由懒加载。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/About.vue&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-异步路由">3. <strong>异步路由</strong>
+</h3><p>异步路由是指在路由配置中使用 <code>children</code> 属性来定义异步路由，从而实现路由懒加载。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 路由配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/about&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">component</span><span class="o">:</span> <span class="nx">About</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;child1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/Child1.vue&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;child2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./views/Child2.vue&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="10-vue-路由的原理是什么">10. vue 路由的原理是什么？
+</h2><ol>
+<li>创建的页面路由会与该页面形成一个路由表（key value形式，key为该路由，value为该路由对应的页面组件）；</li>
+<li><code>vue-router</code> 会监听浏览器地址栏的变化，并将地址栏的值与路由表进行匹配，匹配成功后，将对应的页面组件渲染到页面中；</li>
+<li>然而当浏览器的中的路径发生变化时，它会向服务器请求资源，为了避免这种情况，vue 采用了两种方式来避免这种情况的发生： <code>hash</code> 和 <code>history</code>；</li>
+<li>hash 模式：hash 模式是通过在 URL 的末尾添加一个哈希值（#）来实现的，例如：`URL_ADDRESS URL 中的哈希值发生变化时，浏览器不会向服务器发送请求，而是通过 JavaScript 来处理哈希值的变化，从而实现页面的跳转。</li>
+<li>history 模式：利用了pushState() 和replaceState() 方法，实现往history中添加新的浏览记录、或替换对应的浏览记录。但是设置了history模式，需要</li>
+</ol>
+<h2 id="11-vue3-中的reactive-和-ref-的区别">11. vue3 中的reactive 和 ref 的区别？
+</h2><h3 id="1-数据类型">1. 数据类型
+</h3><ul>
+<li><code>ref</code>主要用于创建基本数据类型的响应式数据（如字符串，数字，布尔值等），也可以用来包装一个引用类型的数据（如对象或数组）。当使用 <code>ref</code> 包装数据时，访问或修改这个数据需要通过 <code>.value</code> 属性。</li>
+<li><code>reactive</code> 则直接将一个对象或者数据变成响应式的，不需要通过 <code>.value</code> 属性访问或修改。可以直接使用对象属性或数组方法。</li>
+</ul>
+<h3 id="2-追踪依赖">2. 追踪依赖
+</h3><ul>
+<li>使用 ref 创建的响应式数据，内部会转换成一个对象，并且添加了一个 .value 属性。这意味着在模板中或者计算属性中使用它时，需要以 .value 的形式来访问。</li>
+<li>reactive 直接返回原始对象，因此可以像操作普通对象一样操作它，这使得它在处理复杂数据结构时更为方便。</li>
+</ul>
+<h3 id="3-深层响应式">3. 深层响应式
+</h3><ul>
+<li><code>ref</code> 只能包装一层数据，如果要包装多层数据，需要使用 <code>ref</code> 包装每层数据，例如：<code>ref({a:1,b:{c:2}})</code>。</li>
+<li><code>reactive</code>  默认会递归地让对象内部的所有属性都变成响应式的，即它是深层响应式的。</li>
+</ul>
+<h3 id="4-性能考虑">4. 性能考虑
+</h3><ul>
+<li>对于大量的对象或复杂的嵌套数据结构，使用 reactive 可能会更高效，因为它避免了 ref 需要多次调用 .value 的问题。</li>
+<li>对于简单的数据，如字符串、数字、布尔值等，使用 ref 可能更方便，因为它不需要额外的开销。ref 更适合单个值或简单数据结构的响应式处理。</li>
+</ul>
+<h3 id="5-使用场景">5. 使用场景
+</h3><ul>
+<li>ref 更适合用于那些会被用在不同作用域中的数据，或者是需要在组件之间共享的状态管理。</li>
+<li>reactive 更适合用于那些需要深度响应式处理的数据，例如对象和数组等。</li>
+</ul>
+<h3 id="总结来说">总结来说
+</h3><p>总结来说，选择 ref 还是 reactive 主要看具体的应用场景和个人偏好。对于简单的值或者需要在多个组件间共享的状态，ref 可能更加合适；而对于复杂的对象结构或者组件内部的状态管理，reactive 通常更加方便。</p>
+<h2 id="12-vue3-中的reactive-是如何实现的">12. vue3 中的reactive 是如何实现的？
+</h2><p>在 Vue 3 中，reactive 是通过 Proxy 对象来实现的。当使用 reactive 创建一个对象时，Vue 会创建一个 Proxy 对象，并将其作为返回值。这个 Proxy 对象将拦截对对象的所有操作，包括读取和写入属性，并通过调用对应的响应式函数来处理。这样，当我们访问或修改这个对象的属性时，Vue 会自动更新视图。</p>
+<h2 id="13-vue3-中的ref-是如何实现的">13. vue3 中的ref 是如何实现的？
+</h2><p>在 Vue 3中，ref 是通过 createRef 函数来实现的。这个函数接受一个参数，这个参数可以是一个基本数据类型（如字符串、数字、布尔值等）或者是一个对象。如果参数是一个对象，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始对象。如果参数是一个基本数据类型，那么 createRef 将返回一个对象，该对象有一个 .value 属性，用于访问或修改原始数据。</p>
+<h2 id="14-vue2-中数据双向绑定为什么使用的objectdefineproperty-而不是objectdefineproperties">14. vue2 中，数据双向绑定为什么使用的Object.defineProperty 而不是Object.defineProperties?
+</h2><p>主要原因在于以下几个方面：</p>
+<ol>
+<li>递归劫持 vs 单次批量定义
+在 Vue 2 的响应式系统中，不仅仅是对对象的顶层属性进行劫持，还需要递归地劫持嵌套的对象属性。例如，对于一个深层嵌套的对象，Vue 2 需要递归遍历每一层属性，对每个属性都单独进行 Object.defineProperty 操作。这种递归操作要求灵活性，因为 Vue 不仅要处理简单对象，还要处理数组、嵌套对象等复杂结构。</li>
+</ol>
+<p>Object.defineProperty 允许逐个属性地进行递归劫持，这使得 Vue 可以处理每个属性、每一层级的递归操作。
+Object.defineProperties 则是一次性定义多个属性，缺少了递归的机制。如果使用 Object.defineProperties，当一个属性是嵌套对象时，无法方便地递归对嵌套属性进行响应式处理。
+2. 数组和对象的特殊处理
+Vue 2 对数组和对象的响应式处理方式不同。Vue 2 使用 Object.defineProperty 来对对象的属性进行拦截，但对数组的操作（比如 push、pop 等方法）则是通过函数重写的方式来进行劫持。如果使用 Object.defineProperties，在处理数组时并不适用。</p>
+<ol start="3">
+<li>
+<p>灵活性
+Object.defineProperty 的逐个属性劫持方法非常灵活，可以在处理不同类型的数据结构（比如数组、对象、普通数据类型）时进行细粒度的控制。例如，如果一个属性是对象，Vue 会递归进行深层的劫持；而如果一个属性是原始类型（比如 number 或 string），Vue 就不会递归。这种灵活的处理方式在 Vue 的数据响应式设计中是非常关键的。</p>
+</li>
+<li>
+<p>性能考虑
+虽然 Object.defineProperties 允许一次性定义多个属性，但 Vue 的数据响应式系统需要对每一个属性进行深度处理。如果使用 Object.defineProperties，在递归嵌套对象时，依然需要在每层都调用它，这会增加性能上的开销。相反，Object.defineProperty 可以让 Vue 更加精细化地控制每个属性的处理和递归。</p>
+</li>
+<li>
+<p>每个属性的特殊拦截逻辑
+虽然大部分属性的 getter 和 setter 逻辑是一样的，但 Vue 在某些情况下需要对特定属性进行特殊处理。比如对于数组的某些变更方法（如 push、pop），Vue 需要重写这些方法，以确保数组变更能被检测到。这种情况下，Object.defineProperty 逐个属性地定义 getter 和 setter 更加灵活。</p>
+</li>
+</ol>
+<p>总结
+Vue 2 使用 Object.defineProperty 而不是 Object.defineProperties，是因为 Vue 的响应式系统需要递归处理深层嵌套的对象，还要处理不同类型的数据结构（比如数组）。Object.defineProperty 可以逐个属性地进行递归、灵活地处理嵌套对象和数组变更。而 Object.defineProperties 虽然允许一次性定义多个属性，但在 Vue 这样的响应式系统中不具备足够的灵活性，也无法处理递归的复杂场景。</p>
+<p>所以，Vue 选择 Object.defineProperty 主要是出于灵活性、递归深层嵌套处理和性能上的考虑。</p>
+<h2 id="15-proxy-相对于-objectdefineproperty-有哪些优势">15. proxy 相对于 Object.defineProperty 有哪些优势？
+</h2><p>Proxy 相对于 Object.defineProperty 确实有许多优势。让我们详细比较一下：</p>
+<ol>
+<li>
+<p>更全面的拦截能力：</p>
+<ul>
+<li>Proxy 可以拦截多达 13 种不同的基本操作，包括属性查找、赋值、删除、函数调用等。</li>
+<li>Object.defineProperty 主要用于拦截属性的读取（get）和设置（set）操作。</li>
+</ul>
+</li>
+<li>
+<p>数组操作：</p>
+<ul>
+<li>Proxy 可以直接监听数组的变化，包括通过索引设置元素、修改数组长度等操作。</li>
+<li>Object.defineProperty 无法直接监听数组索引和长度的变化，需要额外的包装和处理。</li>
+</ul>
+</li>
+<li>
+<p>动态属性：</p>
+<ul>
+<li>Proxy 可以监听整个对象，包括新添加的属性。</li>
+<li>Object.defineProperty 只能监听对象的已存在属性，新添加的属性需要额外处理。</li>
+</ul>
+</li>
+<li>
+<p>性能：</p>
+<ul>
+<li>对于大型对象，Proxy 可能会有更好的性能，因为它不需要递归遍历对象的所有属性。</li>
+<li>Object.defineProperty 需要遍历对象的每个属性并为其设置 getter 和 setter，这在大型对象上可能会有性能问题。</li>
+</ul>
+</li>
+<li>
+<p>更简洁的代码：</p>
+<ul>
+<li>Proxy 的使用通常leads to更简洁、更易于理解的代码。</li>
+<li>Object.defineProperty 往往需要更多的样板代码，特别是在处理嵌套对象时。</li>
+</ul>
+</li>
+<li>
+<p>原始对象不被修改：</p>
+<ul>
+<li>Proxy 创建一个原始对象的代理，不直接修改原始对象。</li>
+<li>Object.defineProperty 直接修改原始对象。</li>
+</ul>
+</li>
+<li>
+<p>可撤销代理：</p>
+<ul>
+<li>Proxy 提供 <code>Proxy.revocable()</code>，允许创建可撤销的代理。</li>
+<li>Object.defineProperty 没有类似的功能。</li>
+</ul>
+</li>
+<li>
+<p>更好的错误捕获：</p>
+<ul>
+<li>Proxy 可以捕获并抛出更多类型的错误，提供更好的调试体验。</li>
+</ul>
+</li>
+<li>
+<p>支持更多数据类型：</p>
+<ul>
+<li>Proxy 可以代理各种类型的对象，包括数组、函数、甚至是 DOM 节点。</li>
+<li>Object.defineProperty 主要用于对象的属性。</li>
+</ul>
+</li>
+<li>
+<p>元编程能力：</p>
+<ul>
+<li>Proxy 提供了强大的元编程能力，允许你自定义对象的基本行为。</li>
+</ul>
+</li>
+</ol>
+<p>示例对比：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 使用 Object.defineProperty
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">get</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Getting a&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">set</span><span class="p">(</span><span class="nx">newVal</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Setting a&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_a</span> <span class="o">=</span> <span class="nx">newVal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用 Proxy
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">property</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Getting </span><span class="si">${</span><span class="nx">property</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">target</span><span class="p">[</span><span class="nx">property</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">property</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Setting </span><span class="si">${</span><span class="nx">property</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">target</span><span class="p">[</span><span class="nx">property</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，Proxy 版本可以拦截所有属性的访问和设置，而不仅仅是 &lsquo;a&rsquo;。</p>
+<p>总的来说，Proxy 提供了更强大、更灵活的对象操作拦截能力，这也是为什么 Vue 3 选择使用 Proxy 来重写其响应式系统的原因。然而，Proxy 的一个主要缺点是它不支持 IE 浏览器，这在某些需要兼容旧版浏览器的项目中可能是一个问题。</p>
+<h2 id="16-vue-相对于-react-有哪些优势">16. vue 相对于 react 有哪些优势？
+</h2><p>相对于 React，Vue 在方法层面具有以下优势：</p>
+<h3 id="1-更简洁的模板语法">1. <strong>更简洁的模板语法</strong>
+</h3><ul>
+<li><strong>Vue</strong> 使用的是模板语法（Template），它类似于 HTML，可以让开发者直观地绑定数据和事件。Vue 的模板语法对大部分前端开发者来说更加容易上手，因为它使用的是基于现有 HTML 扩展的语法，像指令（<code>v-bind</code>, <code>v-model</code>, <code>v-if</code>）等来实现功能。</li>
+<li><strong>React</strong> 采用 JSX 语法，虽然功能强大，但对不熟悉 JavaScript 扩展语法的开发者来说，可能不太直观。React 通过在 JavaScript 中混合 HTML 元素来构建视图，开发者需要更多地掌握 JavaScript。</li>
+</ul>
+<h3 id="2-双向数据绑定">2. <strong>双向数据绑定</strong>
+</h3><ul>
+<li><strong>Vue</strong> 默认支持 <strong>双向数据绑定</strong>，通过 <code>v-model</code> 可以非常方便地实现表单数据的双向同步，尤其在表单处理和用户输入交互上表现得更为简洁。Vue 的双向绑定通过 <code>getter</code> 和 <code>setter</code> 自动更新 DOM。</li>
+<li><strong>React</strong> 不提供内置的双向数据绑定，开发者需要手动管理表单控件的状态，处理表单数据同步的逻辑，通常需要写更多的代码。</li>
+</ul>
+<h3 id="3-计算属性computed-properties">3. <strong>计算属性（Computed Properties）</strong>
+</h3><ul>
+<li><strong>Vue</strong> 提供了计算属性（<code>computed</code>），用于基于已有的状态派生出新的状态，并且自动追踪依赖关系，避免重复计算。计算属性使得代码更加直观简洁，尤其适用于在视图中计算和处理数据。</li>
+<li><strong>React</strong> 没有提供类似计算属性的功能，开发者需要在 JSX 中直接计算状态或者通过 Hooks 手动实现计算和依赖追踪，这往往增加了代码的复杂性。</li>
+</ul>
+<h3 id="4-内置的指令和指令简化">4. <strong>内置的指令和指令简化</strong>
+</h3><ul>
+<li><strong>Vue</strong> 提供了丰富的指令，例如 <code>v-show</code>, <code>v-if</code>, <code>v-for</code>, <code>v-bind</code>, <code>v-on</code> 等，使得常见的 DOM 操作和事件绑定变得简单明了。这些指令让开发者无需手动处理 DOM 或事件。</li>
+<li><strong>React</strong> 没有内置这些指令，开发者需要通过 JavaScript 或 JSX 语法来实现，逻辑上相对复杂。</li>
+</ul>
+<h3 id="5-渐进式框架">5. <strong>渐进式框架</strong>
+</h3><ul>
+<li><strong>Vue</strong> 是一个渐进式框架，提供了更灵活的集成方式。开发者可以将 Vue 作为一个库来为现有项目添加交互性，或者将其扩展为一个完整的前端框架，而不会像 React 一样要求从头到尾采用单一的方式。</li>
+<li><strong>React</strong> 主要作为视图层的库，不提供完整的框架式功能，开发者通常需要引入其他库（如 Redux, React Router）来构建复杂的应用。</li>
+</ul>
+<h3 id="6-vue-cli-对于项目的支持">6. <strong>Vue CLI 对于项目的支持</strong>
+</h3><ul>
+<li><strong>Vue CLI</strong> 提供了开箱即用的项目配置模板，能够快速生成 Vue 项目结构，自动支持 TypeScript、Babel、Linting 等配置。</li>
+<li><strong>React</strong> 虽然有 <strong>Create React App</strong> 作为项目初始化工具，但在某些特定项目需求下，Vue CLI 提供了更多的配置灵活性和插件支持。</li>
+</ul>
+<h3 id="7-更好的组件通信基于-props-和-emit-的模式">7. <strong>更好的组件通信（基于 <code>props</code> 和 <code>emit</code> 的模式）</strong>
+</h3><ul>
+<li><strong>Vue</strong> 中，父子组件通信通过 <code>props</code> 和 <code>emit</code> 非常直观，遵循单向数据流。同时，Vue 3 提供了 <code>provide/inject</code> 机制，进一步简化了多层嵌套组件之间的通信。</li>
+<li><strong>React</strong> 主要通过 <code>props</code> 来实现父子组件通信，在更复杂的情况下，可能需要引入上下文 API 或其他状态管理工具。</li>
+</ul>
+<h3 id="8-动画过渡支持">8. <strong>动画过渡支持</strong>
+</h3><ul>
+<li><strong>Vue</strong> 原生支持动画和过渡效果，通过 <code>transition</code> 和 <code>transition-group</code> 组件，开发者可以轻松为元素添加动画效果。</li>
+<li><strong>React</strong> 没有内置的动画功能，通常需要引入第三方库如 <code>react-transition-group</code> 或 <code>framer-motion</code> 来实现。</li>
+</ul>
+<h3 id="总结-7">总结：
+</h3><p>Vue 在模板语法、双向绑定、计算属性、指令支持以及 CLI 工具等方面提供了更直观和简洁的解决方案，特别是在项目规模相对较小时，Vue 的学习曲线更平滑，开发体验更顺畅。而 React 的灵活性和生态系统广度适合构建更大型、复杂的应用，但需要更强的 JavaScript 基础。</p>
+<p>这并不是说 Vue 绝对优于 React，而是两者各有其适用场景，Vue 的方法和设计理念让它在某些开发场景中表现得更加简洁直观。</p>
+<h2 id="18-vue-组件在什么时候会执行组件销毁是当一个页面跳转到另一个页面时之前的页面的组件都会被销毁吗">18. vue 组件在什么时候会执行组件销毁？是当一个页面跳转到另一个页面时，之前的页面的组件都会被销毁吗？
+</h2><p>这是一个很好的问题，涉及到 Vue 组件的生命周期和路由管理。让我们详细探讨一下：</p>
+<ol>
+<li>组件销毁的时机</li>
+</ol>
+<p>Vue 组件在以下情况下会被销毁：</p>
+<p>a. 当组件被从 DOM 中移除时。
+b. 当使用 v-if 指令且条件变为 false 时。
+c. 当使用 v-for 指令且对应的数组项被移除时。
+d. 当组件的父组件被销毁时。</p>
+<ol start="2">
+<li>页面跳转时的组件销毁</li>
+</ol>
+<p>关于页面跳转时组件是否被销毁，这取决于你的路由配置和应用结构：</p>
+<p>a. 单页应用（SPA）中的普通路由切换：</p>
+<ul>
+<li>通常情况下，当从一个页面跳转到另一个页面时，前一个页面的组件会被销毁，新页面的组件会被创建。</li>
+<li>这是因为在默认情况下，Vue Router 会在路由变化时卸载旧的组件，并挂载新的组件。</li>
+</ul>
+<p>b. 使用 <keep-alive> 组件：</p>
+<ul>
+<li>如果你使用了 <keep-alive> 包裹路由组件，则组件在切换时不会被销毁，而是会被缓存。</li>
+<li>这种情况下，组件会触发 deactivated 钩子而不是 destroyed 钩子，当再次进入时会触发 activated 钩子。</li>
+</ul>
+<p>c. 嵌套路由：</p>
+<ul>
+<li>在嵌套路由的情况下，只有发生变化的部分会被销毁和重新创建，而共享的父级组件会保持不变。</li>
+</ul>
+<p>d. 动态组件：</p>
+<ul>
+<li>使用 <component :is="componentName"> 的动态组件，在切换时默认也会销毁旧组件并创建新组件，除非使用 <keep-alive>。</li>
+</ul>
+<ol start="3">
+<li>示例</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">App</span><span class="p">.</span><span class="nx">vue</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">router-view</span><span class="p">&gt;&lt;/</span><span class="nt">router-view</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--</span> <span class="nx">使用</span> <span class="nx">keep</span><span class="o">-</span><span class="nx">alive</span> <span class="nx">的情况</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">keep-alive</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">router-view</span><span class="p">&gt;&lt;/</span><span class="nt">router-view</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">keep-alive</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>验证组件销毁</li>
+</ol>
+<p>你可以在组件中添加 destroyed 生命周期钩子来验证组件是否被销毁：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">destroyed</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Component destroyed&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>注意事项</li>
+</ol>
+<ul>
+<li>组件销毁时，所有的事件监听器和子组件也会被销毁。</li>
+<li>如果在组件中设置了定时器或添加了全局事件监听，应该在 beforeDestroy 或 destroyed 钩子中清理它们，以防止内存泄漏。</li>
+</ul>
+<ol start="6">
+<li>性能考虑</li>
+</ol>
+<ul>
+<li>频繁地销毁和重建组件可能会影响性能。在某些情况下，使用 <keep-alive> 可以提高性能和用户体验。</li>
+<li>但是过度使用 <keep-alive> 也可能导致内存占用增加，需要权衡。</li>
+</ul>
+<ol start="7">
+<li>Vue 3 的变化</li>
+</ol>
+<p>在 Vue 3 中，生命周期钩子有些变化：</p>
+<ul>
+<li>destroyed 改名为 unmounted</li>
+<li>beforeDestroy 改名为 beforeUnmount</li>
+</ul>
+<p>总结：
+在默认情况下，当在单页应用中从一个页面跳转到另一个页面时，前一个页面的组件通常会被销毁。但这个行为可以通过 <keep-alive>、嵌套路由等方式来改变。了解组件的生命周期和销毁机制对于正确管理资源、优化性能和防止内存泄漏非常重要。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Trinyoung
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/interview/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
