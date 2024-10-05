@@ -7,9 +7,9 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
-        <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/interview/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>React 面试题汇总</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
         
         <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
@@ -1554,10 +1554,10 @@ PureComponent 不支持自定义 shouldComponentUpdate 的逻辑，如果需要�
         </item>
         <item>
         <title>react hooks 面试题</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;react-hooks-的理解它的实现原理是什么&#34;&gt;React hooks 的理解，它的实现原理是什么？
 &lt;/h2&gt;&lt;p&gt;React Hooks 是 React 16.8 版本引入的一组新的 API，它允许在&lt;strong&gt;函数组件&lt;/strong&gt;中使用 React 的状态和生命周期功能，从而大大增强了函数组件的能力。&lt;/p&gt;
 &lt;h3 id=&#34;1-hooks-的基本理解&#34;&gt;1. Hooks 的基本理解
