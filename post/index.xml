@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on Trinyoung</title>
-        <link>http://localhost:1313/interview/post/</link>
+        <link>https://trinyoung.github.io/interview/post/</link>
         <description>Recent content in Posts on Trinyoung</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
-        <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/interview/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>React 面试题汇总2</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;1-说一下react的生命周期以及对应的钩子函数&#34;&gt;1. 说一下react的生命周期，以及对应的钩子函数？
 &lt;/h2&gt;&lt;p&gt;React 的生命周期方法主要分为&lt;strong&gt;三个阶段&lt;/strong&gt;：&lt;strong&gt;挂载阶段 (Mounting)&lt;/strong&gt;、&lt;strong&gt;更新阶段 (Updating)&lt;/strong&gt; 和 &lt;strong&gt;卸载阶段 (Unmounting)&lt;/strong&gt;。这些生命周期方法在类组件中尤为明显，下面详细介绍各个阶段的生命周期和对应的钩子函数：&lt;/p&gt;
 &lt;h3 id=&#34;1-挂载阶段-mounting&#34;&gt;1. &lt;strong&gt;挂载阶段 (Mounting)&lt;/strong&gt;
@@ -1554,10 +1554,10 @@ PureComponent 不支持自定义 shouldComponentUpdate 的逻辑，如果需要�
         </item>
         <item>
         <title>react hooks 面试题2</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;react-hooks-的理解它的实现原理是什么&#34;&gt;React hooks 的理解，它的实现原理是什么？
 &lt;/h2&gt;&lt;p&gt;React Hooks 是 React 16.8 版本引入的一组新的 API，它允许在&lt;strong&gt;函数组件&lt;/strong&gt;中使用 React 的状态和生命周期功能，从而大大增强了函数组件的能力。&lt;/p&gt;
 &lt;h3 id=&#34;1-hooks-的基本理解&#34;&gt;1. Hooks 的基本理解
@@ -2061,10 +2061,10 @@ PureComponent 不支持自定义 shouldComponentUpdate 的逻辑，如果需要�
         </item>
         <item>
         <title>vue 面试题汇总2</title>
-        <link>http://localhost:1313/interview/p/test-chinese/</link>
+        <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/interview/p/test-chinese/</guid>
+        <guid>https://trinyoung.github.io/interview/p/test-chinese/</guid>
         <description>&lt;h2 id=&#34;1-vue-中keepalive-的原理&#34;&gt;1. vue 中keepAlive 的原理
 &lt;/h2&gt;&lt;p&gt;在 Vue 中，&lt;code&gt;keep-alive&lt;/code&gt; 是一个内置组件，用于缓存不活动的组件实例，从而在它们重新激活时避免重新渲染。这个功能特别适合需要在不同视图之间切换时保留组件状态的场景，如路由组件切换时保留表单输入数据、滚动位置等。&lt;/p&gt;
 &lt;h3 id=&#34;keep-alive-的工作原理&#34;&gt;&lt;code&gt;keep-alive&lt;/code&gt; 的工作原理

@@ -8,7 +8,7 @@
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
         <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/categories/react/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>React 面试题汇总</title>
+        <title>React 面试题汇总2</title>
         <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
         
@@ -1553,7 +1553,7 @@ PureComponent 不支持自定义 shouldComponentUpdate 的逻辑，如果需要�
 &lt;/h2&gt;</description>
         </item>
         <item>
-        <title>react hooks 面试题</title>
+        <title>react hooks 面试题2</title>
         <link>https://trinyoung.github.io/interview/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
