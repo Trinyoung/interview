@@ -228,3 +228,159 @@ function throttle (fun, wait){
   }
 }
 ```
+
+## 懒加载有哪些方式？
+**懒加载（Lazy Loading）** 是一种按需加载的技术，旨在优化性能和带宽使用，通常用于图片、视频、iframe、脚本等资源的延迟加载。只有当用户滚动到特定位置或触发特定操作时，懒加载才会启动资源的加载。这种方式避免了不必要的资源消耗，特别是在网页初始加载时，可以显著提高页面性能。以下是几种常见的实现懒加载的方式：
+
+### 1. **原生 `loading` 属性**
+   HTML5 提供了原生的 `loading` 属性用于懒加载图像和iframe，简洁且不需要额外的 JavaScript。
+
+   - **使用场景**：适合懒加载图片和iframe。
+   - **代码示例**：
+     ```html
+     <img src="image.jpg" loading="lazy" alt="Lazy loaded image">
+     <iframe src="video.mp4" loading="lazy"></iframe>
+     ```
+
+   - **优点**：
+     - 原生支持，无需额外的 JavaScript 代码。
+     - 性能友好，浏览器自动处理。
+   - **缺点**：
+     - 支持性：并非所有浏览器都完全支持该属性（但大多数现代浏览器都支持）。
+
+### 2. **Intersection Observer API**
+   **Intersection Observer** 是浏览器提供的 API，用于检测元素是否进入视口（viewport）。开发者可以使用这个 API 来监听 DOM 元素是否出现在可视区域，从而触发资源加载。
+
+   - **使用场景**：懒加载图片、视频、iframe、长列表、复杂组件等。
+   - **代码示例**：
+     ```javascript
+     const lazyImages = document.querySelectorAll('img.lazy');
+
+     const observer = new IntersectionObserver((entries, observer) => {
+       entries.forEach(entry => {
+         if (entry.isIntersecting) {
+           const img = entry.target;
+           img.src = img.dataset.src;
+           img.classList.remove('lazy');
+           observer.unobserve(img); // 停止观察
+         }
+       });
+     });
+
+     lazyImages.forEach(image => {
+       observer.observe(image);
+     });
+     ```
+
+   - **优点**：
+     - 高效的懒加载方式，现代浏览器支持好。
+     - 能够处理各种元素的懒加载，不局限于图片和iframe。
+   - **缺点**：
+     - 需要使用 JavaScript，并不适用于完全不支持 JavaScript 的环境。
+
+### 3. **滚动事件（Scroll Event）监听**
+   通过监听 `scroll` 事件来检测用户的滚动行为，当用户滚动到某个元素附近时，开始加载对应的资源。这是懒加载的一种传统方式。
+
+   - **使用场景**：适合懒加载图片、视频等资源，但已被 Intersection Observer 逐渐取代。
+   - **代码示例**：
+     ```javascript
+     window.addEventListener('scroll', function() {
+       const lazyImages = document.querySelectorAll('img.lazy');
+       lazyImages.forEach(image => {
+         if (image.getBoundingClientRect().top < window.innerHeight) {
+           image.src = image.dataset.src;
+           image.classList.remove('lazy');
+         }
+       });
+     });
+     ```
+
+   - **优点**：
+     - 简单直接，所有浏览器均支持。
+   - **缺点**：
+     - 性能较差，频繁的 `scroll` 事件触发会影响页面性能，需搭配**节流（throttle）**或**防抖（debounce）**机制。
+
+### 4. **JavaScript 库或插件**
+   使用一些专门用于懒加载的 JavaScript 库，如 **lazysizes**、**lozad.js**、**lazyload.js** 等。这些库通常封装了懒加载的逻辑，简化了开发者的工作。
+
+   - **使用场景**：适合需要快速集成懒加载的项目，尤其是在处理复杂页面或有大量懒加载需求时。
+   - **代码示例**（使用 **lazysizes**）：
+     ```html
+     <img class="lazyload" data-src="image.jpg" alt="Lazy loaded image">
+     <script src="lazysizes.min.js"></script>
+     ```
+
+   - **优点**：
+     - 简单易用，支持多种懒加载场景。
+     - 许多库已经为性能优化提供了内置支持，如节流、交叉观察器等。
+   - **缺点**：
+     - 需要引入额外的库，增加了页面的体积。
+
+### 5. **按需加载（Dynamic Import）**
+   **按需加载**常用于 JavaScript 模块。通过使用 **ES6 动态导入** (`import()`) 或 **Webpack 的代码拆分**（Code Splitting），你可以在需要时加载某些模块或组件，从而减少初始加载时间。
+
+   - **使用场景**：适合 JavaScript 模块的懒加载，如单页应用（SPA）中的某些路由页面、动态组件等。
+   - **代码示例**（使用动态 `import`）：
+     ```javascript
+     document.getElementById('loadButton').addEventListener('click', () => {
+       import('./module.js').then(module => {
+         module.loadFunction();
+       });
+     });
+     ```
+
+   - **优点**：
+     - 减少初始 JavaScript 包的大小。
+     - 按需加载模块或页面，提高性能。
+   - **缺点**：
+     - 适用于 JavaScript 代码和模块，而不是静态资源。
+
+### 6. **延迟加载外部资源**
+   通过 `async` 或 `defer` 属性，可以实现 JavaScript 脚本的延迟加载。这是一种常见的优化方式，特别是对于不影响页面渲染的脚本。
+
+   - **使用场景**：适合延迟加载 JavaScript 文件。
+   - **代码示例**：
+     ```html
+     <script src="script.js" async></script>
+     <script src="script.js" defer></script>
+     ```
+
+   - **优点**：
+     - 提升页面的初始渲染速度。
+   - **缺点**：
+     - 仅适用于 JavaScript 脚本文件。
+
+### 7. **Service Worker + Cache API**
+   **Service Worker** 可以在后台拦截请求，并根据缓存策略实现按需加载资源。结合 **Cache API**，它可以将常用的资源存储到本地，在用户需要时按需加载，支持离线模式。
+
+   - **使用场景**：适合离线优先应用或 PWA，通过缓存机制实现按需加载。
+   - **代码示例**（简单的缓存示例）：
+     ```javascript
+     self.addEventListener('fetch', event => {
+       event.respondWith(
+         caches.match(event.request).then(response => {
+           return response || fetch(event.request);
+         })
+       );
+     });
+     ```
+
+   - **优点**：
+     - 提供离线支持，能够缓存并按需加载资源。
+   - **缺点**：
+     - 实现较为复杂，适合特定应用场景。
+
+---
+
+### **总结**
+懒加载的实现方式有多种，适用于不同的场景和资源类型：
+
+1. **原生 `loading` 属性**：简单、快速，适合图片和iframe。
+2. **Intersection Observer API**：现代、高效的懒加载方式，适合所有资源类型。
+3. **Scroll 事件监听**：传统方法，但需要优化，已逐渐被替代。
+4. **JavaScript 库或插件**：使用封装好的库来快速实现复杂懒加载需求。
+5. **按需加载（动态导入）**：用于 JavaScript 模块的懒加载。
+6. **延迟加载外部资源（async/ defer）**：用于延迟加载脚本。
+7. **Service Worker + Cache API**：通过缓存机制实现按需加载，支持离线应用。
+
+根据实际项目的需求和浏览器支持情况，可以选择合适的懒加载方式。

@@ -5,7 +5,8 @@
   "main": "a.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx babel ../interview -d ../lib"
+    "build": "npx babel ../interview -d ../lib",
+    "start": "node ./javascript and"
   },
   "repository": {
     "type": "git",

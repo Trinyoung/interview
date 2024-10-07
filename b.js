@@ -1,5 +1,6 @@
-a  = {name: 'lqy'};
-b = {name: 'lqy2'};
-window.subA = a;
-window.subB = b;
-window.
+var arr = [];
+for (var i = 0; i < 10; i ++) {
+    arr.push(i);
+    console.log(i)
+}
+console.log(arr);
