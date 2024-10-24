@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是Redux 知识汇总">
+<title>Redux 知识汇总</title>
+
+<link rel='canonical' href='https://trinyoung.github.io/p/redux/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Redux 知识汇总">
+<meta property='og:description' content="这是Redux 知识汇总">
+<meta property='og:url' content='https://trinyoung.github.io/p/redux/'>
+<meta property='og:site_name' content='Trinyoung'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-10-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-10-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Redux 知识汇总">
+<meta name="twitter:description" content="这是Redux 知识汇总">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6696643109827554558.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Trinyoung</a></h1>
+            <h2 class="site-description">欢迎来到我的博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#redux-的理解-主要解决哪些问题">redux 的理解？ 主要解决哪些问题？</a>
+      <ol>
+        <li><a href="#1-主要解决的问题">1. 主要解决的问题</a></li>
+        <li><a href="#2-编程思想">2. 编程思想</a></li>
+        <li><a href="#3-核心概念">3. 核心概念</a></li>
+        <li><a href="#4-中间件">4. 中间件</a></li>
+        <li><a href="#5-结合-react">5. 结合 React</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#redux的使用教程">redux的使用教程</a>
+      <ol>
+        <li><a href="#1-安装-redux-和-react-redux">1. 安装 Redux 和 React-Redux</a></li>
+        <li><a href="#2-创建-redux-store">2. 创建 Redux Store</a></li>
+        <li><a href="#3-创建-reducer">3. 创建 Reducer</a></li>
+        <li><a href="#4-创建-action-creators">4. 创建 Action Creators</a></li>
+        <li><a href="#5-设置-react-组件">5. 设置 React 组件</a></li>
+        <li><a href="#6-创建计数器组件">6. 创建计数器组件</a></li>
+        <li><a href="#7-在-app-组件中使用-counter">7. 在 App 组件中使用 Counter</a></li>
+        <li><a href="#8-运行应用">8. 运行应用</a></li>
+        <li><a href="#9-测试功能">9. 测试功能</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#redux-生成的store-是唯一的吗-不同的页面使用的store是同一个吗还是说页面跳转后store-进行了重置">redux 生成的store 是唯一的吗？ 不同的页面使用的store是同一个吗？还是说，页面跳转后，store 进行了重置？</a>
+      <ol>
+        <li><a href="#1-唯一的-store">1. 唯一的 Store</a></li>
+        <li><a href="#2-不同页面共享同一个-store">2. 不同页面共享同一个 Store</a></li>
+        <li><a href="#3-页面跳转后的状态">3. 页面跳转后的状态</a></li>
+        <li><a href="#4-组件的生命周期">4. 组件的生命周期</a></li>
+        <li><a href="#5-例外情况">5. 例外情况</a></li>
+        <li><a href="#6-结合-react-router">6. 结合 React Router</a></li>
+        <li><a href="#总结-2">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#react-单页应用中刷新和路由跳转对redux-状态的影响">react 单页应用中，刷新和路由跳转对redux 状态的影响？</a>
+      <ol>
+        <li><a href="#1-页面刷新"><strong>1. 页面刷新</strong></a></li>
+        <li><a href="#2-从-b-页面跳回-a-页面"><strong>2. 从 B 页面跳回 A 页面</strong></a></li>
+        <li><a href="#总结对比"><strong>总结对比</strong></a></li>
+        <li><a href="#示例场景"><strong>示例场景</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#sessionstorage-和-localstorage-的区别在单页应用中刷新页面和路由跳转sessionstorage-里面的值会发生变化吗">sessionStorage 和 localStorage 的区别？在单页应用中，刷新页面和路由跳转sessionStorage 里面的值会发生变化吗？</a>
+      <ol>
+        <li><a href="#1-存储范围">1. 存储范围</a></li>
+        <li><a href="#2-生命周期">2. 生命周期</a></li>
+        <li><a href="#3-数据大小限制">3. 数据大小限制</a></li>
+        <li><a href="#4-数据访问">4. 数据访问</a></li>
+        <li><a href="#5-跨标签页和窗口">5. 跨标签页和窗口</a></li>
+        <li><a href="#在单页应用中的行为">在单页应用中的行为</a></li>
+        <li><a href="#总结-3">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#说一下redux的原理和工作流程">说一下redux的原理和工作流程？</a>
+      <ol>
+        <li><a href="#1-核心概念">1. 核心概念</a></li>
+        <li><a href="#2-工作原理">2. 工作原理</a></li>
+        <li><a href="#3-工作流程">3. 工作流程</a></li>
+        <li><a href="#4-示例">4. 示例</a></li>
+        <li><a href="#总结-4">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#说一下dva-和-redux-的区别">说一下dva 和 redux 的区别？</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/react/" >
+                React
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/redux/">Redux 知识汇总</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            这是Redux 知识汇总
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 09, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 12 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="redux-的理解-主要解决哪些问题">redux 的理解？ 主要解决哪些问题？
+</h2><p>Redux 是一个用于 JavaScript 应用程序的状态管理库，特别适用于 React 应用。它提供了一种集中式的状态管理方式，使得应用的状态可以在不同组件之间共享和管理。以下是对 Redux 的理解，包括它解决的问题、编程思想以及核心概念。</p>
+<h3 id="1-主要解决的问题">1. 主要解决的问题
+</h3><ul>
+<li>
+<p><strong>状态管理</strong>：在大型应用中，组件之间的状态共享和管理变得复杂。Redux 提供了一个集中式的状态存储，使得所有组件都可以访问和更新应用的状态。</p>
+</li>
+<li>
+<p><strong>状态一致性</strong>：Redux 确保应用的状态是可预测的，所有状态的变化都通过明确的动作（actions）和 reducers 进行管理，避免了状态的不一致性。</p>
+</li>
+<li>
+<p><strong>调试和测试</strong>：由于 Redux 的状态管理是集中式的，开发者可以轻松地追踪状态的变化，使用时间旅行调试（time-travel debugging）等工具来回溯状态变化，方便调试和测试。</p>
+</li>
+<li>
+<p><strong>跨组件通信</strong>：在没有 Redux 的情况下，组件之间的状态传递通常需要通过 props drilling（逐层传递 props）来实现。Redux 允许任何组件直接访问全局状态，简化了组件之间的通信。</p>
+</li>
+</ul>
+<h3 id="2-编程思想">2. 编程思想
+</h3><p>Redux 的编程思想主要基于以下几个核心原则：</p>
+<ul>
+<li>
+<p><strong>单一数据源</strong>：整个应用的状态存储在一个单一的 store 中，所有的状态都集中管理。这使得状态的管理和调试变得更加简单。</p>
+</li>
+<li>
+<p><strong>状态是只读的</strong>：应用的状态是只读的，唯一可以改变状态的方法是通过派发（dispatch）一个 action。这样可以确保状态的变化是可追踪的。</p>
+</li>
+<li>
+<p><strong>使用纯函数来描述状态变化</strong>：状态的变化通过 reducers（纯函数）来处理。reducers 接收当前状态和 action，返回新的状态。由于 reducers 是纯函数，它们不会产生副作用，确保了状态变化的可预测性。</p>
+</li>
+</ul>
+<h3 id="3-核心概念">3. 核心概念
+</h3><ul>
+<li><strong>Store</strong>：Redux 中的状态存储，包含应用的整个状态树。通过 <code>createStore</code> 创建。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">rootReducer</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>Action</strong>：描述状态变化的普通 JavaScript 对象，必须包含一个 <code>type</code> 属性。可以包含其他数据。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">incrementAction</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>Reducer</strong>：纯函数，接收当前状态和 action，返回新的状态。Reducers 负责处理状态的变化。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">counterReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">state</span> <span class="o">+</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;DECREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">state</span> <span class="o">-</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>Dispatch</strong>：用于派发 action 的方法，触发状态的变化。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">incrementAction</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>Subscribe</strong>：用于监听 store 的状态变化，注册回调函数。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;State changed:&#39;</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-中间件">4. 中间件
+</h3><ul>
+<li><strong>Middleware</strong>：Redux 支持中间件，可以在 action 被派发后、到达 reducer 之前进行处理。常用的中间件有 <code>redux-thunk</code>（用于处理异步操作）和 <code>redux-saga</code>（用于处理复杂的副作用）。</li>
+</ul>
+<h3 id="5-结合-react">5. 结合 React
+</h3><ul>
+<li><strong>React-Redux</strong>：Redux 提供了与 React 集成的库 <code>react-redux</code>，通过 <code>Provider</code> 组件将 store 传递给组件树，并使用 <code>connect</code> 或 <code>useSelector</code> 和 <code>useDispatch</code> Hooks 来访问和更新状态。</li>
+</ul>
+<h3 id="总结">总结
+</h3><p>Redux 是一个强大的状态管理工具，适用于需要集中管理状态的复杂应用。它通过单一数据源、只读状态和纯函数的原则，提供了一种可预测的状态管理方式。Redux 的核心概念包括 store、action、reducer 和 dispatch，使得状态的管理和调试变得更加简单和高效。通过与 React 的结合，Redux 可以帮助开发者构建可维护、可扩展的应用程序。</p>
+<h2 id="redux的使用教程">redux的使用教程
+</h2><p>下面是一个简单的 Redux 使用教程，涵盖了 Redux 的基本概念、设置和与 React 的集成。我们将创建一个简单的计数器应用，演示如何使用 Redux 管理状态。</p>
+<h3 id="1-安装-redux-和-react-redux">1. 安装 Redux 和 React-Redux
+</h3><p>首先，确保你已经安装了 <code>redux</code> 和 <code>react-redux</code>。在你的项目目录中运行以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install redux react-redux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-创建-redux-store">2. 创建 Redux Store
+</h3><p>在项目中创建一个文件夹 <code>redux</code>，并在其中创建一个文件 <code>store.js</code>，用于设置 Redux store。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// redux/store.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">rootReducer</span> <span class="nx">from</span> <span class="s1">&#39;./reducers&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">rootReducer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">store</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-创建-reducer">3. 创建 Reducer
+</h3><p>在 <code>redux</code> 文件夹中创建一个 <code>reducers</code> 文件夹，并在其中创建一个文件 <code>counterReducer.js</code>，用于管理计数器的状态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// redux/reducers/counterReducer.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">counterReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;DECREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">counterReducer</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，在 <code>reducers</code> 文件夹中创建一个 <code>index.js</code> 文件，将所有 reducers 合并。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// redux/reducers/index.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">counterReducer</span> <span class="nx">from</span> <span class="s1">&#39;./counterReducer&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">rootReducer</span> <span class="o">=</span> <span class="nx">combineReducers</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">counter</span><span class="o">:</span> <span class="nx">counterReducer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">rootReducer</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-创建-action-creators">4. 创建 Action Creators
+</h3><p>在 <code>redux</code> 文件夹中创建一个 <code>actions</code> 文件夹，并在其中创建一个文件 <code>counterActions.js</code>，用于定义 action creators。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// redux/actions/counterActions.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="kr">const</span> <span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">decrement</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;DECREMENT&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-设置-react-组件">5. 设置 React 组件
+</h3><p>在你的 React 应用中，使用 <code>Provider</code> 组件将 Redux store 传递给组件树。在 <code>src/index.js</code> 中进行设置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// src/index.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">store</span> <span class="nx">from</span> <span class="s1">&#39;./redux/store&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="err">/Provider&gt;,</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6-创建计数器组件">6. 创建计数器组件
+</h3><p>在 <code>src</code> 文件夹中创建一个 <code>Counter.js</code> 组件，用于显示和操作计数器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// src/Counter.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">useSelector</span><span class="p">,</span> <span class="nx">useDispatch</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">increment</span><span class="p">,</span> <span class="nx">decrement</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./redux/actions/counterActions&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">useSelector</span><span class="p">((</span><span class="nx">state</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span> <span class="c1">// 从 Redux store 获取 count
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">dispatch</span> <span class="o">=</span> <span class="nx">useDispatch</span><span class="p">();</span> <span class="c1">// 获取 dispatch 函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Count</span><span class="o">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">increment</span><span class="p">())}</span><span class="o">&gt;</span><span class="nx">Increment</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">decrement</span><span class="p">())}</span><span class="o">&gt;</span><span class="nx">Decrement</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">Counter</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="7-在-app-组件中使用-counter">7. 在 App 组件中使用 Counter
+</h3><p>在 <code>src/App.js</code> 中引入并使用 <code>Counter</code> 组件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// src/App.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Counter</span> <span class="nx">from</span> <span class="s1">&#39;./Counter&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Redux</span> <span class="nx">Counter</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">Counter</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="8-运行应用">8. 运行应用
+</h3><p>确保你的开发服务器正在运行，通常可以使用以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm start
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="9-测试功能">9. 测试功能
+</h3><p>打开浏览器，访问你的应用，应该能看到计数器的初始值为 0。点击 &ldquo;Increment&rdquo; 按钮，计数器的值会增加；点击 &ldquo;Decrement&rdquo; 按钮，计数器的值会减少。</p>
+<h3 id="总结-1">总结
+</h3><p>通过以上步骤，你已经成功创建了一个简单的 Redux 应用。这个应用展示了如何设置 Redux store、创建 reducers 和 actions，以及如何在 React 组件中使用 Redux。你可以在此基础上扩展更多功能，深入学习 Redux 的高级用法，如中间件、异步操作等。</p>
+<h2 id="redux-生成的store-是唯一的吗-不同的页面使用的store是同一个吗还是说页面跳转后store-进行了重置">redux 生成的store 是唯一的吗？ 不同的页面使用的store是同一个吗？还是说，页面跳转后，store 进行了重置？
+</h2><p>在 Redux 中，生成的 store 是唯一的，且在整个应用生命周期内保持不变。以下是关于 Redux store 的一些关键点：</p>
+<h3 id="1-唯一的-store">1. 唯一的 Store
+</h3><ul>
+<li><strong>单一数据源</strong>：Redux 的设计理念是将整个应用的状态存储在一个单一的 store 中。这意味着无论应用有多少个页面或组件，它们都共享同一个 Redux store。</li>
+</ul>
+<h3 id="2-不同页面共享同一个-store">2. 不同页面共享同一个 Store
+</h3><ul>
+<li><strong>状态共享</strong>：在单页应用（SPA）中，页面之间的跳转不会导致 Redux store 的重置。所有页面和组件都可以访问同一个 store，因此它们可以共享状态。这使得在不同页面之间传递数据变得简单。</li>
+</ul>
+<h3 id="3-页面跳转后的状态">3. 页面跳转后的状态
+</h3><ul>
+<li><strong>状态持久性</strong>：当用户在应用中进行页面跳转时，Redux store 中的状态不会被重置。状态会保持不变，直到你显式地通过 dispatch action 来更新或重置它。</li>
+</ul>
+<h3 id="4-组件的生命周期">4. 组件的生命周期
+</h3><ul>
+<li><strong>组件卸载与重载</strong>：虽然 Redux store 是唯一的，但组件的生命周期是独立的。当组件卸载时，它的状态（如 local state）会被清除，但 Redux store 中的状态仍然存在。</li>
+</ul>
+<h3 id="5-例外情况">5. 例外情况
+</h3><ul>
+<li><strong>重置 Store</strong>：如果你在应用中使用了某些中间件（如 <code>redux-persist</code>）或手动管理 store 的逻辑，可能会在特定情况下重置 store。例如，用户登出时，可能会清空 store 中的用户信息。</li>
+</ul>
+<h3 id="6-结合-react-router">6. 结合 React Router
+</h3><ul>
+<li><strong>路由与 Store</strong>：在使用 React Router 的应用中，路由变化不会影响 Redux store。所有路由组件都可以访问同一个 store，允许它们在不同的页面之间共享状态。</li>
+</ul>
+<h3 id="总结-2">总结
+</h3><ul>
+<li>Redux 生成的 store 是唯一的，整个应用共享同一个 store。</li>
+<li>页面跳转不会导致 store 重置，状态会保持不变。</li>
+<li>组件的状态和生命周期是独立的，但它们可以访问和更新同一个 Redux store。</li>
+</ul>
+<p>这种设计使得 Redux 在管理复杂应用的状态时非常高效和灵活。</p>
+<h2 id="react-单页应用中刷新和路由跳转对redux-状态的影响">react 单页应用中，刷新和路由跳转对redux 状态的影响？
+</h2><p>在 React 中，<strong>页面刷新</strong>与<strong>页面跳转</strong>之间有本质的区别，尤其是状态的保留、组件生命周期、网络请求等方面。让我们详细比较一下当你在 A 页面<strong>刷新</strong>和<strong>从 B 页面跳回 A 页面</strong>时的差异：</p>
+<h3 id="1-页面刷新"><strong>1. 页面刷新</strong>
+</h3><p>当你在 A 页面进行刷新（即按下 F5 或浏览器的刷新按钮），实际上是<strong>整个页面重新加载</strong>。主要影响如下：</p>
+<ul>
+<li><strong>Redux store 和组件状态</strong>：因为整个应用被重新加载，内存中的 Redux store 和组件的局部状态会被清空并重置，所有数据都将回到初始状态。</li>
+<li><strong>组件生命周期</strong>：刷新后，A 页面中的组件会经历完整的**挂载（mounting）**过程，从 <code>constructor</code> -&gt; <code>componentDidMount</code>（类组件）或 <code>useEffect</code>（函数组件）开始重新执行。</li>
+<li><strong>网络请求</strong>：页面刷新后，所有相关的网络请求都会重新发起，页面资源、数据等都会重新加载。</li>
+<li><strong>浏览器上下文</strong>：刷新会丢失任何与页面相关的非持久化状态（例如 <code>sessionStorage</code> 之外的临时数据）。</li>
+</ul>
+<h3 id="2-从-b-页面跳回-a-页面"><strong>2. 从 B 页面跳回 A 页面</strong>
+</h3><p>当你从 A 页面跳到 B 页面，然后再跳回 A 页面时（例如，使用 React Router 进行页面切换），区别主要体现在以下几点：</p>
+<ul>
+<li><strong>Redux store 和全局状态</strong>：Redux store 是<strong>全局共享且不受页面跳转影响的</strong>，因此跳转过程中 Redux store 中的状态会被保留，A 页面先前更新的状态仍然存在。</li>
+<li><strong>组件生命周期</strong>：当你返回到 A 页面时，A 页面组件会根据其是否被卸载而表现不同：
+<ul>
+<li><strong>被卸载（完全离开页面）</strong>：如果组件被 React 彻底卸载，返回时会重新经历挂载（mounting）过程，生命周期会重新执行。</li>
+<li><strong>未被卸载（缓存存在）</strong>：如果 A 页面组件并未完全卸载（例如，使用某种缓存策略、<code>React.Suspense</code> 等），返回时组件会保留其先前的状态，直接展示之前的内容。</li>
+</ul>
+</li>
+<li><strong>网络请求</strong>：一般来说，跳转回 A 页面时，如果组件状态和数据已经存在，就不会重新发起网络请求，除非你在组件的 <code>useEffect</code> 或生命周期钩子中设置了明确的条件来重新加载数据。</li>
+</ul>
+<h3 id="总结对比"><strong>总结对比</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th><strong>页面刷新</strong></th>
+          <th><strong>页面跳转回 A 页面</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Redux 状态</strong></td>
+          <td>重置为初始状态</td>
+          <td>保持不变</td>
+      </tr>
+      <tr>
+          <td><strong>组件状态</strong></td>
+          <td>重新初始化</td>
+          <td>可能被保留或重新初始化</td>
+      </tr>
+      <tr>
+          <td><strong>生命周期</strong></td>
+          <td>组件重新挂载</td>
+          <td>视情况而定：可能重新挂载或恢复</td>
+      </tr>
+      <tr>
+          <td><strong>网络请求</strong></td>
+          <td>会重新发起</td>
+          <td>视数据情况而定，不一定会重新发起</td>
+      </tr>
+      <tr>
+          <td><strong>页面资源</strong></td>
+          <td>完全重新加载</td>
+          <td>不会重新加载</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="示例场景"><strong>示例场景</strong>
+</h3><p>假设 Redux store 中有一个 <code>counter</code> 属性，A 页面上有一个按钮可以增加 <code>counter</code>，从 A 页面跳到 B 页面，再跳回 A 页面：</p>
+<ul>
+<li><strong>刷新后</strong>：<code>counter</code> 会回到初始值，因为 Redux store 被清空。</li>
+<li><strong>跳转回 A 页面</strong>：<code>counter</code> 保持在先前的值，因为 Redux store 在跳转过程中没有被销毁。</li>
+</ul>
+<p>因此，<strong>页面刷新</strong>相当于重新加载整个应用，而<strong>页面跳转</strong>在保持应用状态的完整性方面更加高效，特别是在使用 React Router 和 Redux 等状态管理工具时。</p>
+<h2 id="sessionstorage-和-localstorage-的区别在单页应用中刷新页面和路由跳转sessionstorage-里面的值会发生变化吗">sessionStorage 和 localStorage 的区别？在单页应用中，刷新页面和路由跳转sessionStorage 里面的值会发生变化吗？
+</h2><p><code>sessionStorage</code> 和 <code>localStorage</code> 都是 Web Storage API 的一部分，用于在浏览器中存储数据。它们之间有一些关键的区别，以下是详细的比较：</p>
+<h3 id="1-存储范围">1. 存储范围
+</h3><ul>
+<li>
+<p><strong><code>localStorage</code></strong>：</p>
+<ul>
+<li>数据在浏览器中持久存储，直到显式删除。即使关闭浏览器或重新启动计算机，数据仍然存在。</li>
+<li>适合存储需要长期保留的数据，如用户偏好设置、主题等。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>sessionStorage</code></strong>：</p>
+<ul>
+<li>数据仅在当前会话中存储，关闭浏览器标签页或窗口后，数据会被清除。</li>
+<li>适合存储临时数据，如表单输入、用户会话信息等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-生命周期">2. 生命周期
+</h3><ul>
+<li>
+<p><strong><code>localStorage</code></strong>：</p>
+<ul>
+<li>数据的生命周期是永久的，除非通过 JavaScript 或浏览器设置手动删除。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>sessionStorage</code></strong>：</p>
+<ul>
+<li>数据的生命周期与浏览器会话相关，关闭标签页或窗口后，数据会被清除。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-数据大小限制">3. 数据大小限制
+</h3><ul>
+<li><strong><code>localStorage</code> 和 <code>sessionStorage</code></strong>：
+<ul>
+<li>两者的存储大小限制通常为 5MB（具体取决于浏览器），但在不同浏览器中可能会有所不同。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-数据访问">4. 数据访问
+</h3><ul>
+<li><strong><code>localStorage</code></strong> 和 <strong><code>sessionStorage</code></strong>：
+<ul>
+<li>都是通过键值对的方式存储和访问数据，使用相同的 API，如 <code>setItem</code>、<code>getItem</code> 和 <code>removeItem</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-跨标签页和窗口">5. 跨标签页和窗口
+</h3><ul>
+<li>
+<p><strong><code>localStorage</code></strong>：</p>
+<ul>
+<li>数据在同一源（协议、域名和端口）下的所有标签页和窗口中共享。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>sessionStorage</code></strong>：</p>
+<ul>
+<li>数据仅在同一标签页或窗口中可用，不会在不同的标签页或窗口之间共享。</li>
+</ul>
+</li>
+</ul>
+<h3 id="在单页应用中的行为">在单页应用中的行为
+</h3><ul>
+<li>
+<p><strong>刷新页面</strong>：</p>
+<ul>
+<li>刷新页面时，<code>sessionStorage</code> 中的数据不会发生变化，仍然可以访问到之前存储的数据。</li>
+</ul>
+</li>
+<li>
+<p><strong>跳转页面</strong>：</p>
+<ul>
+<li>在单页应用中，跳转到不同的视图（例如通过 React Router）不会影响 <code>sessionStorage</code> 中的数据，因为数据仍然存在于当前会话中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结-3">总结
+</h3><ul>
+<li><strong><code>localStorage</code></strong>：用于持久存储数据，数据在浏览器关闭后仍然存在，适合长期存储。</li>
+<li><strong><code>sessionStorage</code></strong>：用于临时存储数据，数据在关闭标签页或窗口后被清除，适合会话相关的数据。</li>
+</ul>
+<p>在单页应用中，<code>sessionStorage</code> 的值在刷新页面时保持不变，但在关闭标签页或窗口后会被清除。跳转页面不会影响 <code>sessionStorage</code> 中的数据。</p>
+<h2 id="说一下redux的原理和工作流程">说一下redux的原理和工作流程？
+</h2><p>Redux 是一个用于 JavaScript 应用程序的状态管理库，特别适用于 React 应用。它的工作原理和工作流程可以分为几个关键步骤。以下是 Redux 的工作原理和工作流程的详细说明：</p>
+<h3 id="1-核心概念">1. 核心概念
+</h3><p>在理解 Redux 的工作原理之前，首先要了解几个核心概念：</p>
+<ul>
+<li><strong>Store</strong>：Redux 中的状态存储，包含应用的整个状态树。</li>
+<li><strong>Action</strong>：描述状态变化的普通 JavaScript 对象，必须包含一个 <code>type</code> 属性。</li>
+<li><strong>Reducer</strong>：纯函数，接收当前状态和 action，返回新的状态。Reducers 负责处理状态的变化。</li>
+</ul>
+<h3 id="2-工作原理">2. 工作原理
+</h3><p>Redux 的工作原理可以概括为以下几个步骤：</p>
+<ol>
+<li>
+<p><strong>创建 Store</strong>：</p>
+<ul>
+<li>使用 <code>createStore</code> 函数创建 Redux store，并传入根 reducer。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">rootReducer</span> <span class="nx">from</span> <span class="s1">&#39;./reducers&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">rootReducer</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>定义 Action</strong>：</p>
+<ul>
+<li>定义描述状态变化的 action。每个 action 至少需要一个 <code>type</code> 属性。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">incrementAction</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>定义 Reducer</strong>：</p>
+<ul>
+<li>创建 reducer 函数，处理不同的 action，并返回新的状态。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">counterReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;DECREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">-</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>派发 Action</strong>：</p>
+<ul>
+<li>使用 <code>store.dispatch(action)</code> 方法派发 action，触发状态更新。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">incrementAction</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>更新状态</strong>：</p>
+<ul>
+<li>Redux 会调用相应的 reducer，传入当前状态和派发的 action，计算出新的状态。</li>
+</ul>
+</li>
+<li>
+<p><strong>通知订阅者</strong>：</p>
+<ul>
+<li>Redux 会通知所有订阅了 store 的组件，触发重新渲染。可以使用 <code>store.subscribe()</code> 方法注册回调函数。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;State changed:&#39;</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="3-工作流程">3. 工作流程
+</h3><p>Redux 的工作流程可以总结为以下几个步骤：</p>
+<ol>
+<li>
+<p><strong>初始化</strong>：</p>
+<ul>
+<li>创建 Redux store，定义初始状态和 reducers。</li>
+</ul>
+</li>
+<li>
+<p><strong>派发 Action</strong>：</p>
+<ul>
+<li>当用户与应用交互（如点击按钮、提交表单等）时，派发相应的 action。</li>
+</ul>
+</li>
+<li>
+<p><strong>处理 Action</strong>：</p>
+<ul>
+<li>Redux store 接收到 action 后，调用相应的 reducer，计算出新的状态。</li>
+</ul>
+</li>
+<li>
+<p><strong>更新 Store</strong>：</p>
+<ul>
+<li>Redux store 更新状态，并通知所有订阅者。</li>
+</ul>
+</li>
+<li>
+<p><strong>重新渲染</strong>：</p>
+<ul>
+<li>订阅者（通常是 React 组件）接收到状态变化的通知，重新渲染以反映最新的状态。</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-示例">4. 示例
+</h3><p>以下是一个简单的 Redux 示例，展示了整个工作流程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;redux&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义初始状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义 reducer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">counterReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;INCREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;DECREMENT&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 创建 store
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">counterReducer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 订阅状态变化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;State changed:&#39;</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 派发 action
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;INCREMENT&#39;</span> <span class="p">});</span> <span class="c1">// State changed: { count: 1 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;INCREMENT&#39;</span> <span class="p">});</span> <span class="c1">// State changed: { count: 2 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;DECREMENT&#39;</span> <span class="p">});</span> <span class="c1">// State changed: { count: 1 }
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="总结-4">总结
+</h3><p>Redux 的工作原理和工作流程围绕着单一数据源、不可变状态和纯函数的原则。通过定义 action、reducer 和 store，Redux 提供了一种可预测的状态管理方式，使得应用的状态变化清晰可控。通过派发 action 和更新状态，Redux 能够高效地管理复杂应用的状态。</p>
+<h2 id="说一下dva-和-redux-的区别">说一下dva 和 redux 的区别？
+</h2>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/test-chinese2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">React 面试题汇总</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Trinyoung
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

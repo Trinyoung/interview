@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是r微前端知识汇总，让我们一起学习吧">
+<title>微前端知识汇总</title>
+
+<link rel='canonical' href='https://trinyoung.github.io/p/micro-fronted/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="微前端知识汇总">
+<meta property='og:description' content="这是r微前端知识汇总，让我们一起学习吧">
+<meta property='og:url' content='https://trinyoung.github.io/p/micro-fronted/'>
+<meta property='og:site_name' content='Trinyoung'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-09-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-09-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="微前端知识汇总">
+<meta name="twitter:description" content="这是r微前端知识汇总，让我们一起学习吧">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6696643109827554558.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Trinyoung</a></h1>
+            <h2 class="site-description">欢迎来到我的博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是微前端">什么是微前端？</a></li>
+    <li><a href="#微前端的实现方式有哪些有哪些常用的微前端框架">微前端的实现方式有哪些？有哪些常用的微前端框架？</a></li>
+    <li><a href="#什么是single-spa它的作用是什么为什么这么做它的实现原理是什么">什么是single-spa？它的作用是什么？为什么这么做？它的实现原理是什么？</a>
+      <ol>
+        <li><a href="#什么是-single-spa">什么是 Single-spa？</a></li>
+        <li><a href="#single-spa-的作用">Single-spa 的作用</a></li>
+        <li><a href="#为什么使用-single-spa">为什么使用 Single-spa？</a></li>
+        <li><a href="#实现原理">实现原理</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#single-spa中-css-样式是如何隔离的">single-spa中， css 样式是如何隔离的？</a>
+      <ol>
+        <li><a href="#1-css-modules">1. CSS Modules</a></li>
+        <li><a href="#2-scoped-css">2. Scoped CSS</a></li>
+        <li><a href="#3-shadow-dom">3. Shadow DOM</a></li>
+        <li><a href="#4-命名空间和前缀">4. 命名空间和前缀</a></li>
+        <li><a href="#5-动态加载和卸载样式">5. 动态加载和卸载样式</a></li>
+        <li><a href="#6-使用-css-in-js">6. 使用 CSS-in-JS</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#什么是web-components-技术">什么是web components 技术？</a>
+      <ol>
+        <li><a href="#1-custom-elements自定义元素">1. Custom Elements（自定义元素）</a></li>
+        <li><a href="#2-shadow-dom影子-dom">2. Shadow DOM（影子 DOM）</a></li>
+        <li><a href="#3-html-templateshtml-模板">3. HTML Templates（HTML 模板）</a></li>
+        <li><a href="#4-html-importshtml-导入">4. HTML Imports（HTML 导入）</a></li>
+        <li><a href="#web-components-的优势">Web Components 的优势</a></li>
+        <li><a href="#总结-2">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#qiankun的实现原理">qiankun的实现原理？</a>
+      <ol>
+        <li><a href="#qiankun应用加载的原理">qiankun应用加载的原理</a></li>
+        <li><a href="#1-注册子应用">1. <strong>注册子应用</strong></a></li>
+        <li><a href="#2-路由劫持">2. <strong>路由劫持</strong></a></li>
+        <li><a href="#3-动态加载子应用">3. <strong>动态加载子应用</strong></a></li>
+        <li><a href="#4-执行子应用的代码">4. <strong>执行子应用的代码</strong></a></li>
+        <li><a href="#5-挂载子应用">5. <strong>挂载子应用</strong></a></li>
+        <li><a href="#6-应用间通信">6. <strong>应用间通信</strong></a></li>
+        <li><a href="#7-卸载子应用">7. <strong>卸载子应用</strong></a></li>
+        <li><a href="#总结-3">总结</a></li>
+        <li><a href="#qiankun的沙箱机制是如何实现的">qiankun的沙箱机制是如何实现的？</a></li>
+        <li><a href="#1-proxy-对象">1. <strong>Proxy 对象</strong></a></li>
+        <li><a href="#2-全局变量的隔离">2. <strong>全局变量的隔离</strong></a></li>
+        <li><a href="#3-css-隔离">3. <strong>CSS 隔离</strong></a></li>
+        <li><a href="#4-生命周期管理">4. <strong>生命周期管理</strong></a></li>
+        <li><a href="#5-事件通信">5. <strong>事件通信</strong></a></li>
+        <li><a href="#6-沙箱的启用与禁用">6. <strong>沙箱的启用与禁用</strong></a></li>
+        <li><a href="#总结-4">总结</a></li>
+      </ol>
+    </li>
+    <li><a href="#micro-app-的实现原理">micro-app 的实现原理？</a></li>
+    <li><a href="#常用的qiankun和micro-app-的区别与iframe-有何不同">常用的qiankun和micro-app 的区别？与iframe 有何不同？</a></li>
+    <li><a href="#微前端框架中有一个框架名称是为无界请说一下它与其他几个微前端框架的区别">微前端框架中，有一个框架名称是为无界，请说一下它与其他几个微前端框架的区别？</a>
+      <ol>
+        <li><a href="#1-基础技术">1. <strong>基础技术</strong></a></li>
+        <li><a href="#2-沙箱机制">2. <strong>沙箱机制</strong></a></li>
+        <li><a href="#3-资源加载">3. <strong>资源加载</strong></a></li>
+        <li><a href="#4-路由管理">4. <strong>路由管理</strong></a></li>
+        <li><a href="#5-开发体验">5. <strong>开发体验</strong></a></li>
+        <li><a href="#6-社区和生态">6. <strong>社区和生态</strong></a></li>
+        <li><a href="#总结-5">总结</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/" >
+                微前端
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/micro-fronted/">微前端知识汇总</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            这是r微前端知识汇总，让我们一起学习吧
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 09, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 15 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="什么是微前端">什么是微前端？
+</h2><p>微前端是一种前端架构模式，它将前端应用拆分成多个更小、更易管理的独立部分，这些部分可以独立开发、测试和部署，同时在用户界面上作为一个整体呈现。这种架构方式借鉴了微服务的理念，将其应用到前端开发中。</p>
+<p>微前端的核心特征：</p>
+<ol>
+<li>
+<p>独立性：</p>
+<ul>
+<li>每个微前端应用可以独立开发、测试和部署。</li>
+<li>不同的微前端应用可以使用不同的技术栈。</li>
+</ul>
+</li>
+<li>
+<p>集成性：</p>
+<ul>
+<li>多个微前端应用可以集成到一个整体应用中。</li>
+<li>用户感知不到应用是由多个部分组成的。</li>
+</ul>
+</li>
+<li>
+<p>技术栈无关：</p>
+<ul>
+<li>允许在同一个应用中使用不同的前端框架（如 Vue、React、Angular）。</li>
+</ul>
+</li>
+<li>
+<p>独立部署：</p>
+<ul>
+<li>可以独立部署各个微前端应用，而不影响整体应用。</li>
+</ul>
+</li>
+<li>
+<p>团队自治：</p>
+<ul>
+<li>不同团队可以负责不同的微前端应用，减少团队间的依赖。</li>
+</ul>
+</li>
+<li>
+<p>渐进式迁移：</p>
+<ul>
+<li>可以逐步将大型单体前端应用迁移到微前端架构。</li>
+</ul>
+</li>
+</ol>
+<h2 id="微前端的实现方式有哪些有哪些常用的微前端框架">微前端的实现方式有哪些？有哪些常用的微前端框架？
+</h2><p>微前端的实现方式：</p>
+<ol>
+<li>
+<p>基于路由分发：</p>
+<ul>
+<li>不同的路由对应不同的微前端应用。</li>
+</ul>
+</li>
+<li>
+<p>使用 iframe：</p>
+<ul>
+<li>每个微前端应用在独立的 iframe 中运行。</li>
+</ul>
+</li>
+<li>
+<p>Web Components：</p>
+<ul>
+<li>使用 Web Components 技术封装每个微前端应用。</li>
+</ul>
+</li>
+<li>
+<p>JavaScript 集成：</p>
+<ul>
+<li>动态加载每个微前端应用的 JavaScript。</li>
+</ul>
+</li>
+<li>
+<p>构建时集成：</p>
+<ul>
+<li>在构建过程中将多个应用合并。</li>
+</ul>
+</li>
+</ol>
+<p>常见的微前端框架和工具：</p>
+<ol>
+<li>single-spa：一个用于前端微服务的 JavaScript 框架。</li>
+<li>qiankun：基于 single-spa 的微前端实现库。</li>
+<li>Micro Frontends：一种微前端架构的实现方式。</li>
+<li>Module Federation：Webpack 5 提供的一种代码共享和动态加载解决方案。</li>
+<li>Piral：一个完整的微前端框架。</li>
+</ol>
+<p>微前端的优势：</p>
+<ol>
+<li>增强团队自主性和开发效率。</li>
+<li>支持大型应用的渐进式升级和重构。</li>
+<li>提高代码的可维护性和可扩展性。</li>
+<li>允许使用最适合特定功能的技术栈。</li>
+<li>支持更灵活的部署策略。</li>
+</ol>
+<p>微前端的挑战：</p>
+<ol>
+<li>增加了架构的复杂性。</li>
+<li>可能导致重复依赖和增加总体加载时间。</li>
+<li>需要处理应用间的状态共享和通信。</li>
+<li>样式隔离和冲突处理。</li>
+<li>需要额外的构建和部署流程。</li>
+</ol>
+<p>总的来说，微前端是一种强大的架构模式，特别适合大型、复杂的前端应用，它能够提高开发效率、系统灵活性和可维护性。然而，它也带来了一些额外的复杂性，因此在选择是否采用微前端架构时，需要根据项目的具体需求和团队情况来权衡利弊。</p>
+<h2 id="什么是single-spa它的作用是什么为什么这么做它的实现原理是什么">什么是single-spa？它的作用是什么？为什么这么做？它的实现原理是什么？
+</h2><h3 id="什么是-single-spa">什么是 Single-spa？
+</h3><p>Single-spa 是一个用于构建微前端架构的 JavaScript 框架。它允许开发者将多个独立的前端应用（称为微前端应用）组合成一个单一的用户界面。每个微前端应用可以使用不同的技术栈（如 React、Vue、Angular 等），并且可以独立开发、测试和部署。</p>
+<h3 id="single-spa-的作用">Single-spa 的作用
+</h3><ol>
+<li>
+<p><strong>模块化开发</strong>：Single-spa 使得大型应用可以拆分为多个小型、独立的微前端应用，允许不同团队并行开发和维护各自的模块。</p>
+</li>
+<li>
+<p><strong>技术栈灵活性</strong>：不同的微前端应用可以使用不同的技术栈，开发团队可以选择最适合其业务需求的技术，而不必在整个应用中统一使用一种技术。</p>
+</li>
+<li>
+<p><strong>独立部署</strong>：每个微前端应用可以独立部署，允许快速迭代和发布新功能，而不影响其他子应用的运行。</p>
+</li>
+<li>
+<p><strong>用户体验</strong>：通过无缝的路由管理和动态加载，Single-spa 提供了流畅的用户体验，用户在不同业务模块之间导航时不会感到中断。</p>
+</li>
+</ol>
+<h3 id="为什么使用-single-spa">为什么使用 Single-spa？
+</h3><ol>
+<li>
+<p><strong>应对复杂性</strong>：随着应用规模的扩大，单体应用变得难以维护和扩展。微前端架构通过拆分应用，降低了复杂性。</p>
+</li>
+<li>
+<p><strong>团队自治</strong>：不同团队可以独立开发和部署各自的微前端应用，减少了团队之间的依赖，提高了开发效率。</p>
+</li>
+<li>
+<p><strong>技术多样性</strong>：允许在同一应用中使用多种技术栈，开发团队可以根据需求选择最合适的工具和框架。</p>
+</li>
+<li>
+<p><strong>快速迭代</strong>：独立部署的特性使得新功能的发布和迭代变得更加灵活，能够快速响应市场需求。</p>
+</li>
+</ol>
+<h3 id="实现原理">实现原理
+</h3><p>Single-spa 的实现原理主要包括以下几个方面：</p>
+<ol>
+<li>
+<p><strong>应用注册</strong>：</p>
+<ul>
+<li>开发者使用 <code>singleSpa.registerApplication</code> 方法注册微前端应用。每个应用需要提供名称、加载函数和活动函数。</li>
+<li>加载函数负责异步加载应用的代码，活动函数用于判断当前 URL 是否匹配该应用的路由。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">singleSpa</span><span class="p">.</span><span class="nx">registerApplication</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;app1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;./app1/main.js&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">location</span> <span class="p">=&gt;</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;/app1&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>路由劫持</strong>：</p>
+<ul>
+<li>Single-spa 劫持浏览器的路由事件，监听 <code>popstate</code> 和 <code>hashchange</code> 事件。当用户导航到不同的 URL 时，Single-spa 会检查注册的应用，并决定加载哪个应用。</li>
+</ul>
+</li>
+<li>
+<p><strong>应用生命周期管理</strong>：</p>
+<ul>
+<li>Single-spa 定义了应用的生命周期钩子，包括 <code>bootstrap</code>、<code>mount</code> 和 <code>unmount</code>。这些钩子允许开发者在应用加载、挂载和卸载时执行特定的逻辑。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app1</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">bootstrap</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mount</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 挂载逻辑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">unmount</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 卸载逻辑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>JavaScript 和 CSS 隔离</strong>：</p>
+<ul>
+<li>Single-spa 通过模块化加载和命名空间等技术，确保不同微前端应用之间的 JavaScript 和 CSS 不会相互干扰。</li>
+</ul>
+</li>
+<li>
+<p><strong>共享资源</strong>：</p>
+<ul>
+<li>Single-spa 允许微前端应用之间共享资源（如库、样式等），通过配置共享的依赖项来减少重复加载。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结">总结
+</h3><p>Single-spa 是一个强大的微前端框架，允许开发者将多个独立的前端应用组合成一个统一的用户界面。它通过应用注册、路由劫持、生命周期管理和资源共享等机制，实现了微前端架构的灵活性和可扩展性。通过使用 Single-spa，团队可以独立开发和部署各自的应用，提高开发效率和系统的可维护性。</p>
+<h2 id="single-spa中-css-样式是如何隔离的">single-spa中， css 样式是如何隔离的？
+</h2><p>在 Single-spa 中，CSS 隔离是通过多种技术和策略实现的，以确保不同微前端应用之间的样式不会相互干扰。以下是一些主要的方法：</p>
+<h3 id="1-css-modules">1. CSS Modules
+</h3><ul>
+<li>
+<p><strong>定义</strong>：CSS Modules 是一种 CSS 文件的模块化方法，允许您将样式局部化。每个 CSS 类名在编译时会被转换为唯一的名称，避免了全局样式冲突。</p>
+</li>
+<li>
+<p><strong>使用示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* styles.module.css */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 在 React 组件中使用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">styles</span> <span class="nx">from</span> <span class="s1">&#39;./styles.module.css&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Button</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">Me</span><span class="o">&lt;</span><span class="err">/button&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="2-scoped-css">2. Scoped CSS
+</h3><ul>
+<li>
+<p><strong>定义</strong>：某些框架（如 Vue）支持 Scoped CSS，允许您将样式限制在特定组件内。这样，样式只会影响该组件，而不会影响其他组件。</p>
+</li>
+<li>
+<p><strong>使用示例</strong>（Vue）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span><span class="nx">Click</span> <span class="nx">Me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span> <span class="na">scoped</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="nx">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">color</span><span class="o">:</span> <span class="nx">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="3-shadow-dom">3. Shadow DOM
+</h3><ul>
+<li>
+<p><strong>定义</strong>：使用 Web Components 技术，Shadow DOM 允许您将样式封装在组件内部。这样，样式只会影响组件内部，而不会泄漏到全局。</p>
+</li>
+<li>
+<p><strong>使用示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">MyButton</span> <span class="kr">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">super</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">shadow</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span> <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;open&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s1">&#39;Click Me&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">style</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">            button {
+</span></span></span><span class="line"><span class="cl"><span class="sb">                background-color: blue;
+</span></span></span><span class="line"><span class="cl"><span class="sb">                color: white;
+</span></span></span><span class="line"><span class="cl"><span class="sb">            }
+</span></span></span><span class="line"><span class="cl"><span class="sb">        `</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">shadow</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">style</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">shadow</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;my-button&#39;</span><span class="p">,</span> <span class="nx">MyButton</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="4-命名空间和前缀">4. 命名空间和前缀
+</h3><ul>
+<li>
+<p><strong>定义</strong>：在编写 CSS 时，可以为每个微前端应用的样式添加特定的前缀或命名空间，以避免样式冲突。例如，使用应用名称作为前缀：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* app1.css */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">app1-button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/* app2.css */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">app2-button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="5-动态加载和卸载样式">5. 动态加载和卸载样式
+</h3><ul>
+<li>
+<p><strong>定义</strong>：Single-spa 在加载和卸载微前端应用时，可以动态添加和移除样式。这样，只有当前活动的应用的样式会被应用。</p>
+</li>
+<li>
+<p><strong>使用示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">mount</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">link</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s1">&#39;stylesheet&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">link</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">&#39;path/to/app1.css&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">unmount</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;link[href=&#34;path/to/app1.css&#34;]&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">link</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="6-使用-css-in-js">6. 使用 CSS-in-JS
+</h3><ul>
+<li>
+<p><strong>定义</strong>：CSS-in-JS 是一种将 CSS 直接写在 JavaScript 中的方式，通常与组件库（如 styled-components 或 Emotion）一起使用。样式是局部的，避免了全局样式冲突。</p>
+</li>
+<li>
+<p><strong>使用示例</strong>（styled-components）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">styled</span> <span class="nx">from</span> <span class="s1">&#39;styled-components&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Button</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">button</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">    background-color: blue;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    color: white;
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="总结-1">总结
+</h3><p>Single-spa 通过 CSS Modules、Scoped CSS、Shadow DOM、命名空间、动态加载和卸载样式以及 CSS-in-JS 等多种技术实现了 CSS 的隔离。这些方法确保了不同微前端应用之间的样式不会相互干扰，从而提高了系统的可维护性和可扩展性。</p>
+<h2 id="什么是web-components-技术">什么是web components 技术？
+</h2><p>Web Components 是一组用于创建可重用的自定义 HTML 元素的标准技术，允许开发者封装功能和样式，使其在不同的应用和框架中可以独立使用。Web Components 主要由以下四个核心技术组成：</p>
+<h3 id="1-custom-elements自定义元素">1. Custom Elements（自定义元素）
+</h3><ul>
+<li><strong>定义</strong>：允许开发者定义新的 HTML 标签（自定义元素），并为这些标签提供特定的功能和行为。</li>
+<li><strong>使用示例</strong>：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">MyElement</span> <span class="kr">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">super</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span> <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;open&#39;</span> <span class="p">});</span> <span class="c1">// 创建 Shadow DOM
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kr">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">div</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s1">&#39;Hello, Web Component!&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;my-element&#39;</span><span class="p">,</span> <span class="nx">MyElement</span><span class="p">);</span> <span class="c1">// 注册自定义元素
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="2-shadow-dom影子-dom">2. Shadow DOM（影子 DOM）
+</h3><ul>
+<li><strong>定义</strong>：允许开发者为自定义元素创建一个封闭的 DOM 树，样式和脚本不会影响到外部的 DOM。这种封装使得组件的样式和行为可以独立于其他部分。</li>
+<li><strong>使用示例</strong>：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">shadow</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span> <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;open&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">style</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">    div {
+</span></span></span><span class="line"><span class="cl"><span class="sb">        color: blue;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">shadow</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">style</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="3-html-templateshtml-模板">3. HTML Templates（HTML 模板）
+</h3><ul>
+<li><strong>定义</strong>：允许开发者定义可重用的 HTML 片段，这些片段在页面加载时不会被渲染，只有在需要时才会被克隆和插入到 DOM 中。</li>
+<li><strong>使用示例</strong>：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;my-template&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a template!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">template</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;my-template&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">importNode</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span> <span class="c1">// 将模板内容插入到 DOM
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="4-html-importshtml-导入">4. HTML Imports（HTML 导入）
+</h3><ul>
+<li><strong>定义</strong>：允许开发者将 HTML 文档导入到其他 HTML 文档中，便于模块化和重用（注意：HTML Imports 已被弃用，建议使用 ES6 模块）。</li>
+<li><strong>使用示例</strong>：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;import&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;my-component.html&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="web-components-的优势">Web Components 的优势
+</h3><ol>
+<li><strong>可重用性</strong>：Web Components 允许开发者创建可重用的组件，可以在不同的项目和框架中使用。</li>
+<li><strong>封装性</strong>：通过 Shadow DOM，组件的样式和行为被封装，避免了与其他组件或页面的冲突。</li>
+<li><strong>标准化</strong>：Web Components 是基于浏览器标准的，支持所有现代浏览器，减少了对特定框架的依赖。</li>
+<li><strong>互操作性</strong>：Web Components 可以与任何 JavaScript 框架（如 React、Vue、Angular 等）一起使用，增强了组件的灵活性。</li>
+</ol>
+<h3 id="总结-2">总结
+</h3><p>Web Components 是一种强大的技术，允许开发者创建可重用的自定义 HTML 元素，封装其样式和行为。通过 Custom Elements、Shadow DOM 和 HTML Templates 等核心技术，Web Components 提供了一个标准化的方式来构建现代 Web 应用的组件。</p>
+<h2 id="qiankun的实现原理">qiankun的实现原理？
+</h2><p>qiankun 是基于 single-spa 的微前端实现库，其核心原理包括：</p>
+<p>a. 应用加载：</p>
+<ul>
+<li>使用 import-html-entry 库加载子应用的 HTML、JS 和 CSS。</li>
+<li>将子应用的 JS 脚本转换为字符串，并使用 eval 执行。</li>
+</ul>
+<p>b. 沙箱机制：</p>
+<ul>
+<li>使用 Proxy 对象创建 JavaScript 沙箱，隔离子应用的全局变量。</li>
+<li>提供快照沙箱和代理沙箱两种模式。</li>
+</ul>
+<p>c. CSS 隔离：</p>
+<ul>
+<li>通过 Shadow DOM 或动态样式表切换实现样式隔离。</li>
+</ul>
+<p>d. 通信机制：</p>
+<ul>
+<li>实现了基于 CustomEvent 的应用间通信。</li>
+</ul>
+<p>e. 路由劫持：</p>
+<ul>
+<li>劫持子应用的路由事件，统一管理路由。</li>
+</ul>
+<h3 id="qiankun应用加载的原理">qiankun应用加载的原理
+</h3><p>在 qiankun 中，子应用的加载原理涉及多个步骤和机制，确保子应用能够在主应用中正确加载、挂载和运行。以下是子应用加载的过程：</p>
+<h3 id="1-注册子应用">1. <strong>注册子应用</strong>
+</h3><p>在主应用中，开发者使用 <code>registerMicroApps</code> 方法注册子应用。每个子应用需要提供其名称、入口 URL、容器和激活规则。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">registerMicroApps</span><span class="p">,</span> <span class="nx">start</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;qiankun&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">registerMicroApps</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;//localhost:3001&#39;</span><span class="p">,</span> <span class="c1">// 子应用的入口 URL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;#subapp-viewport&#39;</span><span class="p">,</span> <span class="c1">// 子应用挂载的容器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">activeRule</span><span class="o">:</span> <span class="s1">&#39;/app1&#39;</span><span class="p">,</span> <span class="c1">// 激活规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;//localhost:3002&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;#subapp-viewport&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">activeRule</span><span class="o">:</span> <span class="s1">&#39;/app2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">start</span><span class="p">();</span> <span class="c1">// 启动 qiankun
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-路由劫持">2. <strong>路由劫持</strong>
+</h3><p>qiankun 劫持浏览器的路由事件，监听 URL 的变化。当用户导航到匹配的路径时，qiankun 会根据激活规则判断是否需要加载相应的子应用。</p>
+<h3 id="3-动态加载子应用">3. <strong>动态加载子应用</strong>
+</h3><p>当激活规则匹配时，qiankun 会执行以下步骤：</p>
+<ul>
+<li>
+<p><strong>获取子应用的入口</strong>：根据注册时提供的 <code>entry</code> URL，qiankun 会获取子应用的入口文件（通常是一个 HTML 文件）。</p>
+</li>
+<li>
+<p><strong>加载子应用的资源</strong>：qiankun 会动态加载子应用的 JavaScript 和 CSS 资源。这些资源通常是通过 <code>&lt;script&gt;</code> 和 <code>&lt;link&gt;</code> 标签引入的。</p>
+</li>
+</ul>
+<h3 id="4-执行子应用的代码">4. <strong>执行子应用的代码</strong>
+</h3><ul>
+<li>
+<p><strong>执行子应用的 JavaScript</strong>：加载完成后，qiankun 会执行子应用的 JavaScript 代码。此时，子应用的代码会在其自己的作用域中运行。</p>
+</li>
+<li>
+<p><strong>创建沙箱</strong>：qiankun 会为子应用创建一个沙箱环境，使用 Proxy 对象来隔离子应用的全局变量，确保不同子应用之间的 JavaScript 不会相互干扰。</p>
+</li>
+</ul>
+<h3 id="5-挂载子应用">5. <strong>挂载子应用</strong>
+</h3><ul>
+<li><strong>调用挂载函数</strong>：qiankun 会调用子应用的 <code>mount</code> 函数，将子应用挂载到指定的容器中。此时，子应用的 DOM 元素会被插入到主应用的 DOM 中。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">mount</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 子应用的挂载逻辑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;子应用已挂载&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6-应用间通信">6. <strong>应用间通信</strong>
+</h3><ul>
+<li><strong>事件通信</strong>：qiankun 提供了基于 CustomEvent 的应用间通信机制，允许子应用之间进行数据传递和事件通知。</li>
+</ul>
+<h3 id="7-卸载子应用">7. <strong>卸载子应用</strong>
+</h3><ul>
+<li><strong>路由变化时的卸载</strong>：当用户导航到其他路径时，qiankun 会判断当前子应用是否需要卸载。如果需要，qiankun 会调用子应用的 <code>unmount</code> 函数，执行卸载逻辑，并从 DOM 中移除子应用的元素。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">unmount</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 子应用的卸载逻辑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;子应用已卸载&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="总结-3">总结
+</h3><p>子应用的加载过程包括注册子应用、路由劫持、动态加载资源、执行代码、挂载到 DOM、应用间通信和卸载等步骤。qiankun 通过这些机制确保子应用能够在主应用中独立运行，同时保持良好的隔离性和性能。</p>
+<h3 id="qiankun的沙箱机制是如何实现的">qiankun的沙箱机制是如何实现的？
+</h3><p>qiankun 的沙箱机制是其核心特性之一，旨在确保不同微前端子应用之间的 JavaScript 和 CSS 不会相互干扰。沙箱机制通过以下几个关键技术实现：</p>
+<h3 id="1-proxy-对象">1. <strong>Proxy 对象</strong>
+</h3><ul>
+<li>
+<p><strong>隔离全局变量</strong>：qiankun 使用 JavaScript 的 <code>Proxy</code> 对象来创建一个沙箱环境。通过代理全局对象（如 <code>window</code>），qiankun 可以拦截对全局变量的访问和修改，从而实现对子应用的隔离。</p>
+</li>
+<li>
+<p><strong>实现示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">createSandbox</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">sandbox</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 拦截对全局变量的访问
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="nx">target</span><span class="p">[</span><span class="nx">prop</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 拦截对全局变量的修改
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">target</span><span class="p">[</span><span class="nx">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span> <span class="nx">proxy</span><span class="p">,</span> <span class="nx">sandbox</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="2-全局变量的隔离">2. <strong>全局变量的隔离</strong>
+</h3><ul>
+<li>
+<p><strong>命名空间</strong>：qiankun 为每个子应用创建一个独立的命名空间，确保子应用的全局变量不会与其他子应用或主应用的全局变量冲突。子应用可以在其命名空间下定义变量和函数。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">window</span><span class="p">.</span><span class="nx">subApp1</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">subApp1</span> <span class="o">||</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="nb">window</span><span class="p">.</span><span class="nx">subApp1</span><span class="p">.</span><span class="nx">someVariable</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="3-css-隔离">3. <strong>CSS 隔离</strong>
+</h3><ul>
+<li>
+<p><strong>动态样式管理</strong>：qiankun 在加载和卸载子应用时，可以动态添加和移除样式。这样，只有当前活动的应用的样式会被应用，避免了样式冲突。</p>
+</li>
+<li>
+<p><strong>使用 Shadow DOM</strong>：虽然 qiankun 本身不强制使用 Shadow DOM，但开发者可以选择在子应用中使用 Shadow DOM 来进一步封装样式。</p>
+</li>
+</ul>
+<h3 id="4-生命周期管理">4. <strong>生命周期管理</strong>
+</h3><ul>
+<li><strong>挂载和卸载</strong>：qiankun 提供了子应用的生命周期钩子（如 <code>bootstrap</code>、<code>mount</code> 和 <code>unmount</code>），允许开发者在子应用加载、挂载和卸载时执行特定的逻辑。这些钩子可以用于清理全局状态和事件监听器，确保子应用在卸载时不会留下副作用。</li>
+</ul>
+<h3 id="5-事件通信">5. <strong>事件通信</strong>
+</h3><ul>
+<li><strong>CustomEvent</strong>：qiankun 使用 <code>CustomEvent</code> 来实现子应用之间的通信。通过这种方式，子应用可以相互发送消息，而不需要直接访问对方的全局变量。</li>
+</ul>
+<h3 id="6-沙箱的启用与禁用">6. <strong>沙箱的启用与禁用</strong>
+</h3><ul>
+<li><strong>可选沙箱</strong>：qiankun 允许开发者在注册子应用时选择是否启用沙箱机制。通过配置，可以灵活地控制沙箱的行为。</li>
+</ul>
+<h3 id="总结-4">总结
+</h3><p>qiankun 的沙箱机制通过使用 <code>Proxy</code> 对象、命名空间、动态样式管理、生命周期管理和事件通信等技术，实现了对微前端子应用的有效隔离。这种机制确保了不同子应用之间的 JavaScript 和 CSS 不会相互干扰，从而提高了系统的可维护性和可扩展性。</p>
+<h2 id="micro-app-的实现原理">micro-app 的实现原理？
+</h2><p>micro-app 是一个基于 Web Components 的微前端框架，其核心原理包括：</p>
+<p>a. Custom Elements：</p>
+<ul>
+<li>使用 Custom Elements 创建自定义 HTML 元素来加载子应用。</li>
+</ul>
+<p>b. 沙箱机制：</p>
+<ul>
+<li>使用 with + Proxy 实现 JavaScript 沙箱，隔离子应用的全局变量。</li>
+</ul>
+<p>c. HTML 解析：</p>
+<ul>
+<li>自己实现了一个 HTML 解析器，解析子应用的 HTML 结构。</li>
+</ul>
+<p>d. 样式隔离：</p>
+<ul>
+<li>通过给每个子应用的样式添加特定前缀来实现样式隔离。</li>
+</ul>
+<p>e. 资源加载：</p>
+<ul>
+<li>实现了异步加载子应用资源的机制。</li>
+</ul>
+<p>f. 数据通信：</p>
+<ul>
+<li>提供了基于自定义事件的应用间通信机制。</li>
+</ul>
+<h2 id="常用的qiankun和micro-app-的区别与iframe-有何不同">常用的qiankun和micro-app 的区别？与iframe 有何不同？
+</h2><p>qiankun 和 micro-app 都是流行的微前端框架，但它们的实现原理并不是基于 iframe。让我们分别看看这两个框架的实现原理：</p>
+<p>主要区别：</p>
+<ol>
+<li>
+<p>基础技术：</p>
+<ul>
+<li>qiankun 基于 single-spa</li>
+<li>micro-app 基于 Web Components</li>
+</ul>
+</li>
+<li>
+<p>沙箱实现：</p>
+<ul>
+<li>qiankun 使用 Proxy</li>
+<li>micro-app 使用 with + Proxy</li>
+</ul>
+</li>
+<li>
+<p>样式隔离：</p>
+<ul>
+<li>qiankun 支持 Shadow DOM 和动态样式表切换</li>
+<li>micro-app 使用样式前缀</li>
+</ul>
+</li>
+<li>
+<p>子应用接入：</p>
+<ul>
+<li>qiankun 需要子应用进行一定的改造</li>
+<li>micro-app 对子应用的侵入性较小</li>
+</ul>
+</li>
+<li>
+<p>性能：</p>
+<ul>
+<li>micro-app 在某些场景下可能有更好的性能表现</li>
+</ul>
+</li>
+</ol>
+<p>为什么不使用 iframe：</p>
+<p>虽然 iframe 是一种简单的实现微前端的方式，但 qiankun 和 micro-app 选择不使用 iframe 主要是因为 iframe 存在以下问题：</p>
+<ol>
+<li>性能问题：iframe 会创建独立的渲染进程，可能导致性能开销。</li>
+<li>用户体验：iframe 可能导致页面滚动、历史记录、深度链接等问题。</li>
+<li>通信复杂：iframe 与主应用之间的通信相对复杂。</li>
+<li>资源加载：iframe 可能会重复加载公共资源。</li>
+<li>SEO 不友好：iframe 中的内容对搜索引擎不友好。</li>
+</ol>
+<p>总结：
+qiankun 和 micro-app 都采用了更加灵活和高效的方式来实现微前端，而不是依赖 iframe。它们通过自定义的加载、沙箱和隔离机制，实现了更好的性能、更灵活的集成和更好的用户体验。选择哪个框架取决于项目的具体需求、团队的技术栈和对特定特性的需求。
+qiankun 和 micro-app 都是流行的微前端框架，但它们的实现原理并不是基于 iframe。让我们分别看看这两个框架的实现原理：</p>
+<h2 id="微前端框架中有一个框架名称是为无界请说一下它与其他几个微前端框架的区别">微前端框架中，有一个框架名称是为无界，请说一下它与其他几个微前端框架的区别？
+</h2><p>无界（Micro-frontend）是一个微前端框架，旨在通过将大型前端应用拆分为多个小型、独立的微前端应用来提高开发效率和可维护性。与其他微前端框架（如 qiankun、single-spa 和 micro-app）相比，无界有其独特的特点和实现方式。以下是无界与其他几个微前端框架的主要区别：</p>
+<h3 id="1-基础技术">1. <strong>基础技术</strong>
+</h3><ul>
+<li><strong>无界</strong>：无界框架通常基于 Web Components 技术，允许开发者创建可重用的自定义 HTML 元素，封装其样式和行为。</li>
+<li><strong>qiankun 和 single-spa</strong>：这两个框架主要基于 JavaScript 的动态导入和模块化加载，使用的是传统的 JavaScript 模块系统。</li>
+</ul>
+<h3 id="2-沙箱机制">2. <strong>沙箱机制</strong>
+</h3><ul>
+<li><strong>无界</strong>：无界框架通常使用 Shadow DOM 来实现样式和 JavaScript 的隔离，确保不同微前端应用之间不会相互干扰。</li>
+<li><strong>qiankun 和 single-spa</strong>：这两个框架使用 Proxy 对象来实现沙箱机制，隔离全局变量，并通过命名空间来管理子应用的状态。</li>
+</ul>
+<h3 id="3-资源加载">3. <strong>资源加载</strong>
+</h3><ul>
+<li><strong>无界</strong>：无界框架通常通过 HTML Imports 或 ES6 模块来加载子应用，强调组件的可重用性和模块化。</li>
+<li><strong>qiankun 和 single-spa</strong>：这两个框架使用动态加载的方式，通过 URL 加载子应用的 JavaScript 和 CSS 资源，支持按需加载和预加载。</li>
+</ul>
+<h3 id="4-路由管理">4. <strong>路由管理</strong>
+</h3><ul>
+<li><strong>无界</strong>：无界框架通常依赖于自定义的路由管理，允许开发者在微前端应用之间进行灵活的导航。</li>
+<li><strong>qiankun 和 single-spa</strong>：这两个框架通过劫持浏览器的路由事件来统一管理子应用的路由，确保在不同子应用之间的导航体验流畅。</li>
+</ul>
+<h3 id="5-开发体验">5. <strong>开发体验</strong>
+</h3><ul>
+<li><strong>无界</strong>：无界框架强调组件的独立性和可重用性，适合于构建大型、复杂的前端应用，开发者可以使用不同的技术栈。</li>
+<li><strong>qiankun 和 single-spa</strong>：这两个框架提供了更丰富的生命周期管理和事件通信机制，适合于需要快速集成和部署的场景。</li>
+</ul>
+<h3 id="6-社区和生态">6. <strong>社区和生态</strong>
+</h3><ul>
+<li><strong>无界</strong>：无界框架的社区相对较小，文档和示例可能不如其他框架丰富。</li>
+<li><strong>qiankun 和 single-spa</strong>：这两个框架有着更活跃的社区和更丰富的文档，开发者可以更容易找到支持和资源。</li>
+</ul>
+<h3 id="总结-5">总结
+</h3><p>无界框架与其他微前端框架（如 qiankun 和 single-spa）在基础技术、沙箱机制、资源加载、路由管理、开发体验和社区生态等方面存在一些区别。选择合适的微前端框架取决于项目的具体需求、团队的技术栈和对特定特性的需求。无界框架适合于强调组件独立性和可重用性的场景，而 qiankun 和 single-spa 更适合于需要快速集成和部署的微前端应用。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Trinyoung
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

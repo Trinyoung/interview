@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on Trinyoung</title>
+        <link>https://trinyoung.github.io/categories/</link>
+        <description>Recent content in Categories on Trinyoung</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Trinyoung</copyright>
+        <lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>React</title>
+        <link>https://trinyoung.github.io/categories/react/</link>
+        <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/react/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Http</title>
+        <link>https://trinyoung.github.io/categories/http/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/http/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Vue</title>
+        <link>https://trinyoung.github.io/categories/vue/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/vue/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>浏览器</title>
+        <link>https://trinyoung.github.io/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>前端</title>
+        <link>https://trinyoung.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/%E5%89%8D%E7%AB%AF/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>微前端</title>
+        <link>https://trinyoung.github.io/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Vue</title>
+        <link>https://trinyoung.github.io/categories/test/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://trinyoung.github.io/categories/test/</guid>
+        <description>&lt;img src="https://trinyoung.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Vue" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
