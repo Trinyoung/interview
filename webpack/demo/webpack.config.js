@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { watch } = require('fs');
 module.exports = {
     entry: './src/index.js', // 入口文件
     output: {
@@ -22,6 +23,7 @@ module.exports = {
             },
         ],
     },
+    watch: true,
     devServer: {
         // contentBase: path.join(__dirname, 'dist'),
         static: {
@@ -29,7 +31,7 @@ module.exports = {
         },
         compress: true,
         port: 9000,
-        hot: true
+        hot: false
     },
     plugins: [
         new HtmlWebpackPlugin({
