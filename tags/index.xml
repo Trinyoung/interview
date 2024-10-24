@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on Trinyoung</title>
-        <link>https://trinyoung.github.io/interview/tags/</link>
+        <link>https://trinyoung.github.io/tags/</link>
         <description>Recent content in Tags on Trinyoung</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>Trinyoung</copyright><atom:link href="https://trinyoung.github.io/interview/tags/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>Trinyoung</copyright><atom:link href="https://trinyoung.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>

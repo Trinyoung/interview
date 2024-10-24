@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>前端 on Trinyoung</title>
-        <link>https://trinyoung.github.io/interview/categories/%E5%89%8D%E7%AB%AF/</link>
+        <link>https://trinyoung.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
         <description>Recent content in 前端 on Trinyoung</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>HTML 和 CSS</title>
-        <link>https://trinyoung.github.io/interview/p/html-and-css/</link>
+        <link>https://trinyoung.github.io/p/html-and-css/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://trinyoung.github.io/interview/p/html-and-css/</guid>
+        <guid>https://trinyoung.github.io/p/html-and-css/</guid>
         <description>&lt;h2 id=&#34;1-为什么居中使用transform-而不是-margin&#34;&gt;1. 为什么居中使用transform 而不是 margin？
 &lt;/h2&gt;&lt;p&gt;使用 &lt;code&gt;transform&lt;/code&gt; 而不是 &lt;code&gt;margin-left&lt;/code&gt; 和 &lt;code&gt;top&lt;/code&gt; 来居中元素的主要原因是 &lt;code&gt;transform&lt;/code&gt; 提供了一种更灵活、更加精确的居中方法，尤其是在元素尺寸未知或者需要在不同环境中保持居中时。&lt;/p&gt;
 &lt;h3 id=&#34;为什么使用-transform-居中&#34;&gt;为什么使用 &lt;code&gt;transform&lt;/code&gt; 居中？

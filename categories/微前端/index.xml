@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>微前端 on Trinyoung</title>
-        <link>https://trinyoung.github.io/interview/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/</link>
+        <link>https://trinyoung.github.io/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/</link>
         <description>Recent content in 微前端 on Trinyoung</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>微前端知识汇总</title>
-        <link>https://trinyoung.github.io/interview/p/micro-fronted/</link>
+        <link>https://trinyoung.github.io/p/micro-fronted/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://trinyoung.github.io/interview/p/micro-fronted/</guid>
+        <guid>https://trinyoung.github.io/p/micro-fronted/</guid>
         <description>&lt;h2 id=&#34;什么是微前端&#34;&gt;什么是微前端？
 &lt;/h2&gt;&lt;p&gt;微前端是一种前端架构模式，它将前端应用拆分成多个更小、更易管理的独立部分，这些部分可以独立开发、测试和部署，同时在用户界面上作为一个整体呈现。这种架构方式借鉴了微服务的理念，将其应用到前端开发中。&lt;/p&gt;
 &lt;p&gt;微前端的核心特征：&lt;/p&gt;

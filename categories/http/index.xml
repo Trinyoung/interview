@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Http on Trinyoung</title>
-        <link>https://trinyoung.github.io/interview/categories/http/</link>
+        <link>https://trinyoung.github.io/categories/http/</link>
         <description>Recent content in Http on Trinyoung</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Trinyoung</copyright>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/interview/categories/http/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://trinyoung.github.io/categories/http/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>网络协议和浏览器基础知识</title>
-        <link>https://trinyoung.github.io/interview/p/http-browser/</link>
+        <link>https://trinyoung.github.io/p/http-browser/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://trinyoung.github.io/interview/p/http-browser/</guid>
+        <guid>https://trinyoung.github.io/p/http-browser/</guid>
         <description>&lt;h2 id=&#34;说一说网络的分层结构各种协议分别位于哪一层&#34;&gt;说一说网络的分层结构，各种协议分别位于哪一层？
 &lt;/h2&gt;&lt;p&gt;网络的分层结构通常指的是网络协议的分层模型，最常见的模型是 &lt;strong&gt;OSI（开放系统互联）模型&lt;/strong&gt; 和 &lt;strong&gt;TCP/IP 模型&lt;/strong&gt;。这两种模型都将网络通信过程分为多个层次，每一层都有特定的功能和协议。以下是这两种模型的简要介绍：&lt;/p&gt;
 &lt;h3 id=&#34;1-osi-模型&#34;&gt;1. OSI 模型
@@ -662,55 +662,55 @@
 &lt;/h3&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;特性&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;HTTP/1.0&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;HTTP/1.1&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;HTTP/2.0&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;HTTP/3.0&lt;/th&gt;
+          &lt;th&gt;特性&lt;/th&gt;
+          &lt;th&gt;HTTP/1.0&lt;/th&gt;
+          &lt;th&gt;HTTP/1.1&lt;/th&gt;
+          &lt;th&gt;HTTP/2.0&lt;/th&gt;
+          &lt;th&gt;HTTP/3.0&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;连接&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;非持久连接&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;持久连接&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;持久连接&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;基于 UDP 的连接&lt;/td&gt;
+          &lt;td&gt;连接&lt;/td&gt;
+          &lt;td&gt;非持久连接&lt;/td&gt;
+          &lt;td&gt;持久连接&lt;/td&gt;
+          &lt;td&gt;持久连接&lt;/td&gt;
+          &lt;td&gt;基于 UDP 的连接&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;数据格式&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;文本&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;文本&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;二进制&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;二进制&lt;/td&gt;
+          &lt;td&gt;数据格式&lt;/td&gt;
+          &lt;td&gt;文本&lt;/td&gt;
+          &lt;td&gt;文本&lt;/td&gt;
+          &lt;td&gt;二进制&lt;/td&gt;
+          &lt;td&gt;二进制&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;多路复用&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;不支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;不支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;支持&lt;/td&gt;
+          &lt;td&gt;多路复用&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+          &lt;td&gt;支持&lt;/td&gt;
+          &lt;td&gt;支持&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;头部压缩&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;不支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;不支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;支持&lt;/td&gt;
+          &lt;td&gt;头部压缩&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+          &lt;td&gt;支持&lt;/td&gt;
+          &lt;td&gt;支持&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;服务器推送&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;不支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;不支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;支持&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;支持&lt;/td&gt;
+          &lt;td&gt;服务器推送&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+          &lt;td&gt;支持&lt;/td&gt;
+          &lt;td&gt;支持&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;安全性&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;无内置加密&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;无内置加密&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;依赖于 TLS&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;内置加密&lt;/td&gt;
+          &lt;td&gt;安全性&lt;/td&gt;
+          &lt;td&gt;无内置加密&lt;/td&gt;
+          &lt;td&gt;无内置加密&lt;/td&gt;
+          &lt;td&gt;依赖于 TLS&lt;/td&gt;
+          &lt;td&gt;内置加密&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;

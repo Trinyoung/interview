@@ -4,11 +4,11 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是Redux 知识汇总">
 <title>Redux 知识汇总</title>
 
-<link rel='canonical' href='https://trinyoung.github.io/interview/p/redux/'>
+<link rel='canonical' href='https://trinyoung.github.io/p/redux/'>
 
-<link rel="stylesheet" href="/interview/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Redux 知识汇总">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Redux 知识汇总">
 <meta property='og:description' content="这是Redux 知识汇总">
-<meta property='og:url' content='https://trinyoung.github.io/interview/p/redux/'>
+<meta property='og:url' content='https://trinyoung.github.io/p/redux/'>
 <meta property='og:site_name' content='Trinyoung'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-10-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-10-09T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Redux 知识汇总">
@@ -52,13 +52,13 @@
         
             
             <figure class="site-avatar">
-                <a href="/interview/">
+                <a href="/">
                 
                     
                     
                     
                         
-                        <img src="/interview/img/avatar_hu6696643109827554558.png" width="300"
+                        <img src="/img/avatar_hu6696643109827554558.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -71,7 +71,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/interview">Trinyoung</a></h1>
+            <h1 class="site-name"><a href="/">Trinyoung</a></h1>
             <h2 class="site-description">欢迎来到我的博客</h2>
         </div>
     </header><ol class="menu-social">
@@ -121,7 +121,7 @@
         
         
         <li >
-            <a href='/interview/' >
+            <a href='/' >
                 
                 
                 
@@ -141,7 +141,7 @@
         
         
         <li >
-            <a href='/interview/%E5%85%B3%E4%BA%8E/' >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
                 
                 
                 
@@ -160,7 +160,7 @@
         
         
         <li >
-            <a href='/interview/archives/' >
+            <a href='/archives/' >
                 
                 
                 
@@ -180,7 +180,7 @@
         
         
         <li >
-            <a href='/interview/search/' >
+            <a href='/search/' >
                 
                 
                 
@@ -199,7 +199,7 @@
         
         
         <li >
-            <a href='/interview/%E9%93%BE%E6%8E%A5/' >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
                 
                 
                 
@@ -349,7 +349,7 @@
     
     <header class="article-category">
         
-            <a href="/interview/categories/react/" >
+            <a href="/categories/react/" >
                 React
             </a>
         
@@ -358,7 +358,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/interview/p/redux/">Redux 知识汇总</a>
+            <a href="/p/redux/">Redux 知识汇总</a>
         </h2>
     
         
@@ -850,36 +850,36 @@
 </h3><div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th style="text-align: left"></th>
-          <th style="text-align: left"><strong>页面刷新</strong></th>
-          <th style="text-align: left"><strong>页面跳转回 A 页面</strong></th>
+          <th></th>
+          <th><strong>页面刷新</strong></th>
+          <th><strong>页面跳转回 A 页面</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><strong>Redux 状态</strong></td>
-          <td style="text-align: left">重置为初始状态</td>
-          <td style="text-align: left">保持不变</td>
+          <td><strong>Redux 状态</strong></td>
+          <td>重置为初始状态</td>
+          <td>保持不变</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>组件状态</strong></td>
-          <td style="text-align: left">重新初始化</td>
-          <td style="text-align: left">可能被保留或重新初始化</td>
+          <td><strong>组件状态</strong></td>
+          <td>重新初始化</td>
+          <td>可能被保留或重新初始化</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>生命周期</strong></td>
-          <td style="text-align: left">组件重新挂载</td>
-          <td style="text-align: left">视情况而定：可能重新挂载或恢复</td>
+          <td><strong>生命周期</strong></td>
+          <td>组件重新挂载</td>
+          <td>视情况而定：可能重新挂载或恢复</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>网络请求</strong></td>
-          <td style="text-align: left">会重新发起</td>
-          <td style="text-align: left">视数据情况而定，不一定会重新发起</td>
+          <td><strong>网络请求</strong></td>
+          <td>会重新发起</td>
+          <td>视数据情况而定，不一定会重新发起</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>页面资源</strong></td>
-          <td style="text-align: left">完全重新加载</td>
-          <td style="text-align: left">不会重新加载</td>
+          <td><strong>页面资源</strong></td>
+          <td>完全重新加载</td>
+          <td>不会重新加载</td>
       </tr>
   </tbody>
 </table></div>
@@ -1224,7 +1224,7 @@
             
                 
 <article class="">
-    <a href="/interview/p/test-chinese2/">
+    <a href="/p/test-chinese2/">
         
         
 
@@ -1386,7 +1386,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/interview/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
