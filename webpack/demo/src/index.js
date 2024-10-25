@@ -10,13 +10,10 @@ if (module.hot) {
     console.log('Module updated!', userInfo);
     });
 }
-const schoolInfo = {
-    name: '华北理工大学',
-    createdAt: '1912年'
-}
+
 // userInfo;
 const container = document.getElementById('container');
 if (userInfo) {
- container.innerText = userInfo?.name
+ container.innerText = userInfo?.name + userInfo?.time
 }
 window.userInfo = userInfo;

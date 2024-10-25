@@ -301,3 +301,6 @@ TensorFlow.js的主要特点：
    - 开发完整的Web应用，集成TensorFlow.js模型
 
 通过系统学习和大量实践，您可以逐步掌握TensorFlow.js，并将其应用到您的AI全栈开发项目中。记住，持续学习和实践是提高技能的关键。
+
+## 介绍一下langchain？
+LangChain是一个用于构建 LLM 应用的开源库，它提供了一组工具和抽象，简化了 LLM 应用的开发过程。LangChain 由两部分组成：
