@@ -10,10 +10,13 @@ if (module.hot) {
     console.log('Module updated!', userInfo);
     });
 }
-
+const schoolInfo = {
+    name: '华北理工大学 1912年 ～ 2015年 我们共同努力',
+    createdAt: '1912年'
+}
 // userInfo;
 const container = document.getElementById('container');
 if (userInfo) {
- container.innerText = userInfo?.name + userInfo?.time
+ container.innerText = userInfo?.name + schoolInfo.name
 }
 window.userInfo = userInfo;
