@@ -1,16 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { registerMicroApps, start } from 'qiankun';
 
-
-registerMicroApps([
-  {
-    name: 'vite-app',
-    entry: '//localhost:5173',
-    activeRule: ''
-  },
-
-])
 
 function App() {
   return (

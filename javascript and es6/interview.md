@@ -84,3 +84,78 @@ BigInt 用于表示大整数，因为在javascript 中，当数值大于 2 ** 53
 要求后端将数字处理成字符串，如果是整数的字符串串，可以通过BigInt来处理它的计算。通过对bigInt数字类型toString() 就可以展示原来的数据格式。
 如果是一个浮点数，可以使用第三方库 decimal.js 来处理。如果不想要引入第三方的资源那么还是要求转换成字符串，通过 “.” 进行分割字符串。然后分开计算。浮点数的保证精度是15～17位，通常到这里的时候，就不要求数字的精确度了。但是如果说，我想知道PI的值 20位显示。那么还可以通过记录小数点后的长度，将原有的数字转换成一个整数，使用bigInt来计算。最后再移动小数点的位置即可。
 
+## 说一下，window.onXX 事件处理和window.addEventListener('xxx')的事件处理有何区别？
+在 JavaScript 中，`window.onXX` 和 `window.addEventListener('xxx', ...)` 都可以用于事件处理，但它们在行为和适用性上有一些显著的区别：
+
+### 1. 事件绑定的数量
+
+- **`window.onXX`**: 只能绑定一个事件处理函数，因为 `onXX` 是一个属性，当赋值新的事件处理函数时，旧的会被覆盖。
+  ```javascript
+  window.onload = function() {
+      console.log('First handler');
+  };
+  window.onload = function() {
+      console.log('Second handler');
+  };
+  // Only 'Second handler' will be logged
+  ```
+
+- **`window.addEventListener('xxx', ...)`**: 可以绑定多个事件处理函数，它们会按绑定顺序依次执行。不会互相覆盖。
+  ```javascript
+  window.addEventListener('load', function() {
+      console.log('First handler');
+  });
+  window.addEventListener('load', function() {
+      console.log('Second handler');
+  });
+  // Both 'First handler' and 'Second handler' will be logged
+  ```
+
+### 2. 事件移除
+
+- **`window.onXX`**: 不能单独移除某个特定的事件处理函数，因为它仅支持覆盖或取消绑定整个事件处理函数。
+  ```javascript
+  window.onresize = null;  // Clears the resize event handler completely
+  ```
+
+- **`window.addEventListener('xxx', ...)`**: 可以通过 `removeEventListener` 方法移除特定的事件处理函数，前提是你传递给 `removeEventListener` 的函数引用和绑定时是同一个。
+  ```javascript
+  function onResize() {
+      console.log('Window resized');
+  }
+  window.addEventListener('resize', onResize);
+  window.removeEventListener('resize', onResize);  // Only this specific function is removed
+  ```
+
+### 3. 事件捕获和冒泡
+
+- **`window.onXX`**: 只能在事件冒泡阶段触发，无法控制事件处理阶段（捕获或冒泡）。
+  ```javascript
+  window.onclick = function() {
+      console.log('Clicked in the bubbling phase');
+  };
+  ```
+
+- **`window.addEventListener('xxx', ..., useCapture)`**: 支持事件捕获和冒泡，第三个参数 `useCapture` 可以指定事件处理的阶段。设为 `true` 则在捕获阶段触发，默认为 `false` 时在冒泡阶段触发。
+  ```javascript
+  window.addEventListener('click', function() {
+      console.log('Clicked in the capturing phase');
+  }, true);
+  ```
+
+### 4. 兼容性
+
+- **`window.onXX`**: 传统方法，兼容性好，适用于大部分现代和旧版浏览器。
+- **`window.addEventListener('xxx')`**: `addEventListener` 是标准的事件绑定方法，但在早期版本的 Internet Explorer（IE 8 及以下）中不支持。对于旧浏览器的兼容性考虑，早期会使用 `attachEvent`（IE 独有的绑定方式）或用第三方库来处理。
+
+### 5. 用途和适用场景
+
+- **`window.onXX`**: 适用于简单场景，只需绑定一个事件处理器的情况，比如页面加载完成后的初始化。
+- **`window.addEventListener('xxx')`**: 更灵活，适用于需要绑定多个事件处理器、使用事件捕获机制或跨浏览器兼容的复杂场景。
+
+### 总结
+
+- **单一绑定**：`onXX` 只能绑定一个处理函数，`addEventListener` 可以绑定多个。
+- **事件阶段控制**：`onXX` 只能在冒泡阶段触发，`addEventListener` 可以选择捕获或冒泡阶段。
+- **移除事件**：`addEventListener` 支持 `removeEventListener` 移除特定处理器，`onXX` 则只能通过覆盖或取消整个处理器。
+- **兼容性**：`onXX` 兼容性较好，`addEventListener` 在较旧浏览器上可能不支持。
