@@ -76,6 +76,9 @@ function useEffect(callback, dependencies) {
 ### 总结
 React Hooks 通过利用闭包和 Fiber 架构，使得函数组件能够拥有类似类组件的状态管理和生命周期管理能力，并且通过链表结构跟踪每个 Hook 的状态，从而实现了高效的状态更新和逻辑复用。
 
+## 为什么react hook 只能在最外层使用，不能再if 或者 for 循环中使用？
+
+
 ## 为什么useState 要返回一个数组？
 - 如果 useState 返回的是数组，那么使用者可以对数组中的元素命名，代码看起来也比较干净
 - 如果 useState 返回的是对象，在解构对象的时候必须要和 useState 内部实现返回的对象同名，想要使用多次的话，必须得设置别名才能使用返回值

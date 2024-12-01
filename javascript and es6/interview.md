@@ -159,3 +159,9 @@ BigInt 用于表示大整数，因为在javascript 中，当数值大于 2 ** 53
 - **事件阶段控制**：`onXX` 只能在冒泡阶段触发，`addEventListener` 可以选择捕获或冒泡阶段。
 - **移除事件**：`addEventListener` 支持 `removeEventListener` 移除特定处理器，`onXX` 则只能通过覆盖或取消整个处理器。
 - **兼容性**：`onXX` 兼容性较好，`addEventListener` 在较旧浏览器上可能不支持。
+
+## let 和 var 的区别？
+在全局作用域中使用var 定义的变量会挂载到全局对象上。会造成全局污染。
+1. var 定义的变量有变量提升，可以在未定义之前使用var 定义的变量，但是获取的结果是undefined。不会报错。
+2. let 定义的变量没有变量提升，在定义之前会形成暂时性死区。提前调用会报错Reference 错误。
+3. let 定义的变量不能重复定义，而var 定义的变量可以重复定义。

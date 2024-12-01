@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 // import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -14,18 +14,26 @@ const items = subApps.map(
     // icon: React.createElement(icon),
     label: item.name,
     link: item.activeRule,
+    entry: item.entry
   }),
 );
-
 const App: React.FC = () => {
+  const [activeRule, setActiveRule] = useState<string>()
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const navigate = useNavigate();
   const handleClick = (e: any) => {
-    console.log(items[Number(e.key) - 1].link);
+    console.log(items[Number(e.key) - 1].entry, 'link isbbb');
+    setActiveRule(items[Number(e.key) - 1].entry)
     navigate(items[Number(e.key) - 1].link);
   };
+  
+  useEffect(() => {
+    
+  }, [])
+  // const baseUrl = location.hostname
   return (
     <Layout>
       <Sider
@@ -54,6 +62,9 @@ const App: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
+          </div>
+          <div>
+            <micro-app name="my-app" url={activeRule}></micro-app>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

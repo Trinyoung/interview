@@ -39,3 +39,24 @@ let proxy = new Proxy(obj2, {
 proxy.name = 'lqy';
 console.log(obj2 === proxy, obj2.name, proxy.name, 'obj2 ------');
 delete proxy.name
+
+const createFakeWindow = (global) => {
+  const propertiesWithGetter = new Map();
+  const fakeWindow = {};
+  Object.getOwnPropertyNames(global).filter((p) => {
+    const descriptor = Object.getOwnPropertyDescriptor(global, p);
+    return !descriptor?.configurable // 得到不可配置的的属性。
+  }).forEach((p) => {
+
+  })
+}
+
+const obj3 = {
+  name: 'lqy'
+};
+const descriptor = Object.getOwnPropertyDescriptor(obj3, 'name')
+console.log(descriptor, 'descriptor')
+const hasGetter = Object.prototype.hasOwnProperty.call(descriptor, 'get');
+console.log(hasGetter, 'hasGetter ======>')
+console.log(Object.freeze(descriptor))
+console.log(descriptor, 'decriptor')

@@ -7,6 +7,9 @@ import { registerMicroApps, start } from './utils/mirco-fe';
 import { subApps } from './constants';
 // import { useRoutes } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import microApp from '@micro-zoe/micro-app'
+
+microApp.start()
 registerMicroApps(subApps)
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

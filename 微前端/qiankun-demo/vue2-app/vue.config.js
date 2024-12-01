@@ -10,7 +10,8 @@ module.exports = {
         output: {
             library: `${name}-[name]`,
             libraryTarget: 'umd',
-            jsonpFunction: `webpackJsonp_${name}`
+            jsonpFunction: `webpackJsonp_${name}`,
+            globalObject: 'window'
         }
     }
 }

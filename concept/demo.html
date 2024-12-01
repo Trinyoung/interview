@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        陆庆洋
+    </div>
+    <script>
+        const container = document.getElementById('container');
+        setTimeout(() => {
+            container.innerText = 'didididdi'
+        }, 2000)
+        function delay(time) {
+            while (new Date().getTime() - time < 3000) {
+
+            }
+            console.log('执行完毕')
+        }
+        function func() {
+            
+            delay(new Date().getTime());
+            container.innerText = '哈哈哈';
+        }
+        func();
+    </script>
+</body>
+</html>

@@ -243,7 +243,7 @@ class Observer{
         }
     }
     
-    defineReactive(obj,key,value){
+    defineReactive(obj, key, value) {
         // 循环递归 对所有层的数据进行观察
         this.observe(value);//这样obj也能被观察了
         const dep = new Dep();
@@ -273,7 +273,6 @@ class Dep {
     // 添加订阅者
     addSub(watcher){
         this.subs.push(watcher);
- 
     }
     // 通知变化
     notify(){

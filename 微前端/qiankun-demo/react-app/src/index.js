@@ -10,7 +10,7 @@ let root;
 function render(props = {}) {
   const { container } = props;
 
-  root = ReactDOM.createRoot(container ? container.querySelector('#root') : document.querySelector('#root'));
+  root = ReactDOM.createRoot(container ? container.querySelector('#container') : document.querySelector('#root'));
   root.render(
     <React.StrictMode>
     <Router basename={window.__POWERED_BY_QIANKUN__ ? '/react-app' : '/'}>
@@ -27,6 +27,7 @@ function render(props = {}) {
 //   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
 // }
 if (!window.__POWERED_BY_QIANKUN__) {
+  console.log('来到了这里，我们一起喵喵叫~')
   render();
 }
 

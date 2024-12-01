@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        
+    </div>
+    <button id="button">
+        按钮
+    </button>
+    <script type="module">
+        const button = document.querySelector('#button');
+        function handleClick (){
+            console.log('点击了', a);
+            if (!template) getTemplate();
+        }
+        button.addEventListener('click', handleClick);
+        window.a = 14;
+        let template;
+        async function fetchResource() {
+            const content = await  fetch('http://localhost:5500/micro-test/test2.html')
+            return await content.text();
+        }
+        async function getTemplate() {
+            const content = await fetchResource();
+            template = document.createElement('div');
+            console.log(template, 'template iiiiii');
+            template.innerHTML = content;
+            const container = document.querySelector('#container');
+            container.appendChild(template)
+            const scripts = await getExternalScripts();
+            scripts.forEach(item => {
+                const sandbox = createSandBox()
+                execScript(item, sandbox);
+            })
+        }
+        
+        function getExternalScripts() {
+            const scripts = Array.from(template.querySelectorAll('script'))
+            return Promise.all(scripts.map((script) => {
+                const src = script.getAttribute('src') || '';
+                console.log(script.innerHTML, 'diddidididi')
+                if (!src) return Promise.resolve(script.innerHTML);
+                return fetchResource(src.startsWith('/') ? `${app.entry}${src}` : src).then((code) => {
+                    script.innerHTML = code;zx
+                    return code;
+                })
+            }))
+        }
+        function createSandBox () {
+            const fakeWindow = { // 复制 window的原生变量
+                document: window.document,
+                location: window.location
+            };
+            const proxy = new Proxy(fakeWindow, {
+                get(target, prop) {
+                    return target[prop]
+                },
+                set(target, prop, value) {
+                    target[prop] = value;
+                    return true;
+                }
+            })
+            return {
+                fakeWindow: proxy
+            }
+        }
+        function execScript(scriptText, sandbox) {
+            const { fakeWindow } = sandbox;
+            const script = new Function('window', `with(window) {
+                console.log(window === ${window}, 'fakeWindow === window')
+                ${scriptText}
+            }`);
+            script(fakeWindow)
+        }
+    </script>
+</body>
+</html>

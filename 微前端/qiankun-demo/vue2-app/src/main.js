@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false
+if (window.__MICRO_APP_ENVIRONMENT__) {
+  // eslint-disable-next-line
+  __webpack_public_path__ = window.__MICRO_APP_PUBLIC_PATH__
+}
 let instance = null;
 if (window.__POWERED_BY_QIANKUN__) {
   // eslint-disable-next-line no-undef
@@ -11,9 +15,9 @@ function render (props = {}) {
   const { container} = props;
   instance = new Vue({
     render: h => h(App),
-  }).$mount(container? container.querySelector('#app') : '#app')
+  }).$mount(container? container.querySelector('#container') : '#app')
 }
-
+console.log(window.__POWERED_BY_QIANKUN__, 'qiankuan 环境')
 if (!window.__POWERED_BY_QIANKUN__) {
   render();
 }
@@ -30,4 +34,15 @@ export async function unmount() {
   instance.$el.innerHTML = '';
   instance = null;
   // router = null;
+}
+window.mount = () => {
+  render();
+}
+window.unmount = () => {
+  instance.$destroy();
+  instance.$el.innerHTML = ''
+  instance = null
+}
+if (!window.__MICRO_APP_ENVIRONMENT__) {
+  window.mount()
 }
