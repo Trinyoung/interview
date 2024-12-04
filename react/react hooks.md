@@ -78,7 +78,6 @@ React Hooks 通过利用闭包和 Fiber 架构，使得函数组件能够拥有�
 
 ## 为什么react hook 只能在最外层使用，不能再if 或者 for 循环中使用？
 
-
 ## 为什么useState 要返回一个数组？
 - 如果 useState 返回的是数组，那么使用者可以对数组中的元素命名，代码看起来也比较干净
 - 如果 useState 返回的是对象，在解构对象的时候必须要和 useState 内部实现返回的对象同名，想要使用多次的话，必须得设置别名才能使用返回值
@@ -155,95 +154,6 @@ React Hooks 与类组件生命周期之间存在对应关系，Hooks 提供了�
 - Hooks 提供了 `useEffect` 来覆盖 `componentDidMount`、`componentDidUpdate`、`componentWillUnmount`，使得开发者可以在一个地方处理副作用。
 - Hooks 让函数组件能够管理状态和副作用，简化了原来类组件的生命周期逻辑，减少了代码的复杂性。
 
-## useEffect 和 useLayoutEffect 的区别？
-`useEffect` 和 `useLayoutEffect` 是 React 中用于处理副作用的两个 Hook，它们的主要区别在于执行时机和使用场景。以下是它们的详细比较：
-
-### 1. 执行时机
-
-- **`useEffect`**：
-  - 在浏览器完成绘制后执行。也就是说，`useEffect` 的回调函数会在 DOM 更新后、浏览器绘制完成后执行。
-  - 适合处理不需要阻塞浏览器绘制的副作用，如数据获取、订阅、事件监听等。
-
-```javascript
-useEffect(() => {
-  // 这里的代码在 DOM 更新后执行
-  console.log('Effect executed after render');
-}, [dependencies]);
-```
-
-- **`useLayoutEffect`**：
-  - 在浏览器绘制之前执行。`useLayoutEffect` 的回调函数会在 DOM 更新后、浏览器绘制之前执行。
-  - 适合处理需要在浏览器绘制之前完成的副作用，如读取布局信息、同步 DOM 操作等。
-
-```javascript
-useLayoutEffect(() => {
-  // 这里的代码在 DOM 更新后但在浏览器绘制之前执行
-  console.log('Layout effect executed before render');
-}, [dependencies]);
-```
-
-### 2. 性能影响
-
-- **`useEffect`**：
-  - 由于在浏览器绘制后执行，不会阻塞浏览器的绘制过程，因此对性能影响较小。
-  - 适合大多数副作用场景。
-
-- **`useLayoutEffect`**：
-  - 由于在浏览器绘制之前执行，可能会阻塞浏览器的绘制过程，导致性能下降。
-  - 应谨慎使用，尤其是在需要频繁更新的场景中。
-
-### 3. 使用场景
-
-- **`useEffect`**：
-  - 数据获取：从 API 获取数据并更新状态。
-  - 订阅：设置和清理事件监听器。
-  - 动画：在组件更新后启动动画。
-
-- **`useLayoutEffect`**：
-  - 读取布局信息：在 DOM 更新后立即读取元素的尺寸或位置。
-  - 需要同步更新的 DOM 操作：例如，调整元素的样式或位置，确保在浏览器绘制之前完成。
-
-### 4. 代码示例
-
-**使用 `useEffect`**：
-
-```javascript
-import React, { useEffect, useState } from 'react';
-
-const ExampleComponent = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData().then(response => setData(response));
-  }, []);
-
-  return <div>{data}</div>;
-};
-```
-
-**使用 `useLayoutEffect`**：
-
-```javascript
-import React, { useLayoutEffect, useRef } from 'react';
-
-const LayoutExample = () => {
-  const divRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const height = divRef.current.getBoundingClientRect().height;
-    console.log('Height:', height); // 在浏览器绘制之前读取高度
-  }, []);
-
-  return <div ref={divRef}>Hello, World!</div>;
-};
-```
-
-### 总结
-
-- **`useEffect`**：在浏览器绘制后执行，适合大多数副作用场景，性能影响较小。
-- **`useLayoutEffect`**：在浏览器绘制之前执行，适合需要同步更新的副作用，可能会影响性能。
-
-在选择使用哪个 Hook 时，通常推荐优先使用 `useEffect`，只有在确实需要在浏览器绘制之前执行某些操作时，才使用 `useLayoutEffect`。
 
 ## 说一下react hooks 的执行过程，当它遇到钩子函数（原生钩子以及自定义钩子）时，它会重新执行一遍吗？
 在 React 中，Hooks 组件的执行过程涉及多个步骤，特别是在使用 `useEffect` 和自定义 Hooks 时。以下是详细的执行过程说明：
@@ -327,3 +237,136 @@ useEffect(() => {
 
 这种机制使得 React 的 Hooks 组件能够灵活地管理状态和副作用，同时保持代码的简洁性和可读性。
 
+
+
+## react hooks中，useContext 和 useReduce 的用法是怎样的？
+在 React Hooks 中，`useContext` 和 `useReducer` 是两个非常有用的 Hook，分别用于处理上下文和复杂状态逻辑。以下是它们的用法：
+
+### 1. useContext 的用法
+
+`useContext` 用于在函数组件中订阅 React Context。它可以让你在组件树中传递数据，而不必手动通过每一层组件传递 props。
+
+````jsx
+// 创建 Context
+const ThemeContext = React.createContext();
+
+// 提供 Context
+const App = () => {
+  const theme = {
+    background: 'dark',
+    color: 'white'
+  };
+  
+  return (
+    <ThemeContext.Provider value={theme}>
+      <ChildComponent />
+    </ThemeContext.Provider>
+  );
+};
+
+// 使用 Context
+const ChildComponent = () => {
+  const theme = useContext(ThemeContext);
+  
+  return (
+    <div style={{ background: theme.background, color: theme.color }}>
+      主题样式
+    </div>
+  );
+};
+````
+
+### 2. useReducer 的用法
+
+`useReducer` 是 `useState` 的替代方案，适用于需要更复杂的状态逻辑的场景。它接收一个 reducer 函数和一个初始状态，并返回当前状态和一个 dispatch 方法。
+
+````jsx
+// 定义 reducer 函数
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+// 在组件中使用
+const Counter = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div>
+      Count: {state.count}
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  );
+};
+````
+
+### 3. 结合使用 useContext 和 useReducer
+
+这两个 Hook 可以结合使用来实现全局状态管理：
+
+````jsx
+// 创建 Context
+const StateContext = React.createContext();
+const DispatchContext = React.createContext();
+
+// 创建 Provider 组件
+const StateProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <StateContext.Provider value={state}>
+      <DispatchContext.Provider value={dispatch}>
+        {children}
+      </DispatchContext.Provider>
+    </StateContext.Provider>
+  );
+};
+
+// 在子组件中使用
+const ChildComponent = () => {
+  const state = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>增加</button>
+    </div>
+  );
+};
+
+// 在应用中使用 Provider
+const App = () => {
+  return (
+    <StateProvider>
+      <ChildComponent />
+    </StateProvider>
+  );
+};
+````
+
+### 使用建议
+
+- **useContext**: 适用于需要跨多层组件传递数据的场景，但要避免过度使用以防止不必要的重渲染。
+- **useReducer**: 适用于复杂的状态逻辑，尤其是当状态更新依赖于其他状态时。
+- **结合使用**: 可以实现简单的全局状态管理，适合中小型应用。
+
+### 注意事项
+
+- Context 的改变会导致所有消费该 Context 的组件重新渲染。
+- `useReducer` 的 reducer 函数应该是纯函数，避免在其中进行副作用操作。
+
+## react 中跨组件传值的方式有哪些？
+- 使用props 来进行状态的传递；
+- 使用useContext 来进行组件之间的状态共享。避免深层次的props传递。
+- 使用全局的状态管理工具如：redux以及mbox 等来进行状态管理；
+- 使用constate 来进行状态管理；
+
+## react 中如何实现条件渲染和列表渲染？

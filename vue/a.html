@@ -11,6 +11,10 @@
             border: 1px solid #434343;
             border-top: 1px dashed;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+        }
         .header-left {
             width: 68px;
             height: 100px;
@@ -22,8 +26,16 @@
             width: 48px;
             background: #7b7a7a;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .road {
+            width: 200px;
+            border-left: 1px solid #7b7a7a;
+        }
         .room {
-            margin-top: 100px;
+            margin-top: 10px;
             border-top: 1px solid #434343;
         }
     </style>
@@ -31,13 +43,18 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-left">
+            <div>
+                <div class="header-left">
 
+                </div>
+                <div class="hireR">
+                    H/R
+                </div>
             </div>
-        </div>
-        <div class="hireR">
-            <div class="">
-                H/R
+            
+            <div class="road">
+                <div></div>
+                <div class="room"></div>
             </div>
         </div>
         <div class="room">
