@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="btn">点击</button>
     <script>
         a = {
             b: 1,
@@ -24,6 +25,12 @@
     </script>
     <script>
         console.log(a, aObj, '=======>')
+        const fakeWindow = {};
+        fakeWindow.href = window.href;
+        const btn = document.getElementById('btn');
+        btn.onclick = () => {
+            fakeWindow.href 
+        }
     </script>
 </body>
 </html>

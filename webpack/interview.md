@@ -2172,3 +2172,23 @@ async function execScripts() {
 > **限制**：此方案适用于支持模块的 JavaScript 脚本文件，并要求子应用的脚本可以以模块形式提供。这是现代浏览器的特性，如果要加载普通 JavaScript，仍需考虑前两个方案。
 
 通过上述替代方法，可以在不同场景下减少对 `eval` 的依赖，确保脚本加载和执行的安全性和可维护性。
+
+## 说一下 bundle 和 chunk 的区别？
+在Webpack打包过程中，`bundle`和`chunk`是两个重要的概念，它们之间有一些区别：
+
+### 1. 定义
+- **Chunk**：Chunk是Webpack在构建过程中生成的代码块。它可以包含一个或多个模块，Webpack会根据依赖关系将模块分组到一个或多个chunk中。Chunk可以是异步加载的，也可以是同步加载的。
+  
+- **Bundle**：Bundle是最终生成的文件，通常是一个或多个chunk的组合。Bundle是Webpack输出的结果，通常是一个可以在浏览器中直接使用的JavaScript文件。
+
+### 2. 生成过程
+- **Chunk的生成**：
+  - 在Webpack的构建过程中，Webpack会分析模块之间的依赖关系，并根据这些依赖关系将模块分组到不同的chunk中。
+  - 例如，当使用代码分割（Code Splitting）时，Webpack会根据动态导入（`import()`）或配置的入口点（entry points）来生成多个chunk。
+
+- **Bundle的生成**：
+  - 当Webpack完成构建后，它会将生成的chunk打包成最终的bundle文件。这个过程通常涉及到将多个chunk合并成一个或多个输出文件。
+  - 通过配置`output`选项，用户可以指定bundle的名称和输出路径。
+
+### 总结
+- Chunk是Webpack内部的概念，用于管理模块的分组和依赖关系，而Bundle是最终输出的文件，包含了一个或多个chunk的代码。通过合理配置Webpack，可以优化chunk的生成和bundle的输出，以提高应用的加载性能。

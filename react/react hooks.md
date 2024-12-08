@@ -239,7 +239,7 @@ useEffect(() => {
 
 
 
-## react hooks中，useContext 和 useReduce 的用法是怎样的？
+## react hooks中，useContext 和 useReducer 的用法是怎样的？
 在 React Hooks 中，`useContext` 和 `useReducer` 是两个非常有用的 Hook，分别用于处理上下文和复杂状态逻辑。以下是它们的用法：
 
 ### 1. useContext 的用法
