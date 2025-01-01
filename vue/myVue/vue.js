@@ -24,13 +24,13 @@ const compileUtil = {
             // 
             val = expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
                 //绑定watcher从而更新视图
-                new Watcher(vm,args[1],()=>{           
-                    this.updater.textUpdater(node,this.getContentVal(expr, vm));
+                new Watcher(vm,args[1], () => {           
+                    this.updater.textUpdater(node, this.getContentVal(expr, vm));
                 })
                 return this.getVal(args[1], vm);
             })
         }else{ //也可能是v-text='obj.name' v-text='msg'
-            val = this.getVal(expr,vm);
+            val = this.getVal(expr, vm);
         }
         this.updater.textUpdater(node, val);
 
@@ -134,7 +134,7 @@ class Compiler {
         // 所以需要创建文档碎片来进行缓存,减少页面的回流和重绘
         // 1.获取文档碎片对象
         const fragment = this.node2Fragment(this.el);
-        // console.log(fragment);
+        console.log(fragment, 'fragment');
         // 2.编译模板
         this.compile(fragment)
 
@@ -170,6 +170,7 @@ class Compiler {
         const fragment = document.createDocumentFragment();
         // console.log(el.firstChild);
         let firstChild;
+        debugger
         while (firstChild = el.firstChild) {
             fragment.appendChild(firstChild);
         }

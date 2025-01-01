@@ -391,3 +391,9 @@ Vue 3 允许在一个组件上使用多个 `v-model` 绑定不同的属性。
    - 提供简单的 `v-model` 指令，同时支持复杂场景的扩展。
 
 这种机制使 Vue 3 成为高效、灵活的前端框架，能够轻松实现现代 Web 应用的动态交互需求。
+
+## 说一下组合式API（composition API） 和 Options API 的区别？
+
+ 1. 选择式的api 通过通用的配置，来规定各个配置项做哪些事情，例如data，watch， methods 分别负责数据的定义，以及数据的监听以及模块内的方法。
+ 2. 组合式API则是通过setup() 函数将逻辑组织在一起，使用reactive， ref，computed和watch等函数管理状态逻辑。
+ 

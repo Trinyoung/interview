@@ -1654,3 +1654,256 @@ Vue 在解析组件时，检测到 computed 属性。
 当依赖的数据发生变化时，触发依赖收集机制，通知相关的 Watcher，标记 dirty 为 true。
 
 ## 说一下事件委托? 说一下vue中的事件委托机制？
+
+## vue中，说一下 vue.use 的原理
+### Vue.use的作用
+- vue.use 的作用用于安装插件，并将插件功能扩展到整个Vue应用。
+- 典型的插件形式
+  1. 向Vue 原型上添加方法或属性；
+  2. 注册全局组件或指令；
+  3. 增加Vue实例的一些扩展功能。
+
+### 插件的格式
+1. 提供install 方法的对象；
+```javascript
+const MyPlugin = {
+  install(Vue, options) {
+    // 添加全局方法
+    Vue.prototype.$myMethod = function () {
+      console.log("MyPlugin's method");
+    };
+  }
+};
+
+```
+2. 直接就是一个函数
+```javascript
+function MyPlugin(Vue, options) {
+  // 添加全局方法
+  Vue.prototype.$myMethod = function () {
+    console.log("MyPlugin's method");
+  };
+}
+
+```
+
+## vue 插槽的原理
+当子组件vm实例化时，获取到父组件传入的slot标签的内容，存放在vm.$slot中，默认插槽为vm.$slot.default，具名插槽为vm.$slot.xxx，xxx 为插槽名，当组件执行渲染函数时候，遇到slot标签，使用$slot中的内容进行替换，此时可以为插槽传递数据，若存在数据，则可称该插槽为作用域插槽。
+
+## Object.defineProperty 为什么不能代理数组？
+
+Object.defineProperty 不能直接代理数组的原因 并不是因为它本身不支持数组，而是因为它不能拦截数组的原生方法（如 push、pop、shift、unshift、splice、sort 和 reverse）对数组的修改。这导致 使用 Object.defineProperty 代理数组时，无法完全实现对数组变化的响应式追踪。
+
+
+### Object.defineProperty的原理
+Object.defineProperty 主要通过给对象的属性定义getter 和 setter 来实现数据劫持；
+
+### 数组的问题：无法拦截数组的方法
+数组与普通对象最大的不同在于：数组变化的大部分是通过方法引起的，而非直接修改属性。比如：
+- 通过索引修改数组元素： `arr[0] = 'new value'`
+- 通过方法修改数组： `push`, `pop`, `shift`, `unshift`, `splice`, `sort`， `reverse`等。
+
+虽然`Object.defineProperty`可以劫持数组的元素（通过索引），但它无法直接监听数组的方法的调用。
+
+## vue2 如何解决数组不能被Object.defineProperty 代理的问题？
+
+### 重写数组的原型方法
+Vue2 对数组的7个变更方法进行了重写，替换了数组的原生方法。这是通过劫持数组的原型链实现的。
+Vue2 内部会创建一个新的数组的原型对象（arrayMethods）,并将这些方法进行重写：
+- 在调用这些方法时，触发响应式更新；
+- 然后调用原生的数组方法执行具体操作。
+
+```javascript
+const arrayProto = Array.prototype;
+const arrayMethods = Object.create(arrayProto);
+
+// 重写 push 方法
+['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach(method => {
+  arrayMethods[method] = function (...args) {
+    const result = arrayProto[method].apply(this, args); // 调用原生方法
+    console.log(`${method} 方法被调用了`, args); // 触发响应式逻辑
+    return result;
+  };
+});
+
+// 将数组的原型链指向重写后的原型对象
+const arr = [];
+arr.__proto__ = arrayMethods;
+
+arr.push(1); // "push 方法被调用了" [1]
+
+```
+这种方法的核心思想是：
+- 劫持数组的实例的原型，将数组的变更替换成自定义的方法；
+- 在调用方法时，执行响应式逻辑，并触发更新；
+
+### 递归处理数组元素
+在对数组做响应式处理时，Vue2 会递归地将数组中的每个对象变成响应式的（使用Object.defineProperty）。但是这种递归处理有一定的性能开销，尤其式当数组非常大时。
+
+而vue3 则使用了Proxy进行了拦截，则不会出现这种事情。
+
+## 说下nextTick
+在 Vue 2 中，`nextTick` 是一个非常重要的工具函数，它的主要作用是**在 DOM 更新之后，执行一段回调函数**。Vue 是异步执行 DOM 更新的，当数据变化后，Vue 会将视图更新推入队列，并在下一个事件循环中统一更新 DOM。`nextTick` 就是在这个过程中确保回调在 DOM 更新完成之后执行。
+
+下面我们详细解析 `nextTick` 的原理和实现机制。
+
+---
+
+### 1. **`nextTick` 的作用**
+
+在 Vue 中，当数据发生变化时，DOM 并不会立刻更新，而是通过异步队列机制进行批量更新。`nextTick` 提供了一种方式，让你在 DOM 更新完成之后执行特定代码。
+
+#### 示例：
+```javascript
+data() {
+  return { message: 'Hello' }
+},
+mounted() {
+  this.message = 'World';
+  console.log(this.$el.textContent); // 输出：Hello
+  this.$nextTick(() => {
+    console.log(this.$el.textContent); // 输出：World
+  });
+}
+```
+
+- 修改 `message` 后，Vue 将 DOM 更新推迟到下一个事件循环。
+- `this.$nextTick` 确保回调在 DOM 更新完成之后执行。
+
+---
+
+### 2. **为什么需要 `nextTick`？**
+
+Vue 为了优化性能，会将多次数据变化合并为一次 DOM 更新。在同一个事件循环中，如果多次修改数据，Vue 只会执行一次 DOM 更新。
+
+示例：
+```javascript
+this.count++;
+this.count++;
+this.count++;
+console.log(this.count); // 3
+this.$nextTick(() => {
+  console.log(this.$el.textContent); // 确保 DOM 已经更新
+});
+```
+
+Vue 会将所有的数据修改合并后执行 DOM 更新，`nextTick` 确保在 DOM 更新完成后执行回调，避免获取旧的 DOM 状态。
+
+---
+
+### 3. **`nextTick` 的原理**
+
+`nextTick` 的核心原理是利用了 **事件循环机制**，通过将回调延迟到下一个事件循环的微任务（Microtask）或宏任务（Macrotask）中执行，确保所有的 DOM 更新操作都已完成。
+
+Vue 内部实现 `nextTick` 时，优先使用微任务（`Promise.then`、`MutationObserver`），因为微任务的执行优先级高于宏任务（`setTimeout`）。
+
+---
+
+### 4. **`nextTick` 的执行顺序**
+
+Vue 2 的 `nextTick` 主要通过以下步骤实现：
+
+1. **回调存储**：将回调函数推入一个队列中。
+2. **异步执行**：通过异步任务机制，在下一次事件循环中执行队列中的回调。
+
+Vue 会根据运行环境选择合适的异步执行策略：
+- **优先级 1**：`Promise.then`（在支持原生 Promise 的环境中）。
+- **优先级 2**：`MutationObserver`（在不支持 Promise 的现代浏览器中）。
+- **优先级 3**：`setImmediate`（仅在 IE 中支持）。
+- **优先级 4**：`setTimeout`（最低优先级）。
+
+---
+
+### 5. **执行流程解析**
+
+我们可以将 `nextTick` 的执行流程总结为以下步骤：
+
+1. **收集回调函数**：
+   - Vue 将传入的回调函数存储到一个 **回调队列（callbacks）** 中。
+   - 确保同一事件循环中，只会执行一次队列。
+
+2. **异步触发队列执行**：
+   - Vue 调度一个异步任务（优先使用微任务 `Promise.then`）。
+   - 当异步任务触发时，遍历回调队列并逐个执行回调函数。
+
+3. **清空队列**：
+   - 执行完所有回调后，清空回调队列，等待下一次任务调度。
+
+---
+
+### 6. **源码解析**
+
+Vue 2 中的 `nextTick` 实现位于 `src/core/util/next-tick.js` 文件，核心逻辑如下：
+
+1. **回调队列和状态标志**：
+   - 维护一个 `callbacks` 队列存储回调函数。
+   - 使用 `pending` 变量确保异步任务只会被触发一次。
+
+2. **异步任务调度**：
+   - 使用 `microtask` 优先调度回调执行。
+   - 备选方案：`setTimeout` 作为兜底方案。
+
+示意代码：
+```javascript
+const callbacks = [];
+let pending = false;
+
+function flushCallbacks() {
+  pending = false;
+  const copies = callbacks.slice(0);
+  callbacks.length = 0;
+  for (let i = 0; i < copies.length; i++) {
+    copies[i]();
+  }
+}
+
+let timerFunc;
+
+if (typeof Promise !== 'undefined') {
+  // 使用微任务 Promise.then
+  const p = Promise.resolve();
+  timerFunc = () => {
+    p.then(flushCallbacks);
+  };
+} else if (typeof MutationObserver !== 'undefined') {
+  // 使用 MutationObserver
+  const observer = new MutationObserver(flushCallbacks);
+  const textNode = document.createTextNode('1');
+  observer.observe(textNode, { characterData: true });
+  timerFunc = () => {
+    textNode.data = String(1 - textNode.data);
+  };
+} else {
+  // 兜底使用 setTimeout
+  timerFunc = () => {
+    setTimeout(flushCallbacks, 0);
+  };
+}
+
+export function nextTick(cb, ctx) {
+  callbacks.push(() => {
+    if (cb) {
+      cb.call(ctx);
+    }
+  });
+  if (!pending) {
+    pending = true;
+    timerFunc();
+  }
+}
+```
+
+---
+
+### 7. **总结：`nextTick` 的本质**
+
+- **目的**：确保回调在 DOM 更新完成后执行。
+- **原理**：利用事件循环的异步任务机制，推迟回调执行。
+- **执行优先级**：
+  1. `Promise.then`（微任务）
+  2. `MutationObserver`（微任务）
+  3. `setImmediate`（宏任务，仅 IE 支持）
+  4. `setTimeout`（宏任务，兜底方案）
+
+`nextTick` 的实现体现了 Vue 对事件循环的精细控制，它巧妙地利用了微任务和宏任务的执行顺序，确保回调在 DOM 更新完成后统一执行，避免了不必要的重复操作，从而提升了性能。
+
